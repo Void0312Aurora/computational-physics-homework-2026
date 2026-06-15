@@ -1,0 +1,2 @@
+method,device,dtype,compute_grid,render_grid,render_tile,symmetry_used,elapsed_seconds,peak_gpu_mem_gib
+newton,NVIDIA GeForce RTX 3090,complex64,40000,5000,250,True,14.798268910002662,0.3403916358947754

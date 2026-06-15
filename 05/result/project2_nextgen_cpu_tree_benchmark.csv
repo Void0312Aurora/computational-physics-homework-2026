@@ -1,0 +1,6 @@
+leaf_count,leaf_blocks,approx_final_blocks,repeats,avg_schoolbook_seconds,avg_adaptive_seconds,speedup_adaptive_vs_schoolbook,adaptive_rns_mul_calls,adaptive_schoolbook_mul_calls,schoolbook_peak_live_blocks,adaptive_peak_live_blocks,exact_match
+32,64,2048,3,0.008420084,0.008593914,0.979772895,3,28,4096,4096,True
+32,128,4096,3,0.027482176,0.018798073,1.461967698,7,24,8192,8192,True
+64,64,4096,3,0.026387880,0.018777314,1.405306425,7,56,8192,8192,True
+64,128,8192,3,0.104721682,0.048661286,2.152053297,15,48,16384,16384,True
+64,256,16384,3,0.426282589,0.122600333,3.477010035,31,32,32768,32768,True

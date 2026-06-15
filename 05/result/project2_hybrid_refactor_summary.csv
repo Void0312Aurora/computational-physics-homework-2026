@@ -1,0 +1,6 @@
+profile,digits,seconds,digits_per_second,gpu_peak_gb,budget_cpu_calls,oom_cpu_calls,status,note,source
+old-fast-auto-window,140000000,0.0,0.0,,,,failed,pre-refactor limit-window benchmark hit CUDA OOM at 140M digits,project2_hybrid_extremes_limit_window.md
+fast-auto-140m,140000000,22.490386199002387,6224881.990074943,18.239346981048584,0,0,ok,"merge_gpu_calls=146,final_gpu_calls=3,merge_frontier_max_nodes=10",project2_gpu_hybrid_fastauto_140m_after_refactor.csv
+fast-auto-160m,160000000,55.49808728700009,2882982.239956917,17.882286071777344,0,3,ok,"merge_gpu_calls=153,final_gpu_calls=2,merge_frontier_max_nodes=11",project2_gpu_hybrid_fastauto_160m_after_refactor.csv
+high-digits-100m,100000000,22.414051815001585,4461486.964756217,16.243427276611328,1,0,ok,"merge_gpu_calls=177,final_gpu_calls=2,merge_frontier_max_nodes=14",project2_gpu_hybrid_highdigits_100m_after_refactor.csv
+high-digits-140m,140000000,79.79395672999817,1754518.8349754768,15.708240985870361,7,0,ok,"merge_gpu_calls=142,final_gpu_calls=0,merge_frontier_max_nodes=10",project2_gpu_hybrid_highdigits_140m_after_refactor.csv

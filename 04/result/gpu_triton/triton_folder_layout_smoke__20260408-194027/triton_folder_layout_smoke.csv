@@ -1,0 +1,2 @@
+size,block_size,reps,root_diff_pixels,iter_diff_pixels,max_iter_diff,convergence_fraction_delta,mean_iterations_delta,root0_fraction_delta,root1_fraction_delta,root2_fraction_delta,reference_seconds,triton_seconds,speedup
+512,256,1,2,970,7,0.0,0.00022125244140625,0.0,0.0,0.0,0.05226565999691957,0.0003856350012938492,135.53142173703722

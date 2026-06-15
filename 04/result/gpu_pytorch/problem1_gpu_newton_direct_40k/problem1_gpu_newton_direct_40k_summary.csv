@@ -1,0 +1,2 @@
+method,tol,max_iter,grid_size,render_grid,render_tile,symmetry_used,active_compression_used,newton_direct_formula_used,convergence_fraction,mean_iterations,root0_fraction,root1_fraction,root2_fraction
+newton,5e-07,55,40000,5000,250,True,False,True,0.9999996825,6.814763578687436,0.3418778225,0.32906093,0.32906093

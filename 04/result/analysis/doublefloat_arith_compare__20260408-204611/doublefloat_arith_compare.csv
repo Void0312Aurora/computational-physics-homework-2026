@@ -1,0 +1,5 @@
+case,backend,grid,span,elapsed_seconds,convergence_fraction,mean_iterations,root0_fraction,root1_fraction,root2_fraction,root_diff_vs_fp64,iter_diff_vs_fp64,max_iter_diff_vs_fp64,unique_x_count,unique_y_count,arith_mode
+full_plane,doublefloat_basic,1024,3.6,0.6006554180057719,1.0,6.814628601074219,0.3419055938720703,0.32904720306396484,0.32904720306396484,26,3956,47,1024,1024,basic
+boundary_zoom,doublefloat_basic,1024,6.097555160522461e-05,0.18879011399985757,1.0,15.0,0.0,1.0,0.0,0,0,0,1024,1024,basic
+full_plane,doublefloat_refined,1024,3.6,0.8056864679965656,1.0,6.814628601074219,0.3419055938720703,0.32904720306396484,0.32904720306396484,26,3956,47,1024,1024,refined
+boundary_zoom,doublefloat_refined,1024,6.097555160522461e-05,0.16910013800224988,1.0,15.0,0.0,1.0,0.0,0,0,0,1024,1024,refined

@@ -1,0 +1,4 @@
+case,integral,transformation,slices,estimate,exact,actual_error
+a,int_-1^1 sqrt(1-x^2) dx,"x = sin(theta), theta in [-pi/2, pi/2]",1024,1.5707963267948966,1.5707963267948966,0.000000e+00
+b,int_0^pi sin^2(theta) dtheta,direct Simpson integration,1024,1.5707963267948966,1.5707963267948966,0.000000e+00
+c,int_0^inf dx / ((1+x) sqrt(x)),"x = tan^2(theta), theta in [0, pi/2]",1024,3.1415926535897931,3.1415926535897931,0.000000e+00

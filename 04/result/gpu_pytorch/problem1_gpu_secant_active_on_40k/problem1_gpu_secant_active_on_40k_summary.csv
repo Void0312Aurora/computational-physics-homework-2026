@@ -1,0 +1,2 @@
+method,tol,max_iter,grid_size,render_grid,render_tile,symmetry_used,active_compression_used,convergence_fraction,mean_iterations,root0_fraction,root1_fraction,root2_fraction
+secant,5e-07,65,40000,5000,250,False,True,0.945236889375,9.11681714326449,0.35984259125,0.31550130375,0.269892994375

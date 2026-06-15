@@ -1,0 +1,2 @@
+compute_grid,render_grid,factor,tile_rows,threads,max_iter,tol,elapsed_seconds,throughput_gpoints_per_s,peak_rss_gib,convergence_fraction,mean_iterations,root0_fraction,root1_fraction,root2_fraction
+4096,1024,4,64,88,55,5e-07,0.079375899,0.211364107,0.006763458,0.999999642372,6.814497046887,0.341906189919,0.329046726227,0.329046726227

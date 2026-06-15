@@ -1,0 +1,10 @@
+route,target_digits,seconds,digits_per_second,prefix_ok,status,stop_reason,notes
+cpu-cpp,20000000,9.91614,2016910.0,True,ok,,"threads=44,chunk_terms=262144"
+cpu-cpp,50000000,28.8831,1731110.0,True,ok,,"threads=44,chunk_terms=524288"
+cpu-cpp,100000000,65.2928,1531560.0,True,ok,,"threads=44,chunk_terms=1048576"
+cpu-python,20000000,10.913368535999325,1832614.7361400933,True,ok,,"workers=32,chunk_terms=262144"
+cpu-python,50000000,31.070347059998312,1609251.415938407,True,ok,,"workers=32,chunk_terms=524288"
+cpu-python,100000000,73.66581189499993,1357481.814529319,True,ok,,"workers=32,chunk_terms=524288"
+hybrid-fast-auto,20000000,3.1524936179994256,6344184.1359514035,True,ok,,"workers=32,chunk_terms=65536,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=newton-chunk-gpu-seed-prototype,chunk_backend=auto"
+hybrid-fast-auto,50000000,7.175674238002102,6967986.330148862,True,ok,,"workers=32,chunk_terms=131072,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=newton-chunk-gpu-seed-prototype,chunk_backend=auto"
+hybrid-fast-auto,100000000,14.454642202996183,6918192.688247367,True,ok,,"workers=32,chunk_terms=262144,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=newton-chunk-gpu-seed-prototype,chunk_backend=auto"

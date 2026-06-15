@@ -1,0 +1,7 @@
+metric,value,note
+sizeof_half,2,_Float16 byte width on this machine
+bits_of_one,0x3c00,bit pattern of (_Float16)1.0
+machine_epsilon,0.0009765625,computed by repeated halving with explicit half rounding
+min_normal,6.103515625e-05,binary16 bit pattern 0x0400
+true_min,5.9604644775390625e-08,smallest positive representable half value
+max_finite,65504,binary16 bit pattern 0x7bff

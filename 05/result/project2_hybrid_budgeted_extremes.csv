@@ -1,0 +1,5 @@
+route,target_digits,seconds,digits_per_second,prefix_ok,status,stop_reason,notes
+hybrid-fast-auto,100000000,14.637567923004099,6831736.018306844,True,ok,,"workers=32,chunk_terms=262144,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=newton-chunk-gpu-seed-prototype,chunk_backend=auto,gpu_budget_gb=None"
+hybrid-fast-auto,140000000,22.370206081002834,6258324.107210189,True,ok,,"workers=32,chunk_terms=524288,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=newton-chunk-gpu-seed-prototype,chunk_backend=auto,gpu_budget_gb=None"
+hybrid-high-digits-auto,100000000,21.761305831001664,4595312.467762742,True,ok,,"workers=32,chunk_terms=262144,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=newton-chunk-gpu-seed-prototype,chunk_backend=auto,gpu_budget_gb=12.0"
+hybrid-high-digits-auto,140000000,79.19579279900063,1767770.6738200197,True,ok,,"workers=32,chunk_terms=524288,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=newton-chunk-gpu-seed-prototype,chunk_backend=auto,gpu_budget_gb=12.0"

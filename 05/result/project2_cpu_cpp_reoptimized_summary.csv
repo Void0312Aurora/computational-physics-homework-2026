@@ -1,0 +1,7 @@
+target_digits,seconds,digits_per_second,threads,chunk_terms,leaf_terms,baseline_seconds,baseline_digits_per_second,speedup_vs_old_cpp,notes
+10000000,3.80976,2624830.0,44,131072,8,4.42898,2257860.0,1.162534433640204,"optimized leaf block + parallel merge"
+20000000,7.70619,2595320.0,44,131072,8,,,,"new measurement after CPU refactor"
+50000000,21.4277,2333430.0,44,131072,8,28.8599,1732510.0,1.3468501966152207,"smaller chunks beat old 524288 strategy"
+100000000,47.4407,2107900.0,44,131072,8,65.5576,1525380.0,1.3818985749104882,"best point moved from 1048576 to 131072"
+150000000,83.1204,1804610.0,44,262144,8,114.596,1308950.0,1.3786652785632575,"optimized CPU now clearly beats bounded-stream hybrid"
+200000000,109.068,1833720.0,44,262144,8,156.576,1277330.0,1.4355881847495592,"throughput stays near 1.8e6 digits/s"

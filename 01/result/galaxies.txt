@@ -1,0 +1,19 @@
+LCRS galaxy summary
+===================
+
+a) Smallest recession velocity:
+3734 1.78597796 3.36897206 -17.581007
+
+a) Largest recession velocity:
+78736 2.25449395 0.409669995 -22.2867413
+
+b) Brightest galaxy (most negative absolute magnitude):
+54610 1.63460696 3.43572998 -22.7668247
+
+b) Faintest galaxy:
+3734 1.78597796 3.36897206 -17.581007
+
+c) Qualitative consistency check:
+Yes. The brightest galaxy in this sample is much farther away than the faintest one,
+which is consistent with a flux-limited survey: distant galaxies need to be intrinsically
+brighter to stay above the detection threshold, while faint galaxies are mostly observed nearby.

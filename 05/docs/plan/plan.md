@@ -1,0 +1,327 @@
+# Plan
+
+## Scope
+
+- Target folder: `HW/05`
+- Problem source:
+  - `HW/05/docs/problem/image.png`
+  - `HW/05/docs/problem/image_1.png`
+  - `HW/05/docs/problem/image_2.png`
+  - `HW/05/docs/problem/image_3.png`
+- Deliverables:
+  - `solution.py`
+  - `project2_gmp_backend.cpp`
+  - `project2_mpn_benchmark.cpp`
+  - `project2_gpu_fft_backend.py`
+  - `project2_fft_gpu_benchmark.py`
+  - `project2_gpu_pi_hybrid.py`
+  - `Makefile`
+  - `project2_gpu_native_rns/*`
+  - `result/*`
+  - `docs/answer/answer.md`
+  - `docs/answer/render_docs.py`
+  - `docs/answer/answer.docx`
+  - `docs/answer/answer.pdf`
+
+## Current Status
+
+- 当前纯 CPU 实现已经冻结为基线：
+  - `project2_pi/gmp_backend.cpp`
+  - `project2_pi/gmp_backend_levelpool.cpp`
+  - 相关 benchmark 栈与结果文件
+- 冻结说明：
+  - `project2_pi/FROZEN_BASELINE.md`
+- 后续真正的 CPU 性能工作不再进入上述旧主线，而是迁移到新的架构线：
+  - `project2_pi/NEXTGEN_CPU_ARCHITECTURE.md`
+- `project2_pi/nextgen_cpu/` 已经进入 Phase 2：
+  - `RNS` 输入不再拆成 `base-2^16`，而是直接复用 canonical `32-bit block`
+  - 已落地 cached `NTT` plan、workspace 复用、CRT 常量预计算与 direct carry normalize
+  - 当前 isolated multiply 的 crossover 已经出现在约 `1024` blocks
+  - 已落地 destructive product tree 原型，adaptive `RNS` 在 `64x256 blocks` workload 上约有 `3.48x` 提升
+  - 但 product tree 的 `peak_live_blocks` 仍与 schoolbook 同量级，说明上层结果还没有真正 transform-resident
+
+## Next-Gen CPU Architecture Sprint
+
+- Goal:
+  - 不再继续给 `mpz_t` 对象树主线打补丁，而是单独设计并落地一条新的纯 CPU backend。
+- This sprint should create:
+  - `project2_pi/NEXTGEN_CPU_ARCHITECTURE.md`
+  - 后续单独的 `nextgen_cpu/` 子目录或独立 backend 目标
+- Success criteria for this sprint:
+  - 明确把旧 CPU 路线冻结为基线，而不是继续视为“当前可优化主线”
+  - 明确下一代 backend 不再允许运行时依赖 `mpz_t`、`mpn_*` 或旧 GMP bridge
+  - 明确下一代 backend 的核心抽象：`page/block engine + destructive reduction + RNS/NTT` 大乘法域
+  - 明确下一代 backend 的阶段边界：不仅重构 binary splitting + merge 热路径，也要把 reciprocal / sqrt / final division 纳入新 engine
+  - 明确新旧两条线的职责分工：旧线只做 correctness/benchmark 对照，新线承担后续性能探索
+  - 至少落地一次 next-gen isolated multiply benchmark，并把结果写入 `result/project2_nextgen_cpu_multiply_benchmark.{csv,log}`
+
+## Current Refactor Sprint
+
+- Goal:
+  - 围绕 `HW/05/project2_pi` 的混合主线，优先解决“高位数时 GPU 乘法工作集过大、140M 左右容易撞显存墙”的问题。
+- This sprint only changes the active Project 2 mainline:
+  - `project2_pi/gpu_pi_hybrid.py`
+  - `project2_pi/gpu_fft_backend.py`
+  - `project2_pi/benchmark_matrix.py`
+  - `project2_pi/benchmark_extremes.py`
+  - `README.md`
+  - `result/project2_hybrid_refactor_summary.{csv,md}`
+  - `result/project2_hybrid_adaptive_division_summary.{csv,md}`
+  - `result/project2_hybrid_bounded_stream_summary.{csv,md}`
+- Success criteria for this sprint:
+  - 不再物化完整 `chunk_partials` 列表
+  - 用流式 partial 生成与 frontier merge 把 merge live nodes 压到 `O(log n)` 小常数级
+  - 混合路线在高位数时能自动把超限乘法回退到 CPU，而不是直接因为 CUDA OOM 退出
+  - 在回退已经发生的高位数场景里，自适应地把最终除法从 chunk Newton 切回 `mpz-div`
+  - 用真实 benchmark 验证 `140M` 重新可跑，并继续探测更高位数
+  - 明确判断“更小 GPU 工作集”这条路线是否已经退化到接近纯 CPU 吞吐
+
+## Current CPU Refactor Sprint
+
+- Goal:
+  - 既然严格显存预算下的 hybrid 已经逼近 CPU 吞吐，本轮继续把默认路线切回纯 CPU，并围绕 `C++ + GMP + OpenMP` 主线做真实优化。
+- This sprint changes:
+  - `project2_pi/gmp_backend.cpp`
+  - `project2_pi/gmp_backend_levelpool.cpp`
+  - `project2_pi/homework_bridge.py`
+  - `project2_pi/benchmark_matrix.py`
+  - `project2_pi/benchmark_extremes.py`
+  - `project2_pi/benchmark_cpu_tasktree.py`
+  - `project2_pi/benchmark_cpu_representation.py`
+  - `solution.py`
+  - `README.md`
+  - `result/project2_cpu_cpp_reoptimized_summary.{csv,md}`
+  - `result/project2_cpu_cpp_tasktree_summary.{csv,md}`
+  - `result/project2_cpu_cpp_parallel_modes_summary.{csv,md}`
+  - `result/project2_cpu_cpp_representation_summary.{csv,md}`
+- Success criteria for this sprint:
+  - C++ backend新增 `leaf_terms` 小块迭代路径，避免递归一直下探到单项
+  - 顶层 merge tree 改成按轮次 OpenMP 并行归并，而不是串行归并
+  - 找到新的 CPU 默认分块窗口，并把它接进入口逻辑而不是只停留在手动 benchmark
+  - 把 `parallel_mode=tasks` 和 `task_terms` 接入主配置链与 benchmark 栈，能独立比较 `chunked vs tasks`
+  - 用重复测速判断任务树调度是否足以取代默认 `chunked` 路线，而不是只看一次幸运样本
+  - 再做一次更激进的直接重构：加入 `parallel_mode=frontier`，验证“流式 partial + ordered frontier reduce”能否减少结构性开销
+  - 如果 `frontier` 没有赢，就明确记录它失败的原因，并据此把下一阶段重构边界收敛到 limb/block 表示层
+  - 在 `frontier` 之后继续做一版更接近表示层的 CPU 原型：用预分配 `levelpool`/scratch 复用 `mpz_t` 容量，验证“减少对象 churn”本身能否稳住高位数吞吐
+  - 如果 `levelpool` 至少能保持与 `chunked` 同量级且不再出现 `frontier` 式崩塌，就把它保留为下一阶段表示层重构基线；若仍无决定性收益，就明确记录瓶颈已继续下沉到 limb/block 与乘除开方内核
+  - `solution.py` 默认主线切回 CPU；GPU hybrid 保留为显式选择的探索路线
+  - 用真实 benchmark 证明 `100M / 150M / 200M` 的 CPU 吞吐显著高于旧 C++ 基线，并高于 `bounded-stream-auto`
+
+## Problem Summary
+
+- Chinese translation:
+  - Problem 1: 给定稳压二极管的 7 个电压-电流数据点，说明 6 次整体多项式插值会在点间产生明显摆动，因此需要用低阶分段多项式得到足够平滑的曲线。
+  - Problem 2: 对 Runge 函数 `f(x)=1/(1+16x^2)`，在 `[-1,1]` 上取等距节点，绘制插值多项式与精确函数，并分别对 `5, 7, 9, 17, 19, 21` 个节点重做。
+  - Problem 3: 对 `f(x)=x sin(2 pi x + 1)`，在 `[-1,1]` 上取等距节点，绘制插值多项式与精确函数，并分别对 `7, 9, 17, 19, 21` 个节点重做。
+  - Project 2: 在笔记本电脑上计算圆周率 `pi`，要求至少精确到小数点后 `10000` 位，并兼顾计算速度与尽量多的位数。
+- Required outputs:
+  - Problem 1 的插值对比图与中点估计表
+  - Problem 2、Problem 3 的插值对比图与误差汇总表
+  - Project 2 的高精度 `pi` 结果文件与性能摘要
+  - 最终答案文档
+- Numerical or implementation constraints:
+  - Problem 1 原图没有把分段插值的具体型号写死，需要明确所采用的样条方案
+  - Problem 2、Problem 3 的题面把“节点数”和“多项式阶数”混写在一起，需要采用数学上良定的解释
+  - Project 2 需要至少 `10000` 位，并且最好展示速度/位数权衡
+
+## Approach
+
+- Language/tool choice:
+  - 使用 `Python`
+  - 依赖 `numpy`、`matplotlib`
+  - 文档导出使用 `pypandoc`
+- Core algorithm or script plan:
+  - Problem 1:
+    - 用 Neville 递推计算 6 次整体插值多项式
+    - 计算分段线性插值
+    - 计算保形三次 Hermite/PCHIP，并与整体插值放在同图比较
+  - Problem 2、Problem 3:
+    - 使用 Neville 递推生成插值曲线
+    - 同时保留重心形式的 Lagrange 插值，避免直接解 Vandermonde 线性系统，并与 Neville 做一致性校验
+    - 在致密网格上比较插值曲线与精确函数
+    - 汇总最大绝对误差与均方根误差
+  - Project 2:
+    - 使用 Chudnovsky 公式与 binary splitting
+    - 把 Python `Decimal` 改为 `gmpy2` 的 GMP 多精度整数内核
+    - 采用按位数自适应的多进程树形归约，优先压榨多核 CPU
+    - 对较大位数逐步放大 `chunk_terms`，减少中间大整数回传与主进程归并成本
+    - 对非最高档 benchmark 只做前缀校验，避免重复物化整串十进制文本
+    - 额外实现 `C++ + GMP + OpenMP` 原型后端，测量共享内存线程版是否能把吞吐率提升到 `30~40M digits/s`
+    - 继续向三条极限优化路线做真实探索：
+      - `GMP mpn` 级乘法基准，判断把 `mpz` 改写为底层 limb API 是否值得
+      - 基于 `torch.fft` 的 GPU FFT 正式 exact multiply 后端，补齐两段拆分卷积、carry 归一化、CLI 与端到端 benchmark
+      - 官方 `y-cruncher` benchmark，直接测试专用工具链的端到端上限
+    - 在正式 GPU multiply backend 之上，再实现混合 `pi` 后端：
+      - CPU 负责 Chudnovsky binary splitting、除法和开方
+      - GPU 负责可选的 `final-only` 或 `merge-and-final` 大整数乘法
+      - 量化“乘法内核很快”与“整条 `pi` 流水线仍然很慢”之间的差距
+      - 把 `GMP <-> GPU` 的转换从十进制字符串路径升级到 `mpz.to_bytes()/from_bytes()` 驱动的 `binary16` 路径
+      - 把 `merge-and-final` 路线补成 `chunk-resident` merge tree，减少 merge 阶段反复回到 `mpz` 的开销
+      - 继续把 `trim / compare / add / sub` 改成 GPU-resident chunk 算术，并尽量让 merge 乘法输出继续留在 CUDA 张量里
+      - 对低于阈值的 case 懒初始化 CUDA，避免不必要的 GPU 上下文开销
+      - 保留旧 `decimal4` 路径用于和新 `binary16` 路径做真实对照 benchmark
+    - 开启 `full-CUDA stage-1` 迁移线：
+      - 先用 `torch cpp_extension` 落地 base-`2^16` limb 的 CUDA `trim / compare / add / sub / mul_small / div2`
+      - 新增独立的 `project2_gpu_pi_full_cuda.py` 原型入口，验证新 limb runtime 与现有 GPU FFT 乘法后端的协同
+      - 把新的 CUDA chunk 算术以后端开关的方式接进 `project2_gpu_pi_hybrid.py`，完成真实主流水线端到端 smoke
+      - 在 `project2_gpu_pi_full_cuda.py` 内新增 `pipeline` 模式，强制走 `merge-and-final + binary16 + chunk-gpu-rsqrt-prototype + newton-chunk-gpu-seed-prototype + cuda-ext`，把 full-CUDA 迁移线推进到“能算出完整 `pi` smoke 并单独记录阶段时间”
+      - 把 `sqrt` 路径里的 `10^digits` 比例尺从 CPU `mpz` 构造改为 GPU chunk 二进制幂，并清理 Newton `constant-minus-product` 路径里的 host `.item()` 标量回读
+      - 在这一阶段先验证“可编译、可验对、可接入”，再进一步追求真正的高吞吐并行 carry/scan 实现
+    - 开启 `GPU-native aggressive reboot` 独立分支：
+      - 在 `project2_gpu_native_rns/` 下新建完全独立于旧 limb/Torch 路线的原生 CUDA 子项目
+      - 基础表示改为 `RNS/CRT + device-resident metadata`，布局使用 `residues[modulus][value][slot]`
+      - 第一阶段先完成原生 encode、pointwise add/sub/mul、host CRT reconstruction 和 smoke test
+      - 后续再在这条新表示层上接入 polynomial/block 主路径、NTT、reciprocal、sqrt、division 与完整 `pi` 求解
+    - 区分“完整 `pi` 计算吞吐率”和“精确乘法后端吞吐率”，避免把不同量纲的数据混为一谈
+    - 记录 `100000 / 1000000 / 5000000 / 10000000 / 50000000 / 100000000` 位的用时
+    - 保留最高位数结果文件
+    - 本轮高位数重构额外加入两项具体改动：
+      - worker pool 改成按区间顺序流式产出 partial，merge 侧改为 frontier 归并，只保留 `O(log n)` 个 live 节点，避免一次性构造完整 `chunk_partials`
+      - frontier 的最终规约必须按 `reversed(frontier)` 扫描并执行 `result = merge(result, entry)`，保证区间仍按从左到右的顺序合并
+      - 给 `HybridGpuMultiplier` 增加显存预算感知与 OOM 回退逻辑：在预计 GPU FFT 工作集过大时主动落回 CPU；若实际执行时仍触发 OOM，则清理 CUDA cache 后自动回退到 CPU 继续完成整次乘法
+      - 给最终除法增加 `division_mode=auto`：若 merge 阶段已经出现预算回退或 OOM 回退，则最终商计算自动改用 `mpz-div`；否则继续使用 `newton-chunk-gpu-seed-prototype`
+- Output files to create:
+  - `solution.py`
+  - `project2_gmp_backend.cpp`
+  - `project2_mpn_benchmark.cpp`
+  - `project2_gpu_fft_backend.py`
+  - `project2_fft_gpu_benchmark.py`
+  - `project2_gpu_pi_hybrid.py`
+  - `project2_cuda_chunk_ops.py`
+  - `cuda/project2_chunk_ops.cpp`
+  - `cuda/project2_chunk_ops.cu`
+  - `project2_gpu_pi_full_cuda.py`
+  - `project2_gpu_native_rns/README.md`
+  - `project2_gpu_native_rns/docs/architecture.md`
+  - `project2_gpu_native_rns/Makefile`
+  - `project2_gpu_native_rns/include/project2_gpu_native_rns/rns_runtime.cuh`
+  - `project2_gpu_native_rns/src/rns_runtime.cu`
+  - `project2_gpu_native_rns/src/main.cu`
+  - `Makefile`
+  - `result/problem1_zener_interpolation.png`
+  - `result/problem1_curve_summary.csv`
+  - `result/problem1_midpoints.csv`
+  - `result/problem2_runge_interpolation.png`
+  - `result/problem2_runge_error_summary.csv`
+  - `result/problem3_sine_interpolation.png`
+  - `result/problem3_sine_error_summary.csv`
+  - `result/project2_pi_benchmark.csv`
+  - `result/project2_cpp_backend_benchmark.csv`
+  - `result/project2_mpn_mul_benchmark.csv`
+  - `result/project2_fft_gpu_benchmark.csv`
+  - `result/project2_fft_gpu_verify.csv`
+  - `result/project2_fft_gpu_benchmark_batched_large.csv`
+  - `result/project2_fft_gpu_verify_batched_large.csv`
+  - `result/project2_gpu_hybrid_compare.csv`
+  - `result/project2_gpu_hybrid_pi_benchmark.csv`
+  - `result/project2_gpu_hybrid_pi_benchmark_batched_large.csv`
+  - `result/project2_gpu_hybrid_pi_merge_benchmark.csv`
+  - `result/project2_gpu_hybrid_pi_merge_benchmark_chunk_tree_extreme.csv`
+  - `result/project2_gpu_hybrid_pi_merge_benchmark_gpu_resident_small.csv`
+  - `result/project2_gpu_hybrid_pi_merge_benchmark_gpu_resident_extreme.csv`
+  - `result/project2_gpu_pipeline_upgrade_summary.csv`
+  - `result/project2_hybrid_bounded_stream_summary.csv`
+  - `result/project2_hybrid_bounded_stream_summary.md`
+  - `result/project2_full_cuda_prototype_smoke.csv`
+  - `result/project2_gpu_hybrid_chunkarith_python_smoke.csv`
+  - `result/project2_gpu_hybrid_chunkarith_cudaext_smoke.csv`
+  - `result/project2_cuda_stage1_summary.csv`
+  - `result/project2_gpu_native_rns_smoke.log`
+  - `result/project2_gpu_native_rns_smoke.csv`
+  - `result/project2_ycruncher_benchmark.csv`
+  - `result/project2_extreme_backend_summary.csv`
+  - `result/project2_ycruncher_bench_100m.log`
+  - `result/project2_ycruncher_bench_100m_nosmt.log`
+  - `result/project2_ycruncher_bench_1b.log`
+  - `result/project2_ycruncher_bench_2p5b.log`
+  - `result/project2_pi_cpp_100000000_digits.txt`
+  - `result/project2_pi_100000000_digits.txt`
+  - `result/temp-01.log`
+
+## Testing
+
+- Commands to run:
+  - `python solution.py`
+  - `make mpn_benchmark`
+  - `python project2_gpu_fft_backend.py --lhs 123 --rhs 456`
+  - `python project2_fft_gpu_benchmark.py`
+  - `python project2_gpu_pi_hybrid.py --gpu-stages final-only`
+  - `python project2_gpu_pi_full_cuda.py --chunk-length 4096 --repeats 1`
+  - `make gpu_native_rns`
+  - `python project2_gpu_pi_hybrid.py --digits-list 100000,500000,1000000 --gpu-stages merge-and-final --gpu-chunk-format binary16 --sqrt-mode chunk-gpu-rsqrt-prototype --division-mode newton-chunk-gpu-seed-prototype --chunk-arith-backend python`
+  - `python project2_gpu_pi_hybrid.py --digits-list 100000,500000,1000000 --gpu-stages merge-and-final --gpu-chunk-format binary16 --sqrt-mode chunk-gpu-rsqrt-prototype --division-mode newton-chunk-gpu-seed-prototype --chunk-arith-backend cuda-ext`
+  - `third_party/y-cruncher/y-cruncher v0.8.7.9547-static/y-cruncher pause:-2 skip-warnings colors:0 status:none bench 100m -od:0`
+  - `make docs`
+  - `python -m project2_pi.gpu_pi_hybrid --profile fast-auto --digits-list 100000,1000000 --no-stream-partials --csv result/tmp_fast_auto_nostream_validation.csv --output result/tmp_fast_auto_nostream_validation.txt`
+  - `python -m project2_pi.gpu_pi_hybrid --profile fast-auto --digits-list 100000,1000000 --stream-partials --csv result/tmp_fast_auto_stream_validation.csv --output result/tmp_fast_auto_stream_validation.txt`
+  - `python -m project2_pi.gpu_pi_hybrid --profile high-digits-auto --digits-list 100000,1000000 --csv result/project2_gpu_hybrid_frontier_budgeted_smoke.csv --output ''`
+  - `python -m project2_pi.benchmark_extremes --routes hybrid-fast-auto,hybrid-high-digits-auto --digits-list 100000000,140000000 --soft-limit-seconds 180 --csv result/project2_hybrid_budgeted_extremes.csv --md result/project2_hybrid_budgeted_extremes.md`
+  - `python -m project2_pi.gpu_pi_hybrid --profile fast-auto --digits-list 160000000 --csv result/project2_gpu_hybrid_fastauto_160m_after_refactor.csv --output ''`
+  - `python -m project2_pi.gpu_pi_hybrid --profile fast-auto --digits-list 140000000 --csv result/project2_gpu_hybrid_fastauto_140m_auto_div_seq.csv --output ''`
+  - `python -m project2_pi.gpu_pi_hybrid --profile fast-auto --digits-list 160000000 --csv result/project2_gpu_hybrid_fastauto_160m_auto_div_seq.csv --output ''`
+  - `python -m project2_pi.gpu_pi_hybrid --profile high-digits-auto --digits-list 100000000 --csv result/project2_gpu_hybrid_highdigits_100m_auto_div_seq.csv --output ''`
+  - `python -m project2_pi.gpu_pi_hybrid --profile high-digits-auto --digits-list 140000000 --csv result/project2_gpu_hybrid_highdigits_140m_auto_div_seq.csv --output ''`
+  - `python -m project2_pi.gpu_pi_hybrid --profile bounded-stream-auto --digits-list 100000000,140000000 --csv result/project2_gpu_hybrid_boundedstream_100m_140m_seq.csv --output result/project2_gpu_hybrid_boundedstream_140m_digits.txt`
+  - `python -m project2_pi.gpu_pi_hybrid --profile bounded-stream-auto --digits-list 160000000 --csv result/project2_gpu_hybrid_boundedstream_160m_seq.csv --output result/project2_gpu_hybrid_boundedstream_160m_digits.txt`
+- Expected checks:
+  - Problem 1 图中整体 6 次多项式能看出明显摆动，而分段样条更平滑
+  - Problem 2 的误差会随着等距节点增加而出现典型 Runge 现象
+  - Problem 3 的误差相对更可控，图像与精确函数整体吻合
+  - Problem 2、Problem 3 中 Neville 与重心 Lagrange 的逐点差异应接近机器精度
+  - Project 2 至少生成 `10000` 位正确结果，并成功给出最高 `100000000` 位 benchmark
+  - Project 2 的 benchmark CSV 需要记录后端、进程数、分块大小与前缀校验结果
+  - Project 2 的 C++ 后端需要成功编译，并给出独立 benchmark 结果
+  - `mpn_mul_n` 与 `mpz_mul` 的纯乘法基准要能直接说明高层 `mpz` 包装是否是主要瓶颈
+  - GPU FFT 正式后端要能直接完成 exact multiply，并给出端到端 digits/s、kernel digits/s 与 carry pass 统计
+  - GPU FFT 正式后端至少要在多组随机 case 上与 `gmpy2` 完整结果逐位一致，其中包含多百万位样例
+  - 混合 `pi` 后端要能算出至少 `1000000` 位正确结果，并把 GPU 调用次数、prepare/backend/finalize 时间拆开记录
+  - 混合 `pi` 后端需要证明 `final-only` 与 `merge-and-final` 两种策略的代价差异
+  - 混合 `pi` 后端需要证明 `binary16` 路径相对旧 `decimal4` 路径确实显著降低了 prepare/finalize 时间
+  - 混合 `pi` 后端需要检查 `chunk-resident` merge tree 是否已经把 `10M / 50M / 100M` 位完整计算推过 CPU-only
+  - 混合 `pi` 后端需要检查 GPU-resident `trim / add / sub` 是否继续把 `10M / 50M / 100M` 位完整计算从 `v3` 推高到新的吞吐率平台
+  - `full-CUDA stage-1` 需要至少证明 CUDA limb 算子编译成功、随机正确性检查通过，并已经跑进真实 `pi` 主流水线而不是停留在孤立微基准
+  - `GPU-native aggressive reboot` 至少需要证明新的原生 CUDA 表示层已经独立编译成功、能完成 GPU encode 与 residue-domain pointwise add/sub/mul，并能通过 host CRT reconstruction 做 exact smoke validation
+  - `y-cruncher` 至少完成 `100m` 和更高一档 benchmark，并形成可对比的 wall time 与 digits/s
+  - `docs/answer/answer.docx` 与 `docs/answer/answer.pdf` 成功导出
+  - 本轮重构额外检查：
+    - `100000` 和 `1000000` 位 smoke 仍然前缀正确
+    - `fast-auto` 在 `140M` 位不再复现旧的 OOM 退出
+    - `fast-auto` 至少能继续推进到 `160M` 位，并在需要时记录 `oom_cpu_calls`
+    - `high-digits-auto` 在 `140M` 位触发 `budget_cpu_calls` 后仍能前缀正确完成
+    - 自适应除法在 `fast-auto 140M` 和 `high-digits-auto 100M` 保持 `newton-chunk-gpu-seed-prototype`
+    - 自适应除法在 `fast-auto 160M` 和 `high-digits-auto 140M` 自动切到 `mpz-div`
+    - `--stream-partials` 与 `--no-stream-partials` 在 `100000` 和 `1000000` 位输出完全一致
+    - `bounded-stream-auto` 在 `100M / 140M / 160M` 把 `merge_frontier_max_nodes` 压到 `4`
+    - `bounded-stream-auto` 的 `gpu_peak_gb` 稳定在约 `8.4~8.7 GiB`，并据此判断其吞吐是否已经接近纯 CPU
+    - `benchmark_cpu_representation` 能稳定比较 `chunked / tasks / levelpool`，并确认 `levelpool` 在 `50M / 100M` 不再复现 `frontier` 那种数量级退化
+
+## Risks
+
+- Known numerical pitfalls:
+  - Problem 1 的普通三次样条可能在陡升区出现过冲，因此优先使用保形三次 Hermite/PCHIP
+  - Problem 2 的等距高阶插值会在区间两端出现较大振荡
+  - Neville 算法虽然稳定直观，但在致密网格逐点求值时复杂度高于重心公式
+  - Problem 3 题面写的是“7th order fit”，但样例图明确对应 Lagrange 插值，需要在答案里说明解释
+  - Project 2 需要足够保护位，避免格式化输出时丢掉尾部精度
+  - Project 2 的多进程并行并不会线性扩展，需要实际 benchmark 选择合适的进程数和分块粒度
+  - 即使切换到 `C++ + GMP`，若主瓶颈仍在多精度整数乘法本身，吞吐率也可能远低于 `30~40M digits/s`
+  - 即使进一步把 chunk 调度改成 OpenMP task-tree，只要 `(P,Q,T)` 仍然以 `mpz_t` 对象树组织，收益也很可能只有几个百分点，而不是数量级飞跃
+  - 即使把 merge live nodes 压到更小窗口，只要最终规约退化成明显串行的 ordered reducer，整体吞吐也可能比现有 `chunked` 更差
+  - GPU FFT 正式后端虽然已经补齐 exact multiply，但距离完整 `pi` 流水线仍缺少大整数除法、开方与 binary splitting 的深度整合
+  - GPU FFT 后端的 kernel 时间可能远小于端到端时间；主机和显卡之间的数据搬运、结果归一化和输出格式化会吃掉相当多的时间
+  - 如果在 Linux 上先初始化 CUDA 再 `fork` 出 worker pool，混合后端可能卡死；必须先完成 CPU partials，再初始化 GPU
+  - 混合 `pi` 后端若把每次 merge 都送进 GPU，但仍频繁回到 `mpz` 或在 `trim / add / sub` 上回 CPU，重复的表示转换与 host-device 往返会显著放大总时间；需要尽量把 merge tree 和 chunk 算术都留在 GPU 友好的数据表示里
+  - 当前 `full-CUDA stage-1` 的 chunk kernel 仍是单线程串行 carry/borrow 原型，并且存在 host 标量回读；它适合验证全 CUDA 路线主干，但短期内未必会立刻优于已有的 `torch` 张量实现
+  - `GPU-native aggressive reboot` 的第一阶段还只是 residue tensor runtime，不是完整 `pi` 求解器；它的价值在于重建表示层，而不是立刻交出高位数端到端速度
+  - `y-cruncher` 是完整工具链，不是单一乘法内核；它的端到端优势不能直接反推出自写代码也能轻易达到同级别表现
+  - Project 2 的最高位结果文件会迅速变大，需要在“冲极限”和提交包体积之间权衡
+  - 本轮高位数重构的新增风险：
+    - frontier merge 只有在严格保持区间左右顺序时才可靠；最终规约若写成 `merge(entry, result)` 而不是 `merge(result, entry)`，会把 `t` 路径顺序反过来，导致错误结果
+    - `gpu_memory_budget_gb` 当前约束的是 FFT 乘法工作集，不是整条流水线的全局显存峰值；例如 GPU `sqrt` 与已有驻留 chunk 仍会抬高最终观测到的 `gpu_peak_gb`
+    - `division_mode=auto` 当前依赖“merge 阶段是否已经发生回退”这一运行时信号，而不是严格的理论最优模型；它更偏工程启发式，因此后续仍应继续用更高位数实测校正阈值
+    - task-tree 路径虽然更接近后续 representation-level 重构需要的调度形态，但它目前只改变任务切分和合并顺序；如果把这一步误读为“已经解决了 `y-cruncher` 级别的体系差距”，会高估当前架构的上限
+    - frontier 路径如果必须严格按原始区间顺序消费 partial，就很容易在 reducer 侧形成新的串行热点；它能证明“少 live nodes”很重要，但不能自动等价于“更高吞吐”
+    - `levelpool` 路径即使显著减少了 `mpz_t` 的构造/析构与 merge 期对象 churn，只要乘法结果仍主要停留在 `mpz_t` 对象树里流动，收益也可能只剩低个位数百分比；若把这一步误读为“已经足够接近 y-cruncher”，同样会高估现有架构上限
+- Toolchain or environment concerns:
+  - `matplotlib`、`numpy`、`gmpy2`、`torch`、`pypandoc` 或 `xelatex` 可能未安装
+  - 若 `docx/pdf` 导出失败，需要至少保留 `answer.md`

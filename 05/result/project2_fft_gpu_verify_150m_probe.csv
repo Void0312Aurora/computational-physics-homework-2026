@@ -1,0 +1,2 @@
+decimal_digits,chunks,fft_length,backend_total_seconds,gmp_reference_seconds,carry_passes,exact_match
+1000000,250000,524288,0.019491238999762572,0.07844502499938244,4,True

@@ -1,0 +1,9 @@
+profile,digits,seconds,digits_per_second,division_mode,resolved_division_mode,gpu_peak_gb,budget_cpu_calls,oom_cpu_calls,prefix_ok,source
+fast-auto-140m-baseline,140000000,22.490386199002387,6224881.990074943,newton-chunk-gpu-seed-prototype,newton-chunk-gpu-seed-prototype,18.239346981048584,0,0,True,project2_gpu_hybrid_fastauto_140m_after_refactor.csv
+fast-auto-160m-baseline,160000000,55.49808728700009,2882982.239956917,newton-chunk-gpu-seed-prototype,newton-chunk-gpu-seed-prototype,17.882286071777344,0,3,True,project2_gpu_hybrid_fastauto_160m_after_refactor.csv
+high-digits-100m-baseline,100000000,22.414051815001585,4461486.964756217,newton-chunk-gpu-seed-prototype,newton-chunk-gpu-seed-prototype,16.243427276611328,1,0,True,project2_gpu_hybrid_highdigits_100m_after_refactor.csv
+high-digits-140m-baseline,140000000,79.79395672999817,1754518.8349754768,newton-chunk-gpu-seed-prototype,newton-chunk-gpu-seed-prototype,15.708240985870361,7,0,True,project2_gpu_hybrid_highdigits_140m_after_refactor.csv
+fast-auto-140m-auto-div,140000000,22.84944790299778,6127062.701660831,auto,newton-chunk-gpu-seed-prototype,18.239346981048584,0,0,True,project2_gpu_hybrid_fastauto_140m_auto_div_seq.csv
+fast-auto-160m-auto-div,160000000,50.25958087300387,3183472.627921206,auto,mpz-div,16.632850646972656,0,1,True,project2_gpu_hybrid_fastauto_160m_auto_div_seq.csv
+high-digits-100m-auto-div,100000000,22.366065569003695,4471059.0555804465,auto,newton-chunk-gpu-seed-prototype,16.243427276611328,1,0,True,project2_gpu_hybrid_highdigits_100m_auto_div_seq.csv
+high-digits-140m-auto-div,140000000,59.66210035199765,2346548.2973951725,auto,mpz-div,15.708240985870361,3,0,True,project2_gpu_hybrid_highdigits_140m_auto_div_seq.csv

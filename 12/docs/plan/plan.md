@@ -1,0 +1,161 @@
+# Plan
+
+## Scope
+
+- Target folder: `HW/12`
+- Problem source:
+  - `HW/12/docs/problems/image.png`
+  - `HW/12/docs/problems/image_2.png`
+  - `HW/12/docs/problems/image_3.png`
+  - `HW/12/docs/problems/image_4.png`
+  - `HW/12/docs/problems/image_5.png`
+  - `HW/12/docs/problems/image_6.png`
+  - `HW/12/docs/problems/image_7.png`
+
+## Problem Summary
+
+- Chinese translation:
+  - Problem 1: 实现三维连续随机游走。先取固定步长 $\lambda$，考察端到端距离随碰撞次数的变化；再让每一步步长在若干区间内均匀变化，例如 $0.9\sim1.1,\ldots,0.1\sim1.9$ 倍 $\lambda$；最后从数值结果推导拟合公式。
+  - Problem 2: 将溶液中的聚合物视为无取向相关的随机飞行链，即自由连接随机游走链模型。计算不同链长 $N$ 的端到端距离和回转半径，检验 $\langle R_n^2\rangle=\frac{6(n+1)}{n+2}\langle R_g^2\rangle$；再对自由旋转链模型，例如固定键角 $\theta=68^\circ$，比较结果；最后比较端到端距离分布与理论概率密度。
+  - Problem 3: 在一维格点上实现随机游走。对给定 $N$ 计算概率 $P_N(x)$；在 $p=0.5$ 且 $N=16,\ldots,1024$ 时给出 $P_N(x)$、$\langle x_N\rangle$ 和 $\langle \Delta x_N^2\rangle$ 并与精确答案比较；画出分布图、Gaussian 近似图、$p=0.7$ 的漂移情形，以及 $\langle \Delta x_N^2\rangle$ 关于 $N$ 的 log-log 图并分析标度律。
+  - Problem 4: 实现二维格点随机游走相关的三种聚合物模型：二维随机方向游走、二维传统最近邻格点游走、二维自避随机游走。计算回转半径和端到端距离，拟合 Flory 指数 $\nu$，绘图并讨论 $\langle R_g^2\rangle/\langle R_e^2\rangle$ 是否为 $1/6$。
+  - Problem 5: 实现三维格点随机游走。比较传统最近邻格点随机游走与三维自避随机游走，计算回转半径和端到端距离，拟合 Flory 指数 $\nu$ 是否接近 $0.6$，绘图并讨论比值 $1/6$；额外说明三维随机游走的暂态性。
+- Required outputs:
+  - `scripts/hw12_random_walks.py`：轻量入口，调用 `scripts/hw12/` 包内模块生成全部数值结果和图像。
+  - `scripts/hw12/problem1.py` 到 `problem5.py`：按题目拆分的核心实现模块。
+  - `scripts/hw12/rngs.py` 与 `rng_diagnostics.py`：自写随机数生成器和系统/自写生成器比较。
+  - `result/*.csv`、`result/*.json`、`result/*.png`、`result/temp-01.log`：保存原始表格、汇总和图。
+  - `docs/answer/answer.md`、`answer.docx`、`answer.pdf`：最终中文报告。
+- Numerical or implementation constraints:
+  - 随机方向游走需要使用真正的球面均匀方向；三维方向用 $\cos\theta\sim U(-1,1)$，二维方向用 $\phi\sim U(0,2\pi)$。
+  - 对 Problem 1 区分 $\langle R\rangle$ 与 $R_\mathrm{rms}=\sqrt{\langle R^2\rangle}$。严格的平方位移公式给出 $R_\mathrm{rms}/\lambda\simeq \sqrt{N\langle L^2\rangle/\lambda^2}$，平均模长还带有 Maxwell 因子 $\sqrt{8/(3\pi)}$。
+  - Problem 2 的自由旋转链使用固定相邻键角和随机方位角构造，不把它误写成自由连接链。
+  - 自避随机游走采用 pivot 采样法，从直链初态出发反复施加格点对称变换，并用自交检查接受或拒绝新构型。需要报告接受率和有限尺寸风险，避免把短链拟合误差解释成理论常数。
+
+## Approach
+
+- Language/tool choice:
+  - 使用 `Python` 完成全部随机实验、解析概率计算、CSV/JSON 输出、绘图和文档导出。
+  - 普通伪随机默认使用系统库 `numpy.random.default_rng`；另自写 `xoshiro256**` 生成器，并与 HW11 风格 `Park-Miller` LCG 以及 NumPy PCG64 比较。
+- Core algorithm or script plan:
+  - Problem 1:
+    - 固定步长 $\lambda=1$，对多组路径数模拟到 $N=1000$，记录 $\langle R\rangle$ 和 $R_\mathrm{rms}$。
+    - 对步长区间 $[a,b]$ 逐步生成 $L\sim U(a,b)$，拟合 $R_\mathrm{rms}=c\sqrt{N}$，并与 $c=\sqrt{E[L^2]}$ 比较。
+    - 主要结果图采用题面截图的散点带风格作参考：固定步长展示 50、500、5000 paths，变步长展示 500 paths 和共同 $\sqrt{N}$ 参考线；图中散点带由每个 $N$ 上独立抽取的 RMS 估计点叠加得到，数值仍以题目文字定义的 $L\sim U(a,b)$ 和 RMS 公式为准。
+    - 额外用 scrambled Sobol 准随机序列一次性采样整条路径的 $2N$ 个方向变量，并与伪随机方向序列比较 $R_\mathrm{rms}$ 对理论 $\sqrt{N}$ 的误差。
+  - Problem 2:
+    - 对自由连接链逐步累积位置、位置和以及平方位置和，直接计算 $\langle R_e^2\rangle$ 与 $\langle R_g^2\rangle$，不保存全部轨迹。
+    - 对自由旋转链先生成初始方向，再按固定夹角 $\theta=68^\circ$ 和随机方位角递推新键向量。
+    - 对指定链长的端到端距离直方图叠加 Maxwell 分布。
+  - Problem 3:
+    - 用二项分布精确计算 $P_N(x)=\binom{N}{k}p^k(1-p)^{N-k}$，其中 $x=2k-N$。
+    - 计算均值、中心方差、峰值概率、半高宽，并用柱状图画出精确离散分布、有偏漂移分布与 Gaussian 包络。
+  - Problem 4:
+    - 对普通二维随机游走用向量化模拟；对二维自避链用 pivot 采样估计 $\langle R_e^2\rangle$ 与 $\langle R_g^2\rangle$。
+    - 在 log-log 坐标下拟合 $\log\langle R^2\rangle=a+(2\nu)\log N$。
+    - 标度图采用题面参考的 log-log 散点加拟合直线机制，而不是只连平均值曲线。
+    - 对 Flory 指数使用 bootstrap 给出拟合置信区间，并用多个最小拟合链长检查有限尺寸敏感性。
+    - 记录 pivot 采样接受率、自相关时间和按自相关修正的有效样本数。
+  - Problem 5:
+    - 对三维传统格点游走和三维自避链重复 Problem 4 的统计与拟合。
+    - 标度图同样使用 log-log 散点加拟合直线，便于直接读出 Flory 指数。
+    - 对三维传统随机游走模拟有限时间返回概率，并结合 $P(S_{2n}=0)=O(n^{-3/2})$ 的可求和性说明暂态性。
+  - Random number diagnostics:
+    - 在 `Uniform(0,1)` 样本上比较均值、方差、滞后一阶相关和 $\chi^2$ 均匀性检验。
+    - 对离散整数抽样 `integers(0, 6)` 单独做计数、最大相对计数误差和 $\chi^2$ 检验；自写 `xoshiro256**` 使用原始 `uint64` 拒绝采样避免浮点缩放偏差，并提供 jump/long-jump 子流接口。
+    - 复用 HW11 中的两个代表性积分：$\int_0^1 e^x dx$ 和奇异积分的重要性抽样权重 $2/(1+u)$，比较 RMS 误差随 $N$ 的下降。
+- Output files to create:
+  - `Makefile`
+  - `scripts/hw12_random_walks.py`
+  - `scripts/hw12/config.py`
+  - `scripts/hw12/io_utils.py`
+  - `scripts/hw12/rngs.py`
+  - `scripts/hw12/rng_diagnostics.py`
+  - `scripts/hw12/walk_math.py`
+  - `scripts/hw12/problem1.py`
+  - `scripts/hw12/problem2.py`
+  - `scripts/hw12/problem3.py`
+  - `scripts/hw12/problem4.py`
+  - `scripts/hw12/problem5.py`
+  - `scripts/hw12/main.py`
+  - `result/temp-01.log`
+  - `result/hw12_config.json`
+  - `result/hw12_summary.json`
+  - `result/problem1_fixed.csv`
+  - `result/problem1_variable.csv`
+  - `result/problem1_quasirandom.csv`
+  - `result/problem1_fixed_lambda.png`
+  - `result/problem1_variable_lambda.png`
+  - `result/problem1_quasirandom_comparison.png`
+  - `result/problem2_chain_stats.csv`
+  - `result/problem2_fjc_relation.png`
+  - `result/problem2_frc_comparison.png`
+  - `result/problem2_end_to_end_distribution.png`
+  - `result/problem3_unbiased_table.csv`
+  - `result/problem3_biased_table.csv`
+  - `result/problem3_probabilities_unbiased.png`
+  - `result/problem3_probabilities_biased.png`
+  - `result/problem3_gaussian_fit.png`
+  - `result/problem3_loglog_variance.png`
+  - `result/problem4_2d_polymer.csv`
+  - `result/problem4_2d_fit_windows.csv`
+  - `result/problem4_2d_scaling.png`
+  - `result/problem4_2d_ratio.png`
+  - `result/problem4_2d_fit_window_sensitivity.png`
+  - `result/problem5_3d_polymer.csv`
+  - `result/problem5_3d_fit_windows.csv`
+  - `result/problem5_3d_scaling.png`
+  - `result/problem5_3d_ratio.png`
+  - `result/problem5_3d_fit_window_sensitivity.png`
+  - `result/problem5_transience.csv`
+  - `result/problem5_transience.png`
+  - `result/rng_uniform_diagnostics.csv`
+  - `result/rng_uniform_diagnostics.png`
+  - `result/rng_uniform_mean_abs_error.png`
+  - `result/rng_uniform_variance_abs_error.png`
+  - `result/rng_uniform_lag1_correlation.png`
+  - `result/rng_uniform_chi_square_pvalue.png`
+  - `result/rng_uniform_hist_<generator>.png`
+  - `result/rng_uniform_lag1_scatter_<generator>.png`
+  - `result/rng_integer_diagnostics.csv`
+  - `result/rng_integer_chi_square_pvalue.png`
+  - `result/rng_integer_count_error.png`
+  - `result/rng_integer_counts_comparison.png`
+  - `result/rng_integer_counts_<generator>.png`
+  - `result/rng_hw11_integral_comparison.csv`
+  - `result/rng_hw11_exp_comparison.png`
+  - `result/rng_hw11_importance_comparison.png`
+  - `result/rng_hw11_integrals_<generator>.png`
+  - `result/rng_hw11_exp_<generator>.png`
+  - `result/rng_hw11_importance_<generator>.png`
+  - `docs/answer/answer.md`
+  - `docs/answer/answer.docx`
+  - `docs/answer/answer.pdf`
+
+## Testing
+
+- Commands to run:
+  - `make run`
+  - `make render`
+  - `make docs`
+- Expected checks:
+  - Problem 1 固定步长的 $R_\mathrm{rms}$ 应与 $\sqrt{N}$ 一致；变步长拟合系数应接近 $\sqrt{E[L^2]}$。
+  - Problem 2 自由连接链应满足 $\langle R_e^2\rangle/\langle R_g^2\rangle \approx 6(n+1)/(n+2)$；端到端距离分布应接近 Maxwell 分布。
+  - Problem 3 对 $p=0.5$ 应有 $\langle x_N\rangle=0$、$\langle\Delta x_N^2\rangle=N$；对 $p=0.7$ 应有 $\langle x_N\rangle=0.4N$、$\langle\Delta x_N^2\rangle=0.84N$。
+  - Problem 4 普通二维随机游走拟合 $\nu$ 应接近 $1/2$，二维自避链应接近 $3/4$。
+  - Problem 5 普通三维随机游走拟合 $\nu$ 应接近 $1/2$，三维自避链应接近 $0.588$ 到 $0.6$；有限时间返回概率明显小于 1，且理论返回概率级数收敛。
+  - Flory 指数 bootstrap 区间应覆盖理论附近值，拟合窗口变化不应改变主要结论。
+  - pivot 采样接受率应为正，按自相关修正的有效样本数不应为 0。
+  - 自写 `xoshiro256**` 与 NumPy PCG64 在 HW11 风格积分测试中应表现为同阶的 $N^{-1/2}$ Monte Carlo 误差；Park-Miller 作为较旧 LCG 基线参与比较。
+  - 离散整数抽样的各生成器计数应围绕理论计数波动，$\chi^2$ 检验不应在单次 20 万样本诊断中给出明显拒绝信号。
+  - 导出的 PDF 中中文、公式、表格和图像应正常显示。
+
+## Risks
+
+- Known numerical pitfalls:
+  - 短链有限尺寸效应会影响 Flory 指数拟合，拟合时应优先使用较大的 $N$。
+  - pivot 采样在长链时接受率会下降，样本之间也存在相关性；报告中需要保留接受率诊断。
+  - 离散随机游走的 $P_N(x)$ 只在与 $N$ 同奇偶的格点上非零；与连续 Gaussian 密度比较时要考虑格点间距。
+  - 三维暂态性不能只靠有限时间模拟证明，需要给出返回概率级数收敛的理论说明。
+- Toolchain or environment concerns:
+  - 文档导出依赖 `pypandoc`、pandoc 和 `xelatex`；若 `pandoc` 不在 PATH，则由 `pypandoc` 的本地 pandoc 机制处理。

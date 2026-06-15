@@ -1,0 +1,72 @@
+{
+  "problem1": [
+    {
+      "slope": 0.5000909090909094,
+      "intercept": 3.000090909090908,
+      "r_squared": 0.666542459508775,
+      "rmse": 1.236603322726321,
+      "max_abs_residual": 1.9212727272727292,
+      "max_abs_residual_x": 13.0,
+      "max_abs_residual_y": 7.58,
+      "max_leverage": 0.3181818181818182,
+      "max_leverage_x": 14.0,
+      "max_leverage_y": 9.96,
+      "dataset": 1,
+      "assessment": "散点基本沿直线分布，残差无明显结构，线性模型拟合良好。"
+    },
+    {
+      "slope": 0.5000000000000006,
+      "intercept": 3.0009090909090883,
+      "r_squared": 0.6662420337274841,
+      "rmse": 1.2372142053415773,
+      "max_abs_residual": 1.9009090909090975,
+      "max_abs_residual_x": 14.0,
+      "max_abs_residual_y": 8.1,
+      "max_leverage": 0.3181818181818182,
+      "max_leverage_x": 14.0,
+      "max_leverage_y": 8.1,
+      "dataset": 2,
+      "assessment": "整体斜率与截距和第 1 组接近，但残差呈明显曲线趋势，说明线性模型存在系统失配。"
+    },
+    {
+      "slope": 0.49972727272727313,
+      "intercept": 3.0024545454545453,
+      "r_squared": 0.6663240410665593,
+      "rmse": 1.2363113513899957,
+      "max_abs_residual": 3.2410909090909037,
+      "max_abs_residual_x": 13.0,
+      "max_abs_residual_y": 12.74,
+      "max_leverage": 0.3181818181818182,
+      "max_leverage_x": 14.0,
+      "max_leverage_y": 8.84,
+      "dataset": 3,
+      "assessment": "大多数点接近一条水平带，仅有一个高残差离群点主导了斜率，因此线性拟合在解释整体结构时并不可靠。"
+    },
+    {
+      "slope": 0.49990909090909097,
+      "intercept": 3.0017272727272717,
+      "r_squared": 0.6667072568984653,
+      "rmse": 1.2356954856813769,
+      "max_abs_residual": 1.8390000000000004,
+      "max_abs_residual_x": 8.0,
+      "max_abs_residual_y": 8.84,
+      "max_leverage": 1.0,
+      "max_leverage_x": 19.0,
+      "max_leverage_y": 12.5,
+      "dataset": 4,
+      "assessment": "除一个高杠杆点外其余点的 x 几乎相同，回归直线主要由该高杠杆点决定，属于脆弱且不稳健的拟合。"
+    }
+  ],
+  "problem2": {
+    "A": 113.22127931375233,
+    "tau": 98.54906861519567,
+    "A_err": 6.5758668709590875,
+    "tau_err": 7.439458696045258,
+    "chi2": 18.184001567611137,
+    "chi2_red": 1.8184001567611137,
+    "A_linearized": 116.52650937067892,
+    "tau_linearized": 100.51379234357215,
+    "A_linearized_err": 9.697456185657853,
+    "tau_linearized_err": 11.565370041494527
+  }
+}

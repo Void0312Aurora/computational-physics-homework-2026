@@ -1,0 +1,2 @@
+method,tol,max_iter,grid_size,render_grid,render_tile,symmetry_used,active_compression_used,newton_backend_used,newton_direct_formula_used,convergence_fraction,mean_iterations,root0_fraction,root1_fraction,root2_fraction
+newton,5e-07,55,12000,3000,250,True,False,pytorch,True,0.9999996805555555,6.81484207974122,0.3418818472222222,0.32905891666666665,0.32905891666666665

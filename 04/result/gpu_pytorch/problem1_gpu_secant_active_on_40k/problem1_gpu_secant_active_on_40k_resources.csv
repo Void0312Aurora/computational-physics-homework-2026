@@ -1,0 +1,2 @@
+method,device,dtype,compute_grid,render_grid,render_tile,symmetry_used,active_compression_used,elapsed_seconds,peak_gpu_mem_gib
+secant,NVIDIA GeForce RTX 3090,complex64,40000,5000,250,False,True,82.81202541699895,0.47145700454711914

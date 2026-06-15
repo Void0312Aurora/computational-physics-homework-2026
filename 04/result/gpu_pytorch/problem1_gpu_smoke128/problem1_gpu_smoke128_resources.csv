@@ -1,0 +1,3 @@
+method,device,dtype,compute_grid,render_grid,render_tile,elapsed_seconds,peak_gpu_mem_gib
+newton,NVIDIA GeForce RTX 3090,complex128,12000,3000,250,22.33175569100058,0.15332365036010742
+secant,NVIDIA GeForce RTX 3090,complex128,12000,3000,250,48.6068086159994,0.21437597274780273

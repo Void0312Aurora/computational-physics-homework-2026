@@ -1,0 +1,2 @@
+chunk_length,repeats,add_seconds,sub_seconds,mul_small_seconds,div2_seconds,compare_seconds,fft_mul_seconds,total_seconds,extension_loaded,device
+4096,1,0.012032196000291151,0.0005899869993299944,0.0004272579990356462,0.00014056399959372357,0.00015343400082201697,0.1459094580004603,0.15925289699953282,True,NVIDIA GeForce RTX 3090

@@ -1,0 +1,2 @@
+digits,terms,seconds,digits_per_second,workers_used,chunk_terms,gpu_threshold_digits,gpu_stages,gpu_chunk_format,gpu_calls,cpu_calls,merge_gpu_calls,final_gpu_calls,gpu_prepare_seconds,gpu_backend_total_seconds,gpu_kernel_seconds,gpu_finalize_seconds,gpu_peak_gb,gpu_max_operand_digits,prefix_matches_reference
+100000000,7142861,36.87189153300278,2712093.0291979564,32,524288,50000,merge-and-final,binary16,53,0,52,1,0.0,4.569854201981798,2.7036594610253815,0.0,16.23256254196167,252126638,True

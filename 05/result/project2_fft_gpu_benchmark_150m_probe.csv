@@ -1,0 +1,2 @@
+decimal_digits,chunks,valid_length,fft_length,repeats,setup_seconds,split_seconds,upload_seconds,kernel_seconds,kernel_digits_per_second,download_seconds,combine_seconds,normalize_seconds,total_seconds,end_to_end_digits_per_second,carry_passes,peak_gpu_gb,decimal_base,split_base,device
+150000000,37500000,74999999,134217728,1,1.188077359001909,0.005548034998355433,0.11572642299870495,0.34956177399726585,429108704.54952335,0.40159088800282916,0.014334922998386901,0.05717293100315146,0.9440704779990483,158886442.79813102,5.0,11.352765560150146,10000,100,NVIDIA GeForce RTX 3090

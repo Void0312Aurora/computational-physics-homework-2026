@@ -1,0 +1,8 @@
+digits,terms,seconds,digits_per_second,threads,chunk_terms,output_written,prefix_matches_reference,mode
+100000,7147,0.0306797,3259480,24,8192,False,True,pure_compute
+1000000,71433,0.327767,3050950,24,8192,False,True,pure_compute
+5000000,357147,1.83694,2721920,32,65536,False,True,pure_compute
+10000000,714290,4.42898,2257860,44,131072,False,True,pure_compute
+50000000,3571433,28.8599,1732510,32,524288,False,True,pure_compute
+100000000,7142861,65.5576,1525380,44,1048576,False,True,pure_compute
+100000000,7142861,84.3024,1186210,44,1048576,True,True,end_to_end_with_output

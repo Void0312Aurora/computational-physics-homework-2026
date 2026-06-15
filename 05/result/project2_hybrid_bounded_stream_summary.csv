@@ -1,0 +1,4 @@
+profile,target_digits,seconds,digits_per_second,gpu_peak_gb,merge_frontier_max_nodes,budget_cpu_calls,oom_cpu_calls,resolved_division_mode,notes
+bounded-stream-auto,100000000,43.54051428599632,2296711.502835014,8.650786399841309,4,5,0,mpz-div,"throughput is 0.51x of high-digits-auto 100M while keeping gpu_peak around 8.65 GiB"
+bounded-stream-auto,140000000,96.48443158800364,1451011.294732101,8.386934757232666,4,10,0,mpz-div,"throughput is 0.24x of fast-auto 140M and 1.11x of CPU 150M"
+bounded-stream-auto,160000000,112.66297811600089,1420164.8374256503,8.716588497161865,4,10,0,mpz-div,"throughput is 0.45x of fast-auto 160M and 1.11x of CPU 200M"

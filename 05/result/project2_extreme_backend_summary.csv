@@ -1,0 +1,12 @@
+backend,workload,decimal_digits,seconds,digits_per_second,notes,source_file
+torch_cuda_fft_backend_v2_batched,exact_multiply_backend,100000000,0.6699391170041054,149267295.28377008,"Batched 3-lane FFT + GPU combine/carry, peak_gpu_gb=13.49",project2_fft_gpu_benchmark_batched_large.csv
+cpp_gmp_openmp_end_to_end_with_output,full_pi_compute,100000000,84.3024,1186210.0,C++ + GMP + OpenMP mode=end_to_end_with_output threads=44 chunk_terms=1048576,project2_cpp_backend_benchmark.csv
+cpp_gmp_openmp_pure_compute,full_pi_compute,100000000,65.5576,1525380.0,C++ + GMP + OpenMP mode=pure_compute threads=44 chunk_terms=1048576,project2_cpp_backend_benchmark.csv
+gpu_pi_hybrid_final_only_v2,full_pi_compute,100000000,71.03025278099813,1407850.8253141372,"Final-only batched backend, output suppressed during benchmark",project2_gpu_hybrid_pi_benchmark_batched_large.csv
+gpu_pi_hybrid_merge_chunk_tree_v3,full_pi_compute,100000000,52.09786226799782,1919464.5792930375,"Chunk-resident merge tree + batched backend, no mpz round-trip in merge stage",project2_gpu_hybrid_pi_merge_benchmark_chunk_tree_extreme.csv
+gpu_pi_hybrid_merge_gpu_resident_v4,full_pi_compute,100000000,36.87189153300278,2712093.0291979564,GPU-resident chunk add/sub/trim + CUDA output retention in merge tree,project2_gpu_hybrid_pi_merge_benchmark_gpu_resident_extreme.csv
+python_gmp_parallel,full_pi_compute,100000000,90.90882470899669,1100003.221030572,Chudnovsky + binary splitting + gmpy2 mpz + 32 processes,project2_pi_benchmark.csv
+y-cruncher_100m_default,full_pi_compute,100000000,2.124,47080979.28436911,"Official y-cruncher static build, wall time, 88 threads",project2_ycruncher_benchmark.csv
+y-cruncher_default,full_pi_compute,2500000000,73.693,33924579.40346967,"Official y-cruncher static build, wall time, 88 threads",project2_ycruncher_benchmark.csv
+gmp_mpn_mul_n,multiply_kernel,100000000,2.948104557,33920099.5306,"Pure multiplication kernel, limbs=5190513",project2_mpn_mul_benchmark.csv
+gmp_mpz_mul,multiply_kernel,100000000,2.983563343,33516968.9742,"Pure multiplication kernel, limbs=5190513",project2_mpn_mul_benchmark.csv

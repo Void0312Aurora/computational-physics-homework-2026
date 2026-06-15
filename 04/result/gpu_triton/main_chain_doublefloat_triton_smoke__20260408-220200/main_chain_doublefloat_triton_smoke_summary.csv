@@ -1,0 +1,2 @@
+method,tol,max_iter,grid_size,render_grid,render_tile,compute_tile,stats_only,symmetry_used,active_compression_used,newton_backend_used,newton_direct_formula_used,grid_spacing,float32_ulp_at_axis_max,grid_to_float32_ulp_ratio,convergence_fraction,mean_iterations,root0_fraction,root1_fraction,root2_fraction
+newton,5e-07,55,1024,256,128,,False,True,False,doublefloat-triton,True,,,,0.9999980926513672,6.8142448696992295,0.3419170379638672,0.32904052734375,0.32904052734375

@@ -1,0 +1,6 @@
+quantity,value
+expected_steps_room_1_to_room_5,7.0000000000
+expected_return_time_room_1,12.0000000000
+simulation_trials,200000
+simulated_steps_room_1_to_room_5,7.0113900000
+simulated_return_time_room_1,11.9973700000

@@ -1,0 +1,38 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# LaTeX/Pandoc transient build files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.xdv
+
+# Packaged submission archives and expanded duplicate submission folders
+*.tar
+[0-9][0-9]/HW*.姜玥晟/
+
+# Native build products
+*.o
+*.so
+*.a
+*.bin
+bin/
+**/bin/
+02/hw02
+03/hw03
+04/problem1_cpu_ultra
+
+# Large third-party/local benchmark payloads
+05/third_party/
+05/result/*.txt
+05/result/pdf_check/
+
+# Temporary generated result files
+**/_tmp*
+**/temp-*.log

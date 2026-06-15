@@ -1,0 +1,4 @@
+digits,terms,seconds,digits_per_second,backend,workers_used,chunk_terms,leaf_terms,task_terms,parallel_mode,gpu_used,prefix_matches_reference
+100000,7147,0.0250835,3986690.0,cpp_gmp_openmp_optimized,44,8192,8,8192,chunked,False,True
+1000000,71433,0.265066,3772650.0,cpp_gmp_openmp_optimized,44,8192,8,8192,chunked,False,True
+10000000,714290,5.25929,1901400.0,cpp_gmp_openmp_optimized,44,131072,8,131072,chunked,False,True

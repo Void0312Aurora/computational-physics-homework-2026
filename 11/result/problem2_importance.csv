@@ -1,0 +1,2 @@
+method,alpha,N,estimate,standard_deviation_of_weight,standard_error,exact,absolute_error
+importance_g_alpha_over_sqrt_x,0.5,1000000,1.38627768674,0.279823702542,0.000279823702542,1.38629436112,1.66743846153e-05

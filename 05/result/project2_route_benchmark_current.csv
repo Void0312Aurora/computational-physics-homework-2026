@@ -1,0 +1,11 @@
+route,group,target_digits,seconds,digits_per_second,prefix_ok,status,notes
+python_gmp_bridge,full_scale,10000000,4.75429747599992,2103360.1810742416,True,ok,"workers=32,chunk_terms=131072"
+cpp_gmp_openmp,full_scale,10000000,3.82607,2613650.0,True,ok,"threads=44,chunk_terms=131072,leaf_terms=8,task_terms=131072,parallel_mode=chunked"
+cpp_gmp_levelpool,full_scale,10000000,3.82222,2616280.0,True,ok,"threads=44,chunk_terms=131072,leaf_terms=8,representation=levelpool"
+cpp_gmp_openmp_frontier,full_scale,10000000,4.05865,2463880.0,True,ok,"threads=44,chunk_terms=131072,leaf_terms=8,task_terms=131072,parallel_mode=frontier"
+gpu_hybrid_legacy_default,full_scale,10000000,4.89743722199637,2041884.2645059254,True,ok,"workers=32,chunk_terms=32768,gpu_stages=final-only,sqrt=mpz-isqrt,div=mpz-div,chunk_backend=python,gpu_budget_gb=None"
+gpu_hybrid_merge_fast_python,full_scale,10000000,1.9601252220018068,5101714.874005525,True,ok,"workers=32,chunk_terms=32768,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=auto,chunk_backend=python,gpu_budget_gb=None"
+gpu_hybrid_merge_fast_auto,full_scale,10000000,1.9912924119998934,5021864.1620578505,True,ok,"workers=32,chunk_terms=32768,gpu_stages=merge-and-final,sqrt=chunk-gpu-rsqrt-prototype,div=auto,chunk_backend=auto,gpu_budget_gb=None"
+full_cuda_pipeline,prototype_full_pi,100000,0.22264867500052787,449138.0871669814,True,ok,"workers=32,chunk_terms=8192,gpu_calls=79"
+gpu_native_rns_end_to_end,prototype_full_pi,870,0.14145500000000003,6150.36,True,ok,native-rns benchmark ceiling is still sub-1k digits
+gpu_throughput_mainline_end_to_end,prototype_full_pi,2500,0.036481900000000005,68527.1,True,ok,throughput-mainline is frozen and only validated on low-thousands digits
