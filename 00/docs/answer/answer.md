@@ -4,7 +4,7 @@ subtitle: "作业报告结构样稿"
 author: "姜玥晟"
 date: "2026-05-20"
 geometry: margin=1in
-fontsize: 11pt
+fontsize: 12pt
 header-includes:
   - \usepackage{amsmath}
   - \usepackage{booktabs}
@@ -24,7 +24,16 @@ header-includes:
 
 \newpage
 
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\newpage
+
 # I. 数值方法误差分析 {-}
+
+\phantomsection
+\addcontentsline{toc}{section}{I. 数值方法误差分析}
 
 ## Problem 1(a)：公式推导与算法设计
 
@@ -120,6 +129,9 @@ $$
 本小问以表格和定量比较为中心。若有图像，应放在讨论该图的段落附近。文字结论应直接说明“是否符合预期”，并给出依据，而不是只罗列数值。
 
 # II. 统计检验与对象比较 {-}
+
+\phantomsection
+\addcontentsline{toc}{section}{II. 统计检验与对象比较}
 
 ## Problem 2(a)：统计量构造
 

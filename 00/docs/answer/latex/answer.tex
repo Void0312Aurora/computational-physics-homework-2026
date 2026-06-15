@@ -1,4 +1,4 @@
-\documentclass[11pt,fontset=none]{ctexart}
+\documentclass[12pt,fontset=none]{ctexart}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amssymb}
@@ -8,13 +8,16 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{fancyvrb}
+\usepackage{setspace}
 
 \setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKsansfont{Noto Sans CJK SC}
 \setmonofont{DejaVu Sans Mono}
 \setCJKmonofont{Noto Sans CJK SC}
 \graphicspath{{../assets/}}
+\setstretch{1.18}
 
 \hypersetup{
   colorlinks=true,
@@ -24,19 +27,23 @@
 }
 
 \setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
+\newcommand{\reportgroup}[1]{\section*{#1}\phantomsection\addcontentsline{toc}{section}{#1}}
 \newcommand{\problem}[1]{\subsection{#1}}
 \newcommand{\blocktitle}[1]{\subsubsection{#1}}
 \newcommand{\codeinline}[1]{\texttt{#1}}
-\newcommand{\scriptlink}[1]{\noindent\textbf{相关脚本：}\href{../../../scripts/#1}{\codeinline{scripts/#1}}\par\medskip}
+\newcommand{\scriptpath}[1]{{\small\sffamily #1}}
+\newcommand{\scriptlink}[1]{\noindent{\small\sffamily\textbf{相关脚本：}\href{../../../scripts/#1}{\scriptpath{scripts/#1}}}\par\medskip}
 
 \title{HW00 Report\\\large 作业报告结构样稿：原生 \LaTeX{} 第二版}
 \author{姜玥晟}
 \date{2026-05-20}
 
 \begin{document}
+\pagestyle{plain}
 \maketitle
 
 \begin{figure}[H]
@@ -60,7 +67,16 @@
 
 \newpage
 
-\section*{I. 数值方法误差分析}
+\renewcommand{\contentsname}{目录}
+\begingroup
+\hypersetup{linkcolor=black}
+\tableofcontents
+\thispagestyle{plain}
+\endgroup
+
+\newpage
+
+\reportgroup{I. 数值方法误差分析}
 
 \problem{Problem 1(a)：公式推导与算法设计}
 
@@ -144,7 +160,7 @@ check whether the observed order matches the theoretical order p
 \blocktitle{分析}
 本小问以表格和定量比较为中心。若有图像，应放在讨论该图的段落附近。文字结论应直接说明“是否符合预期”，并给出依据，而不是只罗列数值。
 
-\section*{II. 统计检验与对象比较}
+\reportgroup{II. 统计检验与对象比较}
 
 \problem{Problem 2(a)：统计量构造}
 

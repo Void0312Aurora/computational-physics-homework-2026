@@ -47,7 +47,7 @@ def main() -> None:
         "-V",
         "monofont=DejaVu Sans Mono",
         "-V",
-        "linestretch=1.12",
+        "linestretch=1.22",
     ]
 
     print(f"Writing {docx_out.relative_to(project_root)}")

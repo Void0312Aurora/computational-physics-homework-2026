@@ -48,7 +48,7 @@ def main() -> None:
         "-V",
         "monofont=DejaVu Sans Mono",
         "-V",
-        "linestretch=1.12",
+        "linestretch=1.22",
     ]
 
     pypandoc.convert_file(
