@@ -30,6 +30,7 @@
 \newcommand{\problem}[1]{\subsection{#1}}
 \newcommand{\blocktitle}[1]{\subsubsection{#1}}
 \newcommand{\codeinline}[1]{\texttt{#1}}
+\newcommand{\scriptlink}[1]{\noindent\textbf{相关脚本：}\href{../../../scripts/#1}{\codeinline{scripts/#1}}\par\medskip}
 
 \title{HW00 Report\\\large 作业报告结构样稿：原生 \LaTeX{} 第二版}
 \author{姜玥晟}
@@ -62,6 +63,8 @@
 \section*{I. 数值方法误差分析}
 
 \problem{Problem 1(a)：公式推导与算法设计}
+
+\scriptlink{problem1.py}
 
 \blocktitle{待求问题}
 给定一个数值方法，推导核心误差公式，并说明如何根据该公式设计数值验证实验。
@@ -107,10 +110,12 @@ check whether the observed order matches the theoretical order p
 \]
 判断数值实验是否符合理论阶数。
 
-\blocktitle{理解}
+\blocktitle{分析}
 该结构适合需要“推导 + 算法设计”的小问。推导放在解决方式中，问题答案给出最终公式或判断准则；伪代码只展示算法逻辑，不替代数学推导，也不展开完整源码。
 
 \problem{Problem 1(b)：数值结果与误差比较}
+
+\scriptlink{problem1.py}
 
 \blocktitle{待求问题}
 使用上一小问得到的算法，计算不同步长下的数值结果，并比较误差是否符合理论收敛阶。
@@ -136,12 +141,14 @@ check whether the observed order matches the theoretical order p
 
 当 $h$ 减半时，误差约变为原来的四分之一，因此该数值结果与二阶方法的理论预期一致。
 
-\blocktitle{理解}
+\blocktitle{分析}
 本小问以表格和定量比较为中心。若有图像，应放在讨论该图的段落附近。文字结论应直接说明“是否符合预期”，并给出依据，而不是只罗列数值。
 
 \section*{II. 统计检验与对象比较}
 
 \problem{Problem 2(a)：统计量构造}
+
+\scriptlink{problem2.py}
 
 \blocktitle{待求问题}
 构造一个统计检验，并说明统计量在理论模型成立时应服从的参考分布。
@@ -161,10 +168,12 @@ check whether the observed order matches the theoretical order p
 \]
 判断依据是卡方分布的尾部概率。p 值过小表示观测频数与理论频数偏离显著。
 
-\blocktitle{理解}
+\blocktitle{分析}
 统计量构造类小问应优先讲清楚假设、变量和适用条件。不能只写公式而不说明公式成立的前提；也不能把 p 值解释为“模型为真的概率”。
 
 \problem{Problem 2(b)：多对象比较}
+
+\scriptlink{problem2.py}
 
 \blocktitle{待求问题}
 将上一小问的统计检验用于多组对象，比较哪些对象通过检验、哪些对象不通过，并解释主要差异。
@@ -189,7 +198,7 @@ check whether the observed order matches the theoretical order p
 
 对象 B 的统计量远离理论分布主体区域，因此不通过检验。对象 A 和 C 的统计量处于合理范围，但这只说明它们在当前检验设置下没有暴露明显问题。
 
-\blocktitle{理解}
+\blocktitle{分析}
 多对象比较类小问应避免只给一张表就结束。表格负责呈现证据，正文负责解释证据。若某对象通过了一个弱检验，也只能说明它没有被该检验拒绝，不能据此证明它在所有意义下都可靠。
 
 \end{document}
