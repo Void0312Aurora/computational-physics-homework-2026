@@ -39,6 +39,9 @@ header-includes:
 
 |:--:|
 
+小组作业的封面画像参照 `HW/04/docs/answer/answer.md` 的三列表格排版，图片文件统一命名为
+`assets/pic_1.jpg`、`assets/pic_2.jpg`、`assets/pic_3.jpg`，下方对应写三名成员姓名。
+
 | 项目 | 内容 |
 |:--|:--|
 | 源题编号 | `Homework xx` |

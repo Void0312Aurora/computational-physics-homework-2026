@@ -16,12 +16,10 @@ header-includes:
 
 | 项目 | 内容 |
 |:--|:--|
-| 作业编号 | `HW07` |
-| 作业目录 | `HW/06` |
+| 源题编号 | `HW07` |
 | 学生姓名 | 姜玥晟 |
 | 报告主题 | 有限差分公式推导、数值微分误差比较与最佳步长分析 |
 | 实验环境 | `Python 3.13.5`、`sympy`、`numpy`、`matplotlib`、`pypandoc` |
-| 报告说明 | 正文按题目编号逐题组织；完整脚本位于 `solution.py` 与 `scripts/hw06_analysis.py`，原始数值结果与图像位于 `result/`。 |
 
 \newpage
 

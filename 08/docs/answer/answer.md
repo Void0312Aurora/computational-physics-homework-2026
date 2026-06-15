@@ -1,7 +1,7 @@
 ---
 title: "Homework 9"
 subtitle: "线性拟合与放射性衰减拟合实验报告"
-author: "姜玥晟"
+author: "姜玥晟、周鑫志、高西飞"
 date: "2026-05-06"
 geometry: margin=1in
 fontsize: 11pt
@@ -12,17 +12,17 @@ header-includes:
   - \renewcommand{\tablename}{表}
 ---
 
-| ![Portrait](assets/profile.jpg){ width=20% } |
-|:--:|
+| ![姜玥晟](assets/pic_1.jpg){ width=78% } | ![周鑫志](assets/pic_2.jpg){ width=78% } | ![高西飞](assets/pic_3.jpg){ width=78% } |
+|:--:|:--:|:--:|
+| 姜玥晟 | 周鑫志 | 高西飞 |
 
 | 项目 | 内容 |
 |:--|:--|
-| 作业编号 | `HW09` |
-| 作业目录 | `HW/08` |
-| 学生姓名 | 姜玥晟 |
+| 源题编号 | `HW09` |
+| 作业属性 | 小组作业 |
+| 小组成员 | 姜玥晟、周鑫志、高西飞 |
 | 报告主题 | Anscombe 四重奏的线性拟合比较与放射性衰减参数估计 |
 | 实验环境 | `Python 3.13.5`、`numpy`、`matplotlib`、`scipy`、`pypandoc` |
-| 报告说明 | 正文按题目编号逐题组织；完整脚本位于 `scripts/hw08_analysis.py`，原始日志、表格和图像位于 `result/`。 |
 
 \newpage
 

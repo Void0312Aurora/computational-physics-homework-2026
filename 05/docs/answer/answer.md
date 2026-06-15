@@ -15,12 +15,10 @@ header-includes:
 
 | 项目 | 内容 |
 |:--|:--|
-| 作业编号 | `HW06` |
-| 作业目录 | `HW/05` |
+| 源题编号 | `HW06` |
 | 学生姓名 | 姜玥晟 |
 | 报告主题 | 分段插值、Runge 现象、Neville 递推与高精度圆周率计算 |
 | 实验环境 | `Python` 插值程序、`GMP`/GPU 高精度后端与 benchmark 数据 |
-| 报告说明 | 正文按题目编号组织，完整脚本保留于 `scripts/`，benchmark 与原始结果保留于 `result/`。 |
 
 \newpage
 

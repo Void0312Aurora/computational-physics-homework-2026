@@ -10,19 +10,17 @@ header-includes:
   - \renewcommand{\tablename}{表}
 ---
 
-| ![姜玥晟](assets/profile.jpg){ width=78% } | ![周鑫志](assets/profile_2.jpg){ width=78% } | ![高西飞](assets/profile_3.jpg){ width=78% } |
+| ![姜玥晟](assets/pic_1.jpg){ width=78% } | ![周鑫志](assets/pic_2.jpg){ width=78% } | ![高西飞](assets/pic_3.jpg){ width=78% } |
 |:--:|:--:|:--:|
 | 姜玥晟 | 周鑫志 | 高西飞 |
 
 | 项目 | 内容 |
 |:--|:--|
-| 作业编号 | `HW05` |
-| 作业目录 | `HW/04` |
+| 源题编号 | `HW05` |
 | 作业属性 | 小组作业 |
 | 小组成员 | 姜玥晟、周鑫志、高西飞 |
 | 报告主题 | Newton/Secant 分形、混合求根、Brent 型算法、范盛金公式与地月系统 `L1` 点 |
 | 实验环境 | `Python` 数值程序、`mpmath` 参考值与图像后处理；Problem 1 主结果由多进程 CPU 程序生成 |
-| 报告说明 | 正文按题目编号组织；Problem 1 先说明 CPU 主流程与补充 CPU 剖面，再讨论 GPU/Triton 扩展，完整实验脚本保留于 `scripts/`，扩展验证数据保留于 `result/analysis/`。 |
 
 \newpage
 

@@ -1,7 +1,7 @@
 ---
 title: "Homework 12"
 subtitle: "数值积分方法实验报告"
-author: "姜玥晟"
+author: "姜玥晟、周鑫志、高西飞"
 date: "2026-04-29"
 geometry: margin=1in
 fontsize: 11pt
@@ -11,17 +11,17 @@ header-includes:
   - \renewcommand{\tablename}{表}
 ---
 
-| ![Portrait](assets/profile.jpg){ width=20% } |
-|:--:|
+| ![姜玥晟](assets/pic_1.jpg){ width=78% } | ![周鑫志](assets/pic_2.jpg){ width=78% } | ![高西飞](assets/pic_3.jpg){ width=78% } |
+|:--:|:--:|:--:|
+| 姜玥晟 | 周鑫志 | 高西飞 |
 
 | 项目 | 内容 |
 |:--|:--|
-| 作业编号 | `HW12` |
-| 作业目录 | `HW/07` |
-| 学生姓名 | 姜玥晟 |
+| 源题编号 | `HW12` |
+| 作业属性 | 小组作业 |
+| 小组成员 | 姜玥晟、周鑫志、高西飞 |
 | 报告主题 | Simpson 积分、自适应积分、Romberg 外推、变量代换与超球体积 |
 | 实验环境 | `Python 3.13.5`、`numpy`、`matplotlib` |
-| 报告说明 | 正文按题目编号逐题组织；完整脚本位于 `scripts/hw07_integrals.py`，原始表格、日志和图像位于 `result/`。 |
 
 \newpage
 
