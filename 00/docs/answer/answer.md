@@ -37,7 +37,10 @@ header-includes:
 
 ## Problem 1(a)：公式推导与算法设计
 
-相关脚本：[本地 scripts/problem1.py](../../scripts/problem1.py) / [GitHub scripts/problem1.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts/problem1.py)
+相关脚本：
+
+- [本地 scripts/problem1.py](../../scripts/problem1.py)
+- [GitHub scripts/problem1.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts/problem1.py)
 
 ### 待求问题
 
@@ -102,7 +105,10 @@ $$
 
 ## Problem 1(b)：数值结果与误差比较
 
-相关脚本：[本地 scripts/problem1.py](../../scripts/problem1.py) / [GitHub scripts/problem1.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts/problem1.py)
+相关脚本：
+
+- [本地 scripts/problem1.py](../../scripts/problem1.py)
+- [GitHub scripts/problem1.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts/problem1.py)
 
 ### 待求问题
 
@@ -135,7 +141,10 @@ $$
 
 ## Problem 2(a)：统计量构造
 
-相关脚本：[本地 scripts/problem2.py](../../scripts/problem2.py) / [GitHub scripts/problem2.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts/problem2.py)
+相关脚本：
+
+- [本地 scripts/problem2.py](../../scripts/problem2.py)
+- [GitHub scripts/problem2.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts/problem2.py)
 
 ### 待求问题
 
@@ -167,7 +176,10 @@ $$
 
 ## Problem 2(b)：多对象比较
 
-相关脚本：[本地 scripts/problem2.py](../../scripts/problem2.py) / [GitHub scripts/problem2.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts/problem2.py)
+相关脚本：
+
+- [本地 scripts/problem2.py](../../scripts/problem2.py)
+- [GitHub scripts/problem2.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts/problem2.py)
 
 ### 待求问题
 

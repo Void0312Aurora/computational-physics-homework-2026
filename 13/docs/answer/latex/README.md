@@ -1,5 +1,9 @@
 # Native LaTeX Report Prototype
 
+> Frozen historical prototype. Do not use this directory as the template for new
+> homework reports. Future report work should converge on the Markdown/Pandoc
+> source in `HW/13/docs/answer/answer.md`.
+
 This directory is an experiment for writing the `HW/13` report directly in LaTeX.
 It does not replace the Markdown/Pandoc report in `docs/answer/`.
 

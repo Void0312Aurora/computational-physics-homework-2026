@@ -12,7 +12,10 @@ Program/docs/problems
 
 reslut下有关结果也按照题目分割而非扁平化堆积，
 
-answer的组织参照HW/EX Workflow的有关组织规则，以下给出一个示范，当然也可以参照00下的示例：
+answer的组织参照HW/EX Workflow的有关组织规则，以下给出一个示范，当然也可以参照00下的 Markdown 示例：
+
+后续报告默认收敛到 Markdown/Pandoc 链路：以 `docs/answer/answer.md` 作为报告源文件，再按需要导出 PDF 或 docx。
+`00/docs/answer/latex/` 和 `13/docs/answer/latex/` 下的原生 LaTeX 样例已经冻结，仅作为历史试验保留，不再作为新作业模板套用，也不继续跟随后续 Markdown 规则演化。
 
 ---
 title: "Homework XX Report"
@@ -54,6 +57,11 @@ header-includes:
 
 ## Problem 1：XX
 
+相关脚本：
+
+- [本地 scripts/problemX.py](../../scripts/problemX.py)
+- [GitHub scripts/problemX.py](https://github.com/<owner>/<repo>/blob/main/XX/scripts/problemX.py)
+
 ### 待求问题
 
 占位
@@ -68,7 +76,7 @@ header-includes:
 
 占位
 
-### 理解
+### 分析
 
 占位
 

@@ -33,7 +33,16 @@
 - 不采用“一个 Problem 大章里套所有小问，然后只给一套解决方案/答案/分析”的结构。
 - 小问之间可以共用前文定义，但引用时要说清楚，不让读者来回翻找。
 - 如果某个 Problem 没有小问，则该 Problem 自身就是一个完整单元，也使用同一套局部结构。
-- 可在每个 Problem 标题下用一行 `相关脚本：[本地 scripts/problemX.py](../../scripts/problemX.py) / [GitHub scripts/problemX.py](...)` 链接到作业包内脚本和远端备份；链接只指向脚本，不替代正文解释。
+- 可在每个 Problem 标题下列出脚本链接，但不要塞在同一行。推荐写法为：
+
+  ```markdown
+  相关脚本：
+
+  - [本地 scripts/problemX.py](../../scripts/problemX.py)
+  - [GitHub scripts/problemX.py](https://github.com/<owner>/<repo>/blob/main/XX/scripts/problemX.py)
+  ```
+
+  链接只指向脚本，不替代正文解释。
 
 ## 解决方案
 
@@ -72,3 +81,4 @@
 - PDF 中可保留到 `scripts/` 下脚本的本地链接，也可追加 GitHub `blob/main/...` 外部链接，便于不同阅读环境跳转到对应实现。
 - “文件结构与说明”只在确实要说明提交包时短写，不作为默认正文主线。
 - `docs/answer/answer.md` 是报告正文；规则、模板和注意事项放在单独文档。
+- 原生 LaTeX 示例已经冻结为历史试验，不再作为后续作业报告模板应用；新报告优先维护 Markdown/Pandoc 源文件。
