@@ -1,4 +1,4 @@
-\documentclass[11pt]{ctexart}
+\documentclass[11pt,fontset=none]{ctexart}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amssymb}
@@ -12,18 +12,30 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{setspace}
+\usepackage{titlesec}
 
 \setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
 \setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
 \setmonofont{DejaVu Sans Mono}
+\setCJKmonofont{Noto Sans CJK SC}
 \graphicspath{{../../../result/}{../assets/}}
 \setstretch{1.18}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42\baselineskip}
+\setlength{\abovedisplayskip}{0.65\baselineskip}
+\setlength{\belowdisplayskip}{0.65\baselineskip}
+
+\definecolor{headingcolor}{HTML}{1F2933}
+\definecolor{rulecolor}{HTML}{CBD2D9}
+\definecolor{linkblue}{HTML}{2563A7}
 
 \hypersetup{
   colorlinks=true,
-  linkcolor=blue!55!black,
-  urlcolor=blue!55!black,
-  citecolor=blue!55!black
+  linkcolor=headingcolor,
+  urlcolor=linkblue,
+  citecolor=linkblue
 }
 
 \SetAlgorithmName{算法}{算法}{算法列表}
@@ -35,6 +47,22 @@
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
+\titleformat{\subsection}
+  {\large\sffamily\bfseries\color{headingcolor}}
+  {\thesubsection}{0.75em}{}
+\titlespacing*{\subsection}{0pt}{1.35\baselineskip}{0.45\baselineskip}
+\titleformat{\subsubsection}
+  {\normalsize\sffamily\bfseries\color{headingcolor}}
+  {\thesubsubsection}{0.65em}{}
+\titlespacing*{\subsubsection}{0pt}{1.05\baselineskip}{0.25\baselineskip}
+
+\newcommand{\reportgroup}[1]{%
+  \phantomsection\addcontentsline{toc}{section}{#1}%
+  {\Large\sffamily\bfseries\color{headingcolor} #1\par}%
+  \vspace{0.25\baselineskip}%
+  {\color{rulecolor}\hrule height 0.7pt}%
+  \vspace{0.85\baselineskip}%
+}
 \newcommand{\problem}[1]{\subsection{#1}}
 \newcommand{\blocktitle}[1]{\subsubsection{#1}}
 \newcommand{\plainblocktitle}[1]{\paragraph{#1}\mbox{}\\}
@@ -44,6 +72,7 @@
 \date{2026-06-10}
 
 \begin{document}
+\pagestyle{plain}
 \maketitle
 
 \begin{figure}[H]
@@ -69,7 +98,7 @@
 
 \newpage
 
-\section*{I. 一维 Ising 模型的 Metropolis 模拟}
+\reportgroup{I. 一维 Ising 模型的 Metropolis 模拟}
 
 \problem{Problem 1(a)：有序初态的平衡时间}
 
@@ -178,7 +207,7 @@
 \blocktitle{理解}
 能量随温度升高而上升，接受率也随温度升高而增大。低温时算法更容易慢混合，因为大多数升能翻转概率很小。零外场下充分长时间平均的 signed $\langle M\rangle$ 应趋近 0；表中低温点的非零 $\langle M\rangle$ 说明有限时间轨迹可能仍保留初态或随机涨落造成的磁化方向记忆。因此题目问 $\langle M\rangle$ 是否依赖初态时，答案是：有限运行中会依赖，充分平衡的零场系综平均不应依赖，并趋近 0。
 
-\section*{II. 一维 Ising 模型的 demon 算法}
+\reportgroup{II. 一维 Ising 模型的 demon 算法}
 
 \problem{Problem 2(a)--(d)：微正则 demon 模拟}
 
@@ -249,7 +278,7 @@ $E_{\mathrm{tot}}=-20$ 时，运行平均约在 60 sweep 后稳定，得到
 \blocktitle{理解}
 总能量越负，demon 可用能量越少，反推出的温度越低；低温下畴更长，因而 $\langle M^2\rangle/N^2$ 较大。
 
-\section*{III. 二维正方格 Ising 模型}
+\reportgroup{III. 二维正方格 Ising 模型}
 
 \problem{Problem 3(a)--(b)：$T=2$ 与 $T=4$ 的弛豫}
 
@@ -325,7 +354,7 @@ $L=30$ 的磁化突降和比热峰均出现在 $T=2.0$ 到 $2.5$ 之间，接近
 \blocktitle{理解}
 这些对照说明局域 Metropolis 不只给出平衡分布，也携带明显的算法动力学特征。有限运行时间下，初态、边界和扫描顺序都会影响估计值。
 
-\section*{IV. 二维 Ising 模型磁化与有限尺寸标度}
+\reportgroup{IV. 二维 Ising 模型磁化与有限尺寸标度}
 
 \problem{Problem 4(a)--(d)：磁化曲线和临界指数}
 
@@ -392,7 +421,7 @@ $L=30$ 的磁化突降和比热峰均出现在 $T=2.0$ 到 $2.5$ 之间，接近
 \blocktitle{理解}
 临界附近出现大尺度团簇，高温下构型保持细碎无序。图样序列反映的是 Markov 链迭代过程，不代表真实动力学时间。
 
-\section*{V. 原生 \LaTeX{} 路线观察}
+\reportgroup{V. 原生 \LaTeX{} 路线观察}
 
 \plainblocktitle{优势}
 原生 \LaTeX{} 对公式、表格、图像位置和算法块的控制更直接。本文中所有图均使用 \verb|figure[H]| 固定在对应位置，算法使用 \verb|algorithm2e|，不需要依赖 Pandoc 对 Markdown 属性的解释。
