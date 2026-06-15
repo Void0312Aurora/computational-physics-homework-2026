@@ -9,31 +9,20 @@
 \usepackage{xcolor}
 \usepackage{fancyvrb}
 \usepackage{setspace}
-\usepackage{titlesec}
 
 \setmainfont{TeX Gyre Pagella}
-\setsansfont{TeX Gyre Heros}
 \setCJKmainfont{Noto Serif CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
 \setmonofont{DejaVu Sans Mono}
 \setCJKmonofont{Noto Sans CJK SC}
 \graphicspath{{../assets/}}
-\setstretch{1.18}
+\setstretch{1.14}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.42\baselineskip}
+\setlength{\parskip}{0.34\baselineskip}
 \setlength{\abovedisplayskip}{0.65\baselineskip}
 \setlength{\belowdisplayskip}{0.65\baselineskip}
 
-\definecolor{headingcolor}{HTML}{1F2933}
-\definecolor{mutedtext}{HTML}{4F5B66}
-\definecolor{rulecolor}{HTML}{CBD2D9}
-\definecolor{linkblue}{HTML}{2563A7}
-
 \hypersetup{
-  colorlinks=true,
-  linkcolor=headingcolor,
-  urlcolor=linkblue,
-  citecolor=linkblue
+  hidelinks
 }
 
 \setcounter{secnumdepth}{3}
@@ -41,35 +30,19 @@
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
-\titleformat{\subsection}
-  {\large\sffamily\bfseries\color{headingcolor}}
-  {\thesubsection}{0.75em}{}
-\titlespacing*{\subsection}{0pt}{1.35\baselineskip}{0.45\baselineskip}
-\titleformat{\subsubsection}
-  {\normalsize\sffamily\bfseries\color{headingcolor}}
-  {\thesubsubsection}{0.65em}{}
-\titlespacing*{\subsubsection}{0pt}{1.05\baselineskip}{0.25\baselineskip}
-
 \newcommand{\reportgroup}[1]{%
   \phantomsection\addcontentsline{toc}{section}{#1}%
-  {\Large\sffamily\bfseries\color{headingcolor} #1\par}%
-  \vspace{0.25\baselineskip}%
-  {\color{rulecolor}\hrule height 0.7pt}%
-  \vspace{0.85\baselineskip}%
+  {\LARGE\bfseries #1\par}%
+  \vspace{1.0\baselineskip}%
 }
 \newcommand{\problem}[1]{\subsection{#1}}
 \newcommand{\blocktitle}[1]{\subsubsection{#1}}
 \newcommand{\codeinline}[1]{\texttt{#1}}
-\newcommand{\scriptpath}[1]{{\footnotesize\sffamily #1}}
+\newcommand{\scriptpath}[1]{{#1}}
 \newcommand{\githubscriptsbase}{https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/00/scripts}
-\newcommand{\scriptlink}[1]{\noindent{\footnotesize\sffamily\color{mutedtext}\textbf{相关脚本}\quad \href{../../../scripts/#1}{\scriptpath{本地 scripts/#1}} \,/\, \href{\githubscriptsbase/#1}{\scriptpath{GitHub scripts/#1}}}\par\vspace{0.35\baselineskip}}
+\newcommand{\scriptlink}[1]{\noindent\textbf{相关脚本：}\href{../../../scripts/#1}{\scriptpath{本地 scripts/#1}} / \href{\githubscriptsbase/#1}{\scriptpath{GitHub scripts/#1}}\par\medskip}
 \DefineVerbatimEnvironment{CodeBlock}{Verbatim}{
-  fontsize=\small,
-  frame=leftline,
-  framesep=2.5mm,
-  framerule=0.8pt,
-  rulecolor=\color{rulecolor},
-  xleftmargin=1.2em
+  fontsize=\small
 }
 
 \title{HW00 Report\\\large 作业报告结构样稿：原生 \LaTeX{} 第二版}
@@ -87,7 +60,7 @@
 
 \begin{table}[H]
   \centering
-  \begin{tabular}{lp{0.68\linewidth}}
+  \begin{tabular}{ll}
     \toprule
     项目 & 内容 \\
     \midrule
