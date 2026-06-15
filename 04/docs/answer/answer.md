@@ -366,14 +366,7 @@ $$
 
 # V. 地月系统的 L1 点 {-}
 
-## Problem 5：地月系统的 L1 点
-
-相关脚本：
-
-- [本地 scripts/problem5.py](../../scripts/problem5.py)
-- [GitHub scripts/problem5.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/04/scripts/problem5.py)
-
-### 待求问题
+**Problem 5：地月系统的 L1 点**
 
 研究地月系统中的 `L1` 点。题目包含以下两个子问：
 
@@ -385,9 +378,14 @@ $$
 
 2. 利用 Newton 方法或 secant 方法求出 `r` 的数值解，并至少给出四位有效数字。
 
-### 解决方式
+## Problem 5(a)：平衡方程推导
 
-#### (a) 平衡方程推导
+相关脚本：
+
+- [本地 scripts/problem5.py](../../scripts/problem5.py)
+- [GitHub scripts/problem5.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/04/scripts/problem5.py)
+
+### 解决方式
 
 设待求平衡点位于地月连线上，距地心为 `r`，距月心为 `R-r`，并与月球一起以角速度 `\omega` 作同步转动。沿地月连线取指向地球的方向为正，则试探质点受到的两个引力加速度分别为
 
@@ -416,7 +414,28 @@ $$
 
 这正是题目第 `(a)` 问所要求的平衡关系。
 
-#### (b) 数值求解流程
+### 问题答案
+
+由地球引力、月球引力与同步转动所需向心加速度的平衡关系，可直接得到
+
+$$
+\frac{GM}{r^2}-\frac{Gm}{(R-r)^2}=\omega^2r.
+$$
+
+其中左端是沿地月连线方向的净引力加速度，右端是半径为 `r` 的同步圆周运动所需向心加速度，因此该式具有明确的物理含义。
+
+### 分析
+
+`L1` 点位于地月之间且更靠近月球，这是因为只有在靠近月球处，月球引力才足以显著抵消地球引力，使卫星获得恰好满足同步转动所需的向心加速度。Newton 与 secant 在不同初值下都快速收敛到同一解，说明本题所对应的标量方程在合理初值附近具有良好的数值可解性。
+
+## Problem 5(b)：数值求解流程
+
+相关脚本：
+
+- [本地 scripts/problem5.py](../../scripts/problem5.py)
+- [GitHub scripts/problem5.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/04/scripts/problem5.py)
+
+### 解决方式
 
 将第 `(a)` 问得到的平衡方程写为
 
@@ -459,18 +478,6 @@ compare both results with high-precision reference
 其中，方程的物理含义是：地球引力提供向心趋势，月球引力抵消其中一部分，因此平衡点位于地球与月球之间。
 
 ### 问题答案
-
-#### (a) 平衡方程
-
-由地球引力、月球引力与同步转动所需向心加速度的平衡关系，可直接得到
-
-$$
-\frac{GM}{r^2}-\frac{Gm}{(R-r)^2}=\omega^2r.
-$$
-
-其中左端是沿地月连线方向的净引力加速度，右端是半径为 `r` 的同步圆周运动所需向心加速度，因此该式具有明确的物理含义。
-
-#### (b) 数值解
 
 利用 Newton 与 secant 方法求得的数值结果如下。
 
