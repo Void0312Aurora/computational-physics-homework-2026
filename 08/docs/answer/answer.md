@@ -26,9 +26,16 @@ header-includes:
 
 \newpage
 
-# 四组数据的直线拟合比较
+# I. 四组数据的直线拟合比较 {-}
 
-## 题目陈述
+## Problem 1：四组数据的直线拟合比较
+
+相关脚本：
+
+- [本地 scripts/problem1.py](../../scripts/problem1.py)
+- [GitHub scripts/problem1.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/08/scripts/problem1.py)
+
+### 待求问题
 
 Problem 1: Consider the following four sets of data.
 
@@ -39,21 +46,21 @@ Problem 1: Consider the following four sets of data.
 - Data 3: $(10,7.46)$, $(8,6.77)$, $(13,12.74)$, $(9,7.11)$, $(11,7.81)$, $(14,8.84)$, $(6,6.08)$, $(4,5.39)$, $(12,8.15)$, $(7,6.42)$, $(5,5.73)$。
 - Data 4: $(8,6.58)$, $(8,5.76)$, $(8,7.71)$, $(8,8.84)$, $(8,8.47)$, $(8,7.04)$, $(8,5.25)$, $(19,12.50)$, $(8,5.56)$, $(8,7.91)$, $(8,6.89)$。
 
-### (1)
+#### (1)
 
 Please fit to straight line for each of the four sets of data and discuss it is good or bad fit?
 
 请分别对上述四组数据做直线拟合，并讨论拟合效果是好还是坏。
 
-### (2)
+#### (2)
 
 Plot these fits.
 
 请绘制各组数据及其拟合直线。
 
-## 解决方案
+### 解决方式
 
-### (1)
+#### (1)
 
 对每组数据采用最小二乘法拟合线性模型
 
@@ -97,7 +104,7 @@ for each data set do
 end for
 ```
 
-### (2)
+#### (2)
 
 将四组数据画成四联图。每个子图同时显示：
 
@@ -107,9 +114,9 @@ end for
 
 此外再绘制残差诊断图，以观察线性模型是否遗漏了曲率、离群点或高杠杆点效应。
 
-## 问题答案
+### 问题答案
 
-### (1)
+#### (1)
 
 四组数据的最小二乘拟合结果见表 1。
 
@@ -135,7 +142,7 @@ $$
 
 因此，只有 Data 1 的直线拟合可认为是较好的；Data 2、Data 3、Data 4 虽然给出了几乎相同的回归参数，但分别受曲率、离群点和高杠杆点主导，均不应被视为真正可靠的线性拟合。
 
-### (2)
+#### (2)
 
 四组数据与对应拟合直线如图 1 所示。
 
@@ -145,7 +152,7 @@ $$
 
 ![Problem 1 residuals](../../result/problem1_residuals.png){ width=92% }
 
-## 讨论和扩展
+### 分析
 
 本题对应经典的 Anscombe 四重奏。它说明以下事实：仅凭均值、方差、相关系数和线性回归系数，可能无法区分完全不同的数据结构。尽管四组数据都给出接近
 
@@ -155,9 +162,16 @@ $$
 
 但从可视化和残差分析可知，线性模型只适合 Data 1。对实际问题而言，拟合结果必须与散点图、残差图和异常点分析结合解释，不能只报告回归方程而忽略数据形态。
 
-# 放射性衰减数据拟合
+# II. 放射性衰减数据拟合 {-}
 
-## 题目陈述
+## Problem 2：放射性衰减数据拟合
+
+相关脚本：
+
+- [本地 scripts/problem2.py](../../scripts/problem2.py)
+- [GitHub scripts/problem2.py](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/08/scripts/problem2.py)
+
+### 待求问题
 
 Problem 2: The life date of the Decay of a radioactive substance is
 
@@ -168,21 +182,21 @@ Problem 2: The life date of the Decay of a radioactive substance is
 | $t_i$ | 0 | 15 | 30 | 45 | 60 | 75 | 90 | 105 | 120 | 135 | 150 | 165 |
 | $N_i$ | 106 | 80 | 98 | 75 | 74 | 73 | 49 | 38 | 37 | 22 | 20 | 19 |
 
-### (1)
+#### (1)
 
 Find the values $A$ and $\tau$ taking into account the uncertainties in the data points.
 
 在考虑数据点不确定度的前提下，求参数 $A$ 和 $\tau$。
 
-### (2)
+#### (2)
 
 Plot these fitting results.
 
 绘制拟合结果。
 
-## 解决方案
+### 解决方式
 
-### (1)
+#### (1)
 
 放射性衰减模型取为
 
@@ -220,13 +234,13 @@ $$
 
 线性化结果仅作为一致性检查，不作为最终主答案。
 
-### (2)
+#### (2)
 
 在图中对每个观测点画出误差棒 $\sigma_i=\sqrt{N_i}$，并叠加加权非线性最小二乘得到的指数衰减曲线。与此同时记录拟合参数、参数标准差、$\chi^2$ 和约化 $\chi^2$，以检验模型与观测数据的一致程度。
 
-## 问题答案
+### 问题答案
 
-### (1)
+#### (1)
 
 加权非线性最小二乘拟合得到
 
@@ -270,19 +284,19 @@ $$
 | 120 | 37 | 6.083 | 33.504 |
 | 165 | 19 | 4.359 | 21.222 |
 
-### (2)
+#### (2)
 
 带误差棒的数据点与指数拟合曲线如图 3 所示。
 
 ![Problem 2 decay fit](../../result/problem2_decay_fit.png){ width=82% }
 
-## 讨论和扩展
+### 分析
 
 本题的关键在于“不确定度”不能被忽略。若所有点被等权对待，则高计数点与低计数点会被视作同样可靠，这与计数统计的性质不符。采用 $\sigma_i=\sqrt{N_i}$ 后，早期高计数数据拥有较小的相对误差，后期低计数数据则拥有较大的相对误差，因此加权拟合更符合放射性计数实验的统计特征。
 
 此外，对数线性化虽然计算方便，但它把原本的加性计数误差转化为对数空间中的近似误差，严格意义上改变了误差模型。因此在本报告中，线性化拟合只用于验证参数量级；最终答案采用原始模型上的加权非线性最小二乘结果。就本题数据而言，二者对 $A$ 和 $\tau$ 的估计相互接近，说明数据与单指数衰减假设具有较好的相容性。
 
-# 原始输出位置
+# 附录：原始输出位置 {-}
 
 - `result/temp-01.log`
 - `result/problem1_fit_summary.csv`

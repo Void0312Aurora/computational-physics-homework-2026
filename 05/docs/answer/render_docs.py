@@ -14,13 +14,21 @@ def main() -> None:
     pdf_out = answer_dir / "answer.pdf"
     md_format = "markdown+tex_math_dollars"
     shared_hw_ref = project_root.parent / "docs" / "ref"
+    counter_filter = shared_hw_ref / "fix_unnumbered_group_counters.lua"
     resource_path = (
         f"{answer_dir}:{project_root}:{project_root / 'result'}:{project_root / 'results'}:"
         f"{project_root / 'outputs'}:{shared_hw_ref}"
     )
 
     os.chdir(answer_dir)
-    common_args = ["--standalone", "--resource-path", resource_path, "--number-sections"]
+    common_args = [
+        "--standalone",
+        "--resource-path",
+        resource_path,
+        "--number-sections",
+        "--lua-filter",
+        str(counter_filter),
+    ]
     pdf_args = common_args + [
         "--pdf-engine=xelatex",
         "-V",
