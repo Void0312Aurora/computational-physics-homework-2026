@@ -61,11 +61,114 @@ def sympy_float(value: float) -> sp.Float:
     return sp.Float(value, 30)
 
 
+def term_text(offset: int) -> str:
+    if offset == 0:
+        return "f(x)"
+    if offset == 1:
+        return "f(x+h)"
+    if offset == -1:
+        return "f(x-h)"
+    if offset > 0:
+        return f"f(x+{offset}h)"
+    return f"f(x{offset}h)"
+
+
+def rational_latex(value: sp.Rational) -> str:
+    return sp.latex(sp.simplify(value))
+
+
+def format_linear_combination(offsets: tuple[int, ...], weights: tuple[sp.Rational, ...]) -> str:
+    pieces: list[str] = []
+    for weight, offset in zip(weights, offsets):
+        if sp.simplify(weight) == 0:
+            continue
+        sign = "-" if weight < 0 else "+"
+        mag = sp.simplify(abs(weight))
+        term = term_text(offset)
+        if mag == 1:
+            body = term
+        else:
+            body = rf"{rational_latex(mag)}\,{term}"
+        pieces.append((sign, body))
+
+    if not pieces:
+        return "0"
+
+    first_sign, first_body = pieces[0]
+    text = first_body if first_sign == "+" else f"-{first_body}"
+    for sign, body in pieces[1:]:
+        text += f" {sign} {body}"
+    return text
+
+
 def write_csv(path: Path, rows: list[dict[str, object]], fieldnames: list[str]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
+
+
+def format_symbolic_linear_combination(
+    coefficients: tuple[sp.Expr, ...],
+    symbols: tuple[str, ...],
+) -> str:
+    pieces: list[tuple[str, str]] = []
+    for coefficient, symbol in zip(coefficients, symbols):
+        coefficient = sp.simplify(coefficient)
+        if coefficient == 0:
+            continue
+        sign = "-" if coefficient < 0 else "+"
+        magnitude = sp.simplify(abs(coefficient))
+        body = symbol if magnitude == 1 else rf"{sp.latex(magnitude)}\,{symbol}"
+        pieces.append((sign, body))
+
+    if not pieces:
+        return "0"
+
+    first_sign, first_body = pieces[0]
+    text = first_body if first_sign == "+" else f"-{first_body}"
+    for sign, body in pieces[1:]:
+        text += f" {sign} {body}"
+    return text
+
+
+def moment_equations_latex(offsets: tuple[int, ...], derivative_order: int) -> list[str]:
+    symbols = tuple(rf"c_{{{index}}}" for index in range(len(offsets)))
+    equations: list[str] = []
+    for power in range(len(offsets)):
+        coefficients = tuple(sp.Integer(offset) ** power for offset in offsets)
+        lhs = format_symbolic_linear_combination(coefficients, symbols)
+        rhs = sp.factorial(derivative_order) if power == derivative_order else 0
+        equations.append(rf"{lhs} = {sp.latex(rhs)}")
+    return equations
+
+
+def symbolic_template_latex(offsets: tuple[int, ...]) -> str:
+    return " + ".join(
+        rf"c_{{{index}}}\,{term_text(offset)}"
+        for index, offset in enumerate(offsets)
+    )
+
+
+def ordinal_text(value: int) -> str:
+    mapping = {1: "1st", 2: "2nd", 3: "3rd", 4: "4th", 5: "5th"}
+    return mapping.get(value, f"{value}th")
+
+
+def leading_error_data(
+    offsets: tuple[int, ...],
+    weights: tuple[sp.Rational, ...],
+    derivative_order: int,
+) -> tuple[int, int, sp.Rational]:
+    power = len(offsets)
+    while True:
+        moment = sp.simplify(
+            sum(weight * (sp.Integer(offset) ** power) for weight, offset in zip(weights, offsets))
+        )
+        if moment != 0:
+            coefficient = sp.simplify(moment / sp.factorial(power))
+            return power - derivative_order, power, coefficient
+        power += 1
 
 
 def split_curve_segments(
@@ -224,6 +327,150 @@ def summarize_best_error_per_formula(
     return records, curves
 
 
+def build_problem1_formula_report() -> dict[str, object]:
+    cases = [
+        (2, "forward", (0, 1, 2), 1),
+        (2, "backward", (-2, -1, 0), 1),
+        (2, "central", (-1, 0, 1), 2),
+        (3, "forward", (0, 1, 2, 3), 1),
+        (3, "backward", (-3, -2, -1, 0), 1),
+        (3, "central", (-2, -1, 0, 1, 2), 2),
+        (4, "forward", (0, 1, 2, 3, 4), 1),
+        (4, "backward", (-4, -3, -2, -1, 0), 1),
+        (4, "central", (-2, -1, 0, 1, 2), 2),
+        (5, "forward", (0, 1, 2, 3, 4, 5), 1),
+        (5, "backward", (-5, -4, -3, -2, -1, 0), 1),
+        (5, "central", (-3, -2, -1, 0, 1, 2, 3), 2),
+    ]
+
+    records: list[dict[str, object]] = []
+    lines = [
+        "# Problem 1 Formula Derivation",
+        "",
+        "For stencil offsets $s_j$ and coefficients $c_j$, Taylor expansion gives",
+        "",
+        r"$$",
+        r"\sum_j c_j f(x+s_j h) = \sum_{k=0}^{\infty} \frac{h^k}{k!}\left(\sum_j c_j s_j^k\right) f^{(k)}(x).",
+        r"$$",
+        "",
+        "Choose the coefficients so that",
+        "",
+        r"$$",
+        r"\sum_j c_j s_j^k = 0 \quad (0 \le k < m), \qquad \sum_j c_j s_j^m = m!,",
+        r"$$",
+        "",
+        "then",
+        "",
+        r"$$",
+        r"f^{(m)}(x) = \frac{1}{h^m}\sum_j c_j f(x+s_j h) + O(h^p),",
+        r"$$",
+        "",
+        "where $p=1$ for the minimum forward/backward stencil and $p=2$ for the symmetric central stencil used here.",
+        "",
+        "The coefficients below are obtained by solving these moment equations directly rather than calling a black-box finite-difference template.",
+        "",
+    ]
+
+    for derivative_order, family, offsets, truncation_order in cases:
+        spec = FormulaSpec(
+            name=f"{family}_d{derivative_order}",
+            derivative_order=derivative_order,
+            offsets=offsets,
+            accuracy_order=truncation_order,
+            family=family,
+        )
+        weights = spec.weights
+        formula = format_linear_combination(offsets, weights)
+        symbols = tuple(rf"c_{{{index}}}" for index in range(len(offsets)))
+        equations = moment_equations_latex(offsets, derivative_order)
+        error_order, next_power, error_coefficient = leading_error_data(
+            offsets,
+            weights,
+            derivative_order,
+        )
+        latex = (
+            rf"f^{{({derivative_order})}}(x)"
+            rf" = \frac{{{formula}}}{{h^{{{derivative_order}}}}}"
+            rf" + O(h^{{{truncation_order}}})"
+        )
+        lines.append(f"## {family.title()} difference for the {ordinal_text(derivative_order)} derivative")
+        lines.append("")
+        lines.append(f"Offsets: `{offsets}`. Assume")
+        lines.append("")
+        lines.append(r"$$")
+        lines.append(rf"D(x) = \frac{{{symbolic_template_latex(offsets)}}}{{h^{{{derivative_order}}}}}")
+        lines.append(r"$$")
+        lines.append("")
+        lines.append("The Taylor-moment system is")
+        lines.append("")
+        lines.append(r"$$")
+        lines.append(r"\begin{cases}")
+        for equation_index, equation in enumerate(equations):
+            suffix = r"\\" if equation_index < len(equations) - 1 else ""
+            lines.append(equation + suffix)
+        lines.append(r"\end{cases}")
+        lines.append(r"$$")
+        lines.append("")
+        lines.append("Solving gives")
+        lines.append("")
+        lines.append(r"$$")
+        lines.append(
+            r",\quad ".join(
+                rf"{symbol} = {sp.latex(weight)}"
+                for symbol, weight in zip(symbols, weights)
+            )
+        )
+        lines.append(r"$$")
+        lines.append("")
+        lines.append("Hence")
+        lines.append("")
+        lines.append(r"$$")
+        lines.append(latex)
+        lines.append(r"$$")
+        lines.append("")
+        lines.append("The first retained truncation term is")
+        lines.append("")
+        lines.append(r"$$")
+        lines.append(rf"{sp.latex(error_coefficient)}\,h^{{{error_order}}} f^{{({next_power})}}(x)")
+        lines.append(r"$$")
+        lines.append("")
+        records.append(
+            {
+                "derivative_order": derivative_order,
+                "family": family,
+                "offsets": list(offsets),
+                "weights": [str(weight) for weight in weights],
+                "formula_latex": latex,
+                "truncation_order": truncation_order,
+                "moment_equations": equations,
+                "leading_error_order": error_order,
+                "leading_error_coefficient": str(error_coefficient),
+            }
+        )
+
+    output_path = RESULT_DIR / "problem1_formulas.md"
+    output_path.write_text("\n".join(lines), encoding="utf-8")
+    write_csv(
+        RESULT_DIR / "problem1_coefficients.csv",
+        [
+            {
+                "derivative_order": record["derivative_order"],
+                "family": record["family"],
+                "offsets": " ".join(map(str, record["offsets"])),
+                "weights": " ".join(record["weights"]),
+                "truncation_order": record["truncation_order"],
+            }
+            for record in records
+        ],
+        ["derivative_order", "family", "offsets", "weights", "truncation_order"],
+    )
+    return {
+        "report": str(output_path.relative_to(ROOT)),
+        "coefficient_table": str((RESULT_DIR / "problem1_coefficients.csv").relative_to(ROOT)),
+        "cases": records,
+    }
+
+
 def analyze_derivative_problem(
     *,
     problem_label: str,
@@ -327,74 +574,6 @@ def analyze_derivative_problem(
         "sweep_csv": str((RESULT_DIR / sweep_output).relative_to(ROOT)),
         "plot": str((RESULT_DIR / plot_output).relative_to(ROOT)),
     }
-
-
-def estimate_total_error_model(
-    *,
-    formulas: list[FormulaSpec],
-    func_expr: sp.Expr,
-    x_symbol: sp.Symbol,
-    x0: float,
-    empirical_best_rows: list[dict[str, object]],
-    output_name: str,
-) -> list[dict[str, object]]:
-    unit_roundoff = float(np.finfo(float).eps / 2.0)
-    f0_abs = abs(float(func_expr.subs(x_symbol, x0)))
-    empirical_by_formula = {str(row["formula"]): row for row in empirical_best_rows}
-    rows: list[dict[str, object]] = []
-
-    for spec in formulas:
-        leading_derivative_order = spec.derivative_order + spec.accuracy_order
-        leading_moment = sum(
-            float(weight) * (float(offset) ** leading_derivative_order)
-            for weight, offset in zip(spec.weights, spec.offsets)
-        ) / math.factorial(leading_derivative_order)
-        leading_derivative_value = float(
-            sp.diff(func_expr, x_symbol, leading_derivative_order).subs(x_symbol, x0)
-        )
-        truncation_constant = abs(leading_moment * leading_derivative_value)
-        roundoff_constant = f0_abs * sum(abs(float(weight)) for weight in spec.weights)
-
-        model_best_h = (
-            (spec.derivative_order * roundoff_constant * unit_roundoff)
-            / (spec.accuracy_order * truncation_constant)
-        ) ** (1.0 / (spec.accuracy_order + spec.derivative_order))
-        model_min_error = truncation_constant * (model_best_h ** spec.accuracy_order) + (
-            roundoff_constant * unit_roundoff / (model_best_h ** spec.derivative_order)
-        )
-        empirical = empirical_by_formula[spec.name]
-        empirical_best_h = float(empirical["best_h"])
-        empirical_min_error = float(empirical["best_abs_error"])
-        rows.append(
-            {
-                "formula": spec.name,
-                "accuracy_order": spec.accuracy_order,
-                "truncation_constant": truncation_constant,
-                "roundoff_constant_estimate": roundoff_constant,
-                "model_best_h": model_best_h,
-                "empirical_best_h": empirical_best_h,
-                "best_h_ratio_empirical_over_model": empirical_best_h / model_best_h,
-                "model_min_error": model_min_error,
-                "empirical_min_error": empirical_min_error,
-            }
-        )
-
-    write_csv(
-        RESULT_DIR / output_name,
-        rows,
-        [
-            "formula",
-            "accuracy_order",
-            "truncation_constant",
-            "roundoff_constant_estimate",
-            "model_best_h",
-            "empirical_best_h",
-            "best_h_ratio_empirical_over_model",
-            "model_min_error",
-            "empirical_min_error",
-        ],
-    )
-    return rows
 
 
 def analyze_problem4() -> dict[str, object]:
@@ -573,20 +752,6 @@ def run_problem2() -> dict[str, object]:
         sweep_output="problem2_error_sweep.csv",
         plot_output="problem2_error_curves.png",
     )
-    x = sp.symbols("x")
-    total_error_model_rows = estimate_total_error_model(
-        formulas=problem2_formulas,
-        func_expr=x * sp.exp(x),
-        x_symbol=x,
-        x0=2.0,
-        empirical_best_rows=problem2["best_per_formula"],  # type: ignore[arg-type]
-        output_name="problem2_total_error_model.csv",
-    )
-    problem2["total_error_model_rows"] = total_error_model_rows
-    problem2["total_error_model_csv"] = str(
-        (RESULT_DIR / "problem2_total_error_model.csv").relative_to(ROOT)
-    )
-    problem2["unit_roundoff"] = float(np.finfo(float).eps / 2.0)
     return problem2
 
 
@@ -626,6 +791,9 @@ def main() -> None:
 
     print("Running Homework 7 analysis in", ROOT)
 
+    problem1 = build_problem1_formula_report()
+    print("Problem 1 formulas written to", problem1["report"])
+
     problem2 = run_problem2()
     print("Problem 2 best table formula:", problem2["table_best_formula"])
     print("Problem 2 best dense-scan formula:", problem2["overall_best_formula"])
@@ -638,6 +806,7 @@ def main() -> None:
     print("Problem 4 empirical best h:", problem4["part_c_empirical_best_h"])
 
     summary = {
+        "problem1": problem1,
         "problem2": problem2,
         "problem3": problem3,
         "problem4": problem4,
