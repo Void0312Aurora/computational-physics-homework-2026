@@ -1,0 +1,155 @@
+{
+  "digits_list": [
+    100000
+  ],
+  "finished_at": "2026-06-29T04:51:56.706265+00:00",
+  "modes": [
+    "chunked",
+    "tasks"
+  ],
+  "order_strategy": "interleave",
+  "repeats": 5,
+  "runs": [
+    {
+      "digits_per_second": 3164450.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=chunked",
+      "parallel_mode": "chunked",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp",
+      "run_index": 1,
+      "sample_index": 1,
+      "seconds": 0.0316011,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 3690750.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=tasks",
+      "parallel_mode": "tasks",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp_tasks",
+      "run_index": 2,
+      "sample_index": 1,
+      "seconds": 0.0270948,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 3201450.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=chunked",
+      "parallel_mode": "chunked",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp",
+      "run_index": 3,
+      "sample_index": 2,
+      "seconds": 0.0312358,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 3919350.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=tasks",
+      "parallel_mode": "tasks",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp_tasks",
+      "run_index": 4,
+      "sample_index": 2,
+      "seconds": 0.0255145,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 3159360.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=chunked",
+      "parallel_mode": "chunked",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp",
+      "run_index": 5,
+      "sample_index": 3,
+      "seconds": 0.031652,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 3249600.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=tasks",
+      "parallel_mode": "tasks",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp_tasks",
+      "run_index": 6,
+      "sample_index": 3,
+      "seconds": 0.030773,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 4010710.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=chunked",
+      "parallel_mode": "chunked",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp",
+      "run_index": 7,
+      "sample_index": 4,
+      "seconds": 0.0249332,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 3982300.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=tasks",
+      "parallel_mode": "tasks",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp_tasks",
+      "run_index": 8,
+      "sample_index": 4,
+      "seconds": 0.0251111,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 4625910.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=chunked",
+      "parallel_mode": "chunked",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp",
+      "run_index": 9,
+      "sample_index": 5,
+      "seconds": 0.0216174,
+      "status": "ok",
+      "target_digits": 100000
+    },
+    {
+      "digits_per_second": 3204910.0,
+      "notes": "threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=tasks",
+      "parallel_mode": "tasks",
+      "prefix_ok": true,
+      "route": "cpp_gmp_openmp_tasks",
+      "run_index": 10,
+      "sample_index": 5,
+      "seconds": 0.0312021,
+      "status": "ok",
+      "target_digits": 100000
+    }
+  ],
+  "script": "benchmark_cpu_tasktree.py",
+  "seed": 20260615,
+  "started_at": "2026-06-29T04:51:56.358694+00:00",
+  "system_context_end": {
+    "cpu_frequency_mhz": "1700.0",
+    "cpu_governor": "schedutil",
+    "loadavg": "3.31,2.97,1.75",
+    "nvidia_smi": "NVIDIA GeForce RTX 3090, 51, 119.01, 3, 748, 24576",
+    "omp_places": "",
+    "omp_proc_bind": "",
+    "process_cpu_affinity": "0-87"
+  },
+  "system_context_start": {
+    "cpu_frequency_mhz": "1200.2",
+    "cpu_governor": "schedutil",
+    "loadavg": "3.42,2.99,1.75",
+    "nvidia_smi": "NVIDIA GeForce RTX 3090, 51, 118.87, 2, 748, 24576",
+    "omp_places": "",
+    "omp_proc_bind": "",
+    "process_cpu_affinity": "0-87"
+  }
+}

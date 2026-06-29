@@ -19,8 +19,17 @@
 - 有界工作集 profile：`bounded-stream-auto`
   - 通过 `stream_partials + frontier merge + 10 GB` FFT 预算，把 GPU 工作集压到更稳定的窗口
 - 推荐入口：`make run`
+- 大位数证据入口：`make project2_manifest`
+  - 只读取已有 `result/project2_pi_100000000_digits.txt`，生成 sidecar manifest、SHA256、首尾/抽样窗口和历史 y-cruncher 引用
+  - 不属于默认 `make run`，不会启动 `100M/140M/2.5B` 级重算
 - 统一测速入口：`make benchmark_pi`
 - 极限探索入口：`make benchmark_extremes`
+- CPU runner 稳健统计：
+  - `benchmark_cpu_tasktree` 与 `benchmark_cpu_representation` 现在默认按 interleaved 顺序运行；如需随机化可加 `--shuffle --seed <n>`，如需复查旧口径可显式用 `--grouped`
+  - 默认重复数提升为 `--repeats 5`；长任务若降到 `2~3` 次，需要在结果说明中标注为长任务降级口径
+  - CSV 保留 `seconds_samples` / `digits_per_second_samples`，并新增 `median_seconds`、`iqr_seconds`、`median_digits_per_second`、`iqr_digits_per_second`
+  - 同名 sidecar metadata（默认 `<csv>.metadata.json`）记录 `run_index`、执行顺序、`loadavg`、OpenMP 亲和性变量、进程 CPU affinity、CPU governor/frequency 与可用时的 `nvidia-smi` 摘要
+  - `make benchmark_cpu_smoke` 只跑 `100k` 位、4 线程、5 次重复，生成 `project2_cpu_cpp_parallel_modes_smoke.*`、`project2_cpu_cpp_representation_smoke.*` 及 metadata，用作审计 smoke，不触发 `100M/140M/2.5B`
 
 本地最新测速结果见 `result/project2_route_benchmark_current.{csv,md}`。在 `10,000,000` digits 的同口径测试里：
 
@@ -141,6 +150,7 @@
 
 - 跑作业主流程：`make run`
 - 生成答案文档：`make docs`
+- 生成 Project 2 大输出 manifest：`make project2_manifest` 或 `make reproduce_project2_report_manifest`
 - 跑纯 CPU C++ 主线：`make cpp_backend`
 - 跑 GPU hybrid 探索：`make gpu_pi_hybrid`
 - 跑 legacy hybrid 对照：`make gpu_pi_hybrid_legacy`
@@ -149,6 +159,7 @@
 - 跑纯 CPU `chunked vs tasks` 对比：`make benchmark_cpu_tasktree`
 - 跑纯 CPU `chunked / tasks / frontier` 对比：`make benchmark_cpu_parallel_modes`
 - 跑纯 CPU `chunked / tasks / levelpool` 表示层对比：`make benchmark_cpu_representation`
+- 跑 5-repeat CPU benchmark smoke：`make benchmark_cpu_smoke`
 - 跑下一代 CPU 骨架 smoke：`make nextgen_cpu_smoke`
 - 跑下一代 CPU isolated multiply benchmark：`make benchmark_nextgen_cpu`
 - 跑下一代 CPU crossover benchmark：`make benchmark_nextgen_cpu_extended`
@@ -174,3 +185,4 @@
 - `PROJECT2_HOMEWORK_BACKEND` 现在默认是 `cpu`；如果需要强制切回 hybrid，可设置 `PROJECT2_HOMEWORK_BACKEND=gpu` 或 `auto`。
 - 如需手动覆盖优化后的 CPU 参数，可设置 `PROJECT2_CPP_THREADS`、`PROJECT2_CPP_CHUNK_TERMS`、`PROJECT2_CPP_LEAF_TERMS`、`PROJECT2_CPP_TASK_TERMS`、`PROJECT2_CPP_PARALLEL_MODE`。
 - 如果需要恢复更大的 benchmark 列表，可设置 `PROJECT2_BENCHMARK_DIGITS=...`。
+- `100M/140M/2.5B` 级结果视为显式实验或历史保留产物；默认 `make run` 不生成这些规模。复核报告引用时先运行 `make project2_manifest`，查看 `result/project2_pi_100000000_digits.txt.manifest.json` 与 `result/ycruncher/validation/` 中的历史校验记录。

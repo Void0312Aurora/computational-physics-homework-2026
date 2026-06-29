@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import os
+import shutil
+import subprocess
 from pathlib import Path
 
 import pypandoc
@@ -12,6 +14,8 @@ def main() -> None:
     source = answer_dir / "answer.md"
     docx_out = answer_dir / "answer.docx"
     pdf_out = answer_dir / "answer.pdf"
+    latex_dir = answer_dir / "latex"
+    latex_pdf = latex_dir / "answer.pdf"
     md_format = "markdown+tex_math_dollars"
     shared_hw_ref = project_root.parent / "docs" / "ref"
     counter_filter = shared_hw_ref / "fix_unnumbered_group_counters.lua"
@@ -29,18 +33,6 @@ def main() -> None:
         "--lua-filter",
         str(counter_filter),
     ]
-    pdf_args = common_args + [
-        "--pdf-engine=xelatex",
-        "-V",
-        "mainfont=TeX Gyre Pagella",
-        "-V",
-        "CJKmainfont=Noto Serif CJK SC",
-        "-V",
-        "monofont=DejaVu Sans Mono",
-        "-V",
-        "linestretch=1.12",
-    ]
-
     pypandoc.convert_file(
         str(source),
         "docx",
@@ -48,13 +40,8 @@ def main() -> None:
         outputfile=str(docx_out),
         extra_args=common_args,
     )
-    pypandoc.convert_file(
-        str(source),
-        "pdf",
-        format=md_format,
-        outputfile=str(pdf_out),
-        extra_args=pdf_args,
-    )
+    subprocess.run(["make"], cwd=latex_dir, check=True)
+    shutil.copy2(latex_pdf, pdf_out)
 
 
 if __name__ == "__main__":

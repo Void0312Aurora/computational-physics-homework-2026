@@ -8,7 +8,7 @@ GMPY2_INCLUDE := $(shell $(PYTHON) -c "from pathlib import Path; import gmpy2; p
 GMPY2_LIBDIR := $(shell $(PYTHON) -c "from pathlib import Path; import gmpy2; print(Path(gmpy2.__file__).resolve().parent.parent / 'gmpy2.libs')")
 GMPY2_GMP_SONAME := $(shell basename $(firstword $(wildcard $(GMPY2_LIBDIR)/libgmp*.so*)))
 
-.PHONY: run docs problem1 problem2 problem3 problem4_project2 benchmark_pi benchmark_extremes benchmark_cpu_tasktree benchmark_cpu_parallel_modes benchmark_cpu_representation cpp_backend cpp_levelpool_backend nextgen_cpu_backend nextgen_cpu_smoke benchmark_nextgen_cpu benchmark_nextgen_cpu_extended benchmark_nextgen_cpu_tree mpn_benchmark fft_gpu_benchmark gpu_pi_hybrid gpu_pi_hybrid_legacy gpu_pi_full_cuda gpu_native_rns gpu_throughput_archive
+.PHONY: run docs problem1 problem2 problem3 problem4_project2 project2_manifest reproduce_project2_report_manifest benchmark_pi benchmark_extremes benchmark_cpu_tasktree benchmark_cpu_parallel_modes benchmark_cpu_representation benchmark_cpu_smoke cpp_backend cpp_levelpool_backend nextgen_cpu_backend nextgen_cpu_smoke benchmark_nextgen_cpu benchmark_nextgen_cpu_extended benchmark_nextgen_cpu_tree mpn_benchmark fft_gpu_benchmark gpu_pi_hybrid gpu_pi_hybrid_legacy gpu_pi_full_cuda gpu_native_rns gpu_throughput_archive
 
 run:
 	$(PYTHON) scripts/solution.py
@@ -28,6 +28,11 @@ problem3:
 problem4_project2:
 	$(PYTHON) scripts/problem4_project2.py
 
+project2_manifest:
+	$(PYTHON) -m project2_pi.manifest_pi_output
+
+reproduce_project2_report_manifest: project2_manifest
+
 benchmark_pi:
 	$(PYTHON) -m project2_pi.benchmark_matrix
 
@@ -42,6 +47,11 @@ benchmark_cpu_parallel_modes:
 
 benchmark_cpu_representation:
 	$(PYTHON) -m project2_pi.benchmark_cpu_representation
+
+benchmark_cpu_smoke: cpp_backend cpp_levelpool_backend
+	mkdir -p result
+	$(PYTHON) -m project2_pi.benchmark_cpu_tasktree --digits-list 100000 --modes chunked,tasks --repeats 5 --threads 4 --chunk-terms 8192 --leaf-terms 8 --task-terms 8192 --csv result/project2_cpu_cpp_parallel_modes_smoke.csv --md result/project2_cpu_cpp_parallel_modes_smoke.md --metadata-json result/project2_cpu_cpp_parallel_modes_smoke.metadata.json
+	$(PYTHON) -m project2_pi.benchmark_cpu_representation --digits-list 100000 --repeats 5 --threads 4 --chunk-terms 8192 --leaf-terms 8 --csv result/project2_cpu_cpp_representation_smoke.csv --md result/project2_cpu_cpp_representation_smoke.md --metadata-json result/project2_cpu_cpp_representation_smoke.metadata.json
 
 cpp_backend: $(PROJECT2_PI_BIN_DIR)/project2_gmp_backend
 cpp_levelpool_backend: $(PROJECT2_PI_BIN_DIR)/project2_gmp_levelpool_backend

@@ -39,6 +39,15 @@
   - 当前 isolated multiply 的 crossover 已经出现在约 `1024` blocks
   - 已落地 destructive product tree 原型，adaptive `RNS` 在 `64x256 blocks` workload 上约有 `3.48x` 提升
   - 但 product tree 的 `peak_live_blocks` 仍与 schoolbook 同量级，说明上层结果还没有真正 transform-resident
+- Review closeout scope:
+  - 本轮只补 Project 2 大输出的可追溯 manifest 与轻量复现入口
+  - `make project2_manifest` / `make reproduce_project2_report_manifest` 只读取已有 `result/project2_pi_100000000_digits.txt` 和历史 y-cruncher 记录
+  - 默认 `make run` 不触发 `100M/140M/2.5B` 级重算；这些规模只作为显式实验或历史产物复核
+- B4 benchmark runner scope:
+  - 本轮只补 `benchmark_cpu_tasktree.py` 与 `benchmark_cpu_representation.py` 的统计框架和小规模 smoke，不重跑 `100M/140M/2.5B`
+  - runner 输出继续保留 samples，同时新增 median/IQR 字段；默认运行顺序改为 interleaved，并可通过 `--shuffle --seed` 固化随机顺序
+  - sidecar metadata 记录每次执行的 `run_index`、系统负载、OpenMP 亲和性变量、CPU affinity/governor/frequency 与可用时的 `nvidia-smi` 摘要
+  - 短任务建议 `--repeats >= 5`，更稳妥用 `7`；长任务可降到 `2~3` 次，但需要在结果或说明中标注为长任务降级统计
 
 ## Next-Gen CPU Architecture Sprint
 
@@ -201,10 +210,16 @@
   - `result/problem1_zener_interpolation.png`
   - `result/problem1_curve_summary.csv`
   - `result/problem1_midpoints.csv`
-  - `result/problem2_runge_interpolation.png`
+  - `result/problem2_runge_5_nodes.png`
+  - `result/problem2_runge_more_nodes.png`
+  - `result/problem2_runge_error_vs_b.png`
   - `result/problem2_runge_error_summary.csv`
-  - `result/problem3_sine_interpolation.png`
+  - `result/problem2_runge_error_model.csv`
+  - `result/problem3_sine_7_nodes.png`
+  - `result/problem3_sine_more_nodes.png`
+  - `result/problem3_sine_error_vs_b.png`
   - `result/problem3_sine_error_summary.csv`
+  - `result/problem3_sine_error_model.csv`
   - `result/project2_pi_benchmark.csv`
   - `result/project2_cpp_backend_benchmark.csv`
   - `result/project2_mpn_mul_benchmark.csv`

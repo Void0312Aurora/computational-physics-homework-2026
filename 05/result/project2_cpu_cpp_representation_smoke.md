@@ -1,0 +1,10 @@
+# Project 2 CPU Representation Refactor Summary
+
+| route | digits | repeats | avg_seconds | median_seconds | iqr_seconds | best_seconds | avg_digits_per_second | median_digits_per_second | iqr_digits_per_second | best_digits_per_second | threads | chunk_terms | leaf_terms | task_terms | prefix_ok | status | notes |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- | --- |
+| cpp_gmp_openmp | 100000 | 5 | 0.028096 | 0.027203 | 0.005969 | 0.024599 | 3599534.00 | 3676050.00 | 747040.00 | 4065230.00 | 4 | 8192 | 8 | 8192 | True | ok | threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=chunked |
+  samples_seconds=0.027203;0.031832;0.024599;0.031408;0.025439; samples_digits_per_second=3676050.00;3141510.00;4065230.00;3183920.00;3930960.00; run_index_samples=1;4;7;10;13; execution_order=1:sample1;4:sample2;7:sample3;10:sample4;13:sample5; order_strategy=interleave; loadavg=3.31,2.97,1.75->3.31,2.97,1.75
+| cpp_gmp_openmp_tasks | 100000 | 5 | 0.025832 | 0.025390 | 0.000581 | 0.021903 | 3922390.00 | 3938490.00 | 90990.00 | 4565610.00 | 4 | 8192 | 8 | 8192 | True | ok | threads=4,chunk_terms=8192,leaf_terms=8,task_terms=8192,parallel_mode=tasks |
+  samples_seconds=0.024979;0.025560;0.031328;0.025390;0.021903; samples_digits_per_second=4003420.00;3912430.00;3192000.00;3938490.00;4565610.00; run_index_samples=2;5;8;11;14; execution_order=2:sample1;5:sample2;8:sample3;11:sample4;14:sample5; order_strategy=interleave; loadavg=3.31,2.97,1.75->3.31,2.97,1.75
+| cpp_gmp_levelpool | 100000 | 5 | 0.029437 | 0.030771 | 0.001104 | 0.024798 | 3422016.00 | 3249770.00 | 120810.00 | 4032540.00 | 4 | 8192 | 8 | 8192 | True | ok | threads=4,chunk_terms=8192,leaf_terms=8,representation=levelpool |
+  samples_seconds=0.030771;0.030781;0.024798;0.029678;0.031157; samples_digits_per_second=3249770.00;3248720.00;4032540.00;3369530.00;3209520.00; run_index_samples=3;6;9;12;15; execution_order=3:sample1;6:sample2;9:sample3;12:sample4;15:sample5; order_strategy=interleave; loadavg=3.31,2.97,1.75->3.31,2.97,1.75

@@ -1,12 +1,7 @@
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-
-from solution import ensure_result_dir, solve_project2
+from project2_pi.homework_bridge import solve_project2
+from result_paths import ensure_result_dir
 
 
 def main() -> None:
