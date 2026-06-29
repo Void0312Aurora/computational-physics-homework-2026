@@ -5,6 +5,8 @@ TARGET := hw03
 VENV_PYTHON := /home/void0312/Cpy/.venv/bin/python
 ANALYSIS := plot_results.py
 DOC_RENDER := docs/answer/render_docs.py
+LATEX_DIR := docs/answer/latex
+LATEX_ANSWER_PDF := $(LATEX_DIR)/answer.pdf
 RESULT_DIR := result
 SOURCE_DIR := $(if $(wildcard scripts/problem1.c),scripts,.)
 SUBMISSION_NAME := HW04.姜玥晟
@@ -14,7 +16,7 @@ SUBMISSION_DOCS := $(SUBMISSION_DIR)/docs
 SUBMISSION_SCRIPTS := $(SUBMISSION_DIR)/scripts
 SUBMISSION_RESULTS := $(SUBMISSION_DIR)/results
 
-.PHONY: all run analyze docs package submit problem1 problem2 problem3 clean
+.PHONY: all run analyze docs latex-docs package submit problem1 problem2 problem3 clean
 
 all: $(TARGET)
 
@@ -46,10 +48,13 @@ analyze: run
 docs: analyze
 	$(VENV_PYTHON) $(DOC_RENDER)
 
-package: docs
+latex-docs:
+	$(MAKE) -C $(LATEX_DIR)
+
+package: docs latex-docs
 	rm -rf "$(SUBMISSION_DIR)"
 	mkdir -p "$(SUBMISSION_DOCS)" "$(SUBMISSION_SCRIPTS)" "$(SUBMISSION_RESULTS)"
-	install -m 0644 docs/answer/answer.pdf "$(SUBMISSION_DOCS)/answer.pdf"
+	install -m 0644 $(LATEX_ANSWER_PDF) "$(SUBMISSION_DOCS)/answer.pdf"
 	install -m 0644 Makefile solution.c plot_results.py "$(SUBMISSION_SCRIPTS)"
 	install -m 0644 $(SOURCE_DIR)/problem1.c "$(SUBMISSION_SCRIPTS)/problem1.c"
 	install -m 0644 $(SOURCE_DIR)/problem2.c "$(SUBMISSION_SCRIPTS)/problem2.c"

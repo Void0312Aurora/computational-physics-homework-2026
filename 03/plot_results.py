@@ -357,30 +357,43 @@ def analyze_problem3(
             }
         )
 
-    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+    eps = Decimal(metrics["machine_epsilon"])
+    half_eps = eps / Decimal(2)
+
+    fig, axes = plt.subplots(2, 1, figsize=(9.2, 9.6), sharex=True)
     x_values = [float(item["t"]) for item in analyzed_rows]
-    axes[0].plot(x_values, [float(item["exact"]) for item in analyzed_rows], color="#111111", linewidth=2.2, label="Exact 2+t")
-    axes[0].plot(x_values, [float(item["direct"]) for item in analyzed_rows], color="#c75b39", marker="o", label="Direct")
-    axes[0].plot(
+    axes[0].plot(x_values, [float(item["exact"]) for item in analyzed_rows], color="#111111", linewidth=2.0, label="Exact 2+t")
+    axes[0].step(
+        x_values,
+        [float(item["direct"]) for item in analyzed_rows],
+        where="mid",
+        color="#c75b39",
+        linewidth=1.8,
+        label="Direct",
+    )
+    axes[0].scatter(x_values, [float(item["direct"]) for item in analyzed_rows], color="#c75b39", s=24)
+    axes[0].step(
         x_values,
         [float(item["rearranged"]) for item in analyzed_rows],
+        where="mid",
         color="#2c7a7b",
-        marker="s",
+        linewidth=1.8,
         label="Rearranged",
     )
+    axes[0].scatter(x_values, [float(item["rearranged"]) for item in analyzed_rows], color="#2c7a7b", marker="s", s=24)
     axes[0].set_xscale("log")
     axes[0].invert_xaxis()
-    axes[0].set_xlabel("t")
     axes[0].set_ylabel("Computed value")
-    axes[0].set_title("Half-Precision Computed Value")
+    axes[0].set_title("Half-Precision Computed Value (thresholded samples)")
     axes[0].grid(True, which="both", alpha=0.3)
-    axes[0].legend()
+    axes[0].legend(loc="upper right")
 
     axes[1].loglog(
         x_values,
         [max(float(item["direct_rel_error"]), 1e-16) for item in analyzed_rows],
         color="#c75b39",
         marker="o",
+        linewidth=1.8,
         label="Direct error",
     )
     axes[1].loglog(
@@ -388,17 +401,38 @@ def analyze_problem3(
         [max(float(item["rearranged_rel_error"]), 1e-16) for item in analyzed_rows],
         color="#2c7a7b",
         marker="s",
+        linewidth=1.8,
         label="Rearranged error",
     )
     axes[1].invert_xaxis()
     axes[1].set_xlabel("t")
     axes[1].set_ylabel("Relative error")
-    axes[1].set_title("Half-Precision Relative Error")
+    axes[1].set_title("Half-Precision Relative Error (thresholded samples)")
     axes[1].grid(True, which="both", alpha=0.3)
-    axes[1].legend()
+    axes[1].legend(loc="lower right")
+
+    for axis in axes:
+        axis.axvline(float(eps), color="#6b7280", linestyle="--", linewidth=1.0, alpha=0.75)
+        axis.axvline(float(half_eps), color="#111827", linestyle=":", linewidth=1.2, alpha=0.8)
+    axes[0].annotate(
+        "2^-10",
+        xy=(float(eps), 2.42),
+        xytext=(8, -8),
+        textcoords="offset points",
+        fontsize=9,
+        color="#4b5563",
+    )
+    axes[0].annotate(
+        "2^-11",
+        xy=(float(half_eps), 0.25),
+        xytext=(8, 8),
+        textcoords="offset points",
+        fontsize=9,
+        color="#111827",
+    )
 
     fig.suptitle("Problem 3: Roundoff Error in Half Precision", fontsize=15)
-    fig.tight_layout(rect=(0, 0, 1, 0.96))
+    fig.tight_layout(rect=(0, 0, 1, 0.965))
     fig.savefig(RESULT_DIR / "problem3_roundoff.png", dpi=220)
     plt.close(fig)
 
@@ -549,7 +583,7 @@ def build_answer(
 
         其中 `ref_root(b)` 表示高精度参考解，`relerr` 表示相对误差计算函数。
 
-        ### 问题答案
+        ### 答案
 
         对于题目指定的 `b=100`，本机 IEEE `float` 运算给出
 
@@ -567,8 +601,6 @@ def build_answer(
         $$
 
         该示例的相对误差为 {format_decimal(slide_rel_error, 4)}，约为 `1.84%`，用于说明低精度三位有效数字运算中的相消误差；它不是 `b=100` 的主计算结果。
-
-        ### 分析
 
         标准公式的不稳定性来源于相消误差。由近似关系
 
@@ -615,7 +647,7 @@ def build_answer(
 
         其中 `ref_root(b)` 表示高精度参考解，`relerr` 表示相对误差计算函数。
 
-        ### 问题答案
+        ### 答案
 
         继续增大 $b$ 并仍然只使用标准公式 $x_2=(b-r)/2$ 时，代表性相对误差如下。
 
@@ -624,8 +656,6 @@ def build_answer(
         {problem1_standard_table}
 
         对于 `float`，当 `b=10000` 时，标准公式的相对误差已达到 {format_decimal(float_10000.standard_error, 4)}，说明小根信息几乎完全丢失。对于 `double`，在 `b=10^10` 时也出现同类退化，而 `__float128` 在同一测试点仍维持 {format_decimal(quad_1e10.standard_error, 4)} 的误差量级。
-
-        ### 分析
 
         标准公式的不稳定性来源于相消误差。由近似关系
 
@@ -680,7 +710,7 @@ def build_answer(
 
         其中 `ref_root(b)` 表示高精度参考解，`relerr` 表示相对误差计算函数。
 
-        ### 问题答案
+        ### 答案
 
         对同一组 $b$ 值重新实验后，代表性结果如下。
 
@@ -691,8 +721,6 @@ def build_answer(
         {problem1_table}
 
         这些数据说明，有理化后未再出现与标准公式同量级的误差爆炸。实验范围内，有理化公式始终显著优于标准公式；例如在 `double` 且 $b=10^{{10}}$ 条件下，标准公式误差为 {format_decimal(double_1e10.standard_error, 4)}，而有理化公式误差为 {format_decimal(double_1e10.rationalized_error, 4)}。
-
-        ### 分析
 
         标准公式的不稳定性来源于相消误差。由近似关系
 
@@ -749,7 +777,7 @@ def build_answer(
 
         其中 `M = {{direct, expanded, horner}}`，并基于 `err` 进一步统计最大误差、峰值位置与中位误差。
 
-        ## 问题答案
+        ## 答案
 
         1. 局部放大结果表明，直接形式在三个精度下均最接近参考曲线，而展开形式与 Horner 形式在 $x=1$ 附近出现明显偏离。
 
@@ -774,8 +802,6 @@ def build_answer(
         {problem2_horner_table}
 
         结果表明，Horner 方法在三种精度下都比朴素展开稳定；以 `float` 为例，最大相对误差从 {format_decimal(p2_float_expanded.max_rel_error, 4)} 降到 {format_decimal(p2_float_horner.max_rel_error, 4)}，改善约 {format_decimal(p2_float_expanded.max_rel_error / p2_float_horner.max_rel_error, 4)} 倍。但它仍显著劣于直接形式：同一精度下 `direct` 的最大相对误差只有 {format_decimal(p2_float_direct.max_rel_error, 4)}。结论是 Horner 改善了展开式的运算顺序，但没有恢复直接形式保留的关键小量结构 $(x-1)$。
-
-        ## 讨论和扩展
 
         本题显示出“问题条件数”与“算法稳定性”之间的区别。在 $x=1$ 附近，真值本身非常接近零，因此任何微小的绝对误差都可能被转换为极大的相对误差。直接形式由于始终保留 $(x-1)$ 这一小量结构，运算路径最短，因而最稳定；朴素展开形式则会反复累积和抵消数量级接近的项，最容易触发相消误差；Horner 形式虽然改善了运算顺序，但并未改变展开后计算的本质。若需进一步提高稳定性，可结合高精度算术、补偿求和或围绕 $x=1$ 的局部重参数化方案。
 
@@ -809,7 +835,7 @@ def build_answer(
 
         通过比较 `y_dir` 与 `y_alt` 的误差变化，可直接观察 half precision 下的舍入误差放大现象。
 
-        ## 问题答案
+        ## 答案
 
         1. `_Float16` 的主要数值指标如表所示。
 
@@ -832,13 +858,13 @@ def build_answer(
 
         其精确值为 $2+t$。当 `t={format_compact_float(first_zero_case['t'], 12)}` 时，半精度直接计算结果已退化为 `{first_zero_case['direct']}`，而精确值仍为 `{first_zero_case['exact']}`；此时相对误差达到 {format_decimal(first_zero_case['direct_rel_error'], 4)}。若改写为 `2+t`，同一点的相对误差仅为 {format_decimal(first_zero_case['rearranged_rel_error'], 4)}。
 
-        ![Problem 3 roundoff comparison in half precision](../../result/problem3_roundoff.png){{ width=88% }}
+        图中的跃变来自 half precision 的离散舍入阈值。$2+t$ 在 $t\\le 2^{{-10}}$ 时会被舍入到 $2$；直接表达式更敏感，因为 $1+t$ 在 $t\\le 2^{{-11}}$ 时会先被舍入到 $1$，随后 $(1+t)^2-1$ 直接变为 $0$。
+
+        ![Problem 3 roundoff comparison in half precision](../../result/problem3_roundoff.png){{ width=96% }}
 
         3. 因此，half precision 的 machine epsilon 约为 `2^(-10)`，有效数字极为有限；一旦表达式包含相消运算，舍入误差完全可能将本应处于 `2` 量级的结果直接压缩为 `0`。
 
-        ## 讨论和扩展
-
-        half precision 在 `1` 附近的间隔约为 `2^(-10)`。当 $t$ 小于或接近这一阈值时，`1+t` 将首先被舍入回 `1`，进而使 `(1+t)^2-1` 被舍入为 `0`。本题中的首个失真点正好出现在 `t={format_compact_float(first_zero_case['t'], 12)}`，即 machine epsilon 的一半附近，这与 binary16 的舍入行为相一致。由此可见，在低精度格式中，算法结构往往比“理论等价”更重要；对含有相消项的表达式进行代数改写，是避免灾难性误差的关键手段。
+        half precision 在 $1$ 附近的相邻间隔为 $2^{{-10}}$，最近舍入的半间隔为 $2^{{-11}}$。因此当 $t=2^{{-11}}={format_compact_float(first_zero_case['t'], 12)}$ 时，$1+t$ 处在舍入边界并被舍入回 $1$，进而使 $(1+t)^2-1$ 变为 $0$，直接表达式的相对误差跃升到 {format_decimal(first_zero_case['direct_rel_error'], 4)}。另一方面，$2$ 附近的 half 间隔是 $2^{{-9}}$，其半间隔是 $2^{{-10}}$；所以 $2+t$ 的改写形式在 $t=2^{{-10}}$ 开始被量化为 $2$，相对误差也会出现台阶。由此可见，图中的跃变是浮点量化阈值造成的确定性现象，不是随机噪声或绘图错误。
         """
     ).replace("\n        ", "\n").lstrip()
 

@@ -202,7 +202,7 @@ end for
 
 其中 \codeinline{ref\_root(b)} 表示高精度参考解，\codeinline{relerr} 表示相对误差计算函数。
 
-\blocktitle{问题答案}
+\blocktitle{答案}
 
 对于题目指定的 \(b=100\)，本机 IEEE \codeinline{float} 运算给出
 
@@ -220,8 +220,6 @@ x_2^{\text{standard}} = 0.01050,
 \]
 
 该示例的相对误差为 1.8429E-2，约为 \(1.84\%\)，用于说明低精度三位有效数字运算中的相消误差；它不是 \(b=100\) 的主计算结果。
-
-\blocktitle{分析}
 
 标准公式的不稳定性来源于相消误差。由近似关系
 
@@ -265,7 +263,7 @@ end for
 
 其中 \codeinline{ref\_root(b)} 表示高精度参考解，\codeinline{relerr} 表示相对误差计算函数。
 
-\blocktitle{问题答案}
+\blocktitle{答案}
 
 继续增大 \(b\) 并仍然只使用标准公式 \(x_2=(b-r)/2\) 时，代表性相对误差如下。
 
@@ -287,8 +285,6 @@ quad & 10000000000 & 6.8266E-16 \\
 }
 
 对于 \codeinline{float}，当 \(b=10000\) 时，标准公式的相对误差已达到 1.0000E+0，说明小根信息几乎完全丢失。对于 \codeinline{double}，在 \(b=10^{10}\) 时也出现同类退化，而 \codeinline{\_\_float128} 在同一测试点仍维持 6.8266E-16 的误差量级。
-
-\blocktitle{分析}
 
 标准公式的不稳定性来源于相消误差。由近似关系
 
@@ -340,7 +336,7 @@ end for
 
 其中 \codeinline{ref\_root(b)} 表示高精度参考解，\codeinline{relerr} 表示相对误差计算函数。
 
-\blocktitle{问题答案}
+\blocktitle{答案}
 
 对同一组 \(b\) 值重新实验后，代表性结果如下。
 
@@ -368,8 +364,6 @@ quad & 10000000000 & 6.8266E-16 & 1.0000E-34 & 6.8266E+18 \\
 }
 
 这些数据说明，有理化后未再出现与标准公式同量级的误差爆炸。实验范围内，有理化公式始终显著优于标准公式；例如在 \codeinline{double} 且 \(b=10^{10}\) 条件下，标准公式误差为 1.0000E+0，而有理化公式误差为 1.0000E-20。
-
-\blocktitle{分析}
 
 标准公式的不稳定性来源于相消误差。由近似关系
 
@@ -432,7 +426,7 @@ end for
 
 其中 \(M=\{\mathrm{direct},\mathrm{expanded},\mathrm{horner}\}\)，并基于 \codeinline{err} 进一步统计最大误差、峰值位置与中位误差。
 
-\blocktitle{问题答案}
+\blocktitle{答案}
 
 局部放大结果表明，直接形式在三个精度下均最接近参考曲线，而展开形式与 Horner 形式在 \(x=1\) 附近出现明显偏离。
 
@@ -443,8 +437,6 @@ end for
 \end{figure}
 
 造成该现象的直接原因在于：当 \(x\) 接近 \(1\) 时，真值 \((x-1)^{10}\) 极小；若先将多项式展开为多个数量级接近的项再相加减，就会显著放大舍入误差。
-
-\blocktitle{分析}
 
 本小问关注的是局部曲线形状。直接形式先计算 \(u=x-1\)，再计算 \(u^{10}\)，整个过程中被反复相乘的是接近零的小量；因此它能保留函数在 \(x=1\) 附近的平滑谷底。展开式则把同一个函数写成
 
@@ -485,7 +477,7 @@ end for
 
 其中 \(M=\{\mathrm{direct},\mathrm{expanded},\mathrm{horner}\}\)，并基于 \codeinline{err} 进一步统计最大误差、峰值位置与中位误差。
 
-\blocktitle{问题答案}
+\blocktitle{答案}
 
 相对误差统计结果如下。图中使用离散采样点而非折线连接；靠近 \(x=1\) 的针状峰来自相对误差分母 \(\lvert(x-1)^{10}\rvert\) 极小，少量绝对舍入误差被放大。相邻采样点误差可差多个数量级，若用折线连接会产生视觉上的竖直突变线，因此这里展示采样分布而不把它解释成连续曲线突变。
 
@@ -516,8 +508,6 @@ quad & horner & 9.3896E+3 & 0.99975 & 1.3699E-24 \\
 }
 
 其中最显著的退化出现在 \codeinline{float} 精度的 \codeinline{expanded} 形式，其最大相对误差达到 1.7450E+31，峰值出现在 \(x=0.99975002\) 附近。相比之下，\codeinline{float} 精度的直接形式最大相对误差仅为 7.5107E-5。即使在 \codeinline{quad} 精度下，展开形式的最大相对误差仍达到 1.2522E+4，说明表达式结构对稳定性的影响并不会因精度提升而完全消失。
-
-\blocktitle{分析}
 
 本小问关注的是相对误差的分布，而不是函数值本身。相对误差按
 
@@ -558,7 +548,7 @@ end for
 
 其中 \(M=\{\mathrm{direct},\mathrm{expanded},\mathrm{horner}\}\)，并基于 \codeinline{err} 进一步统计最大误差、峰值位置与中位误差。
 
-\blocktitle{问题答案}
+\blocktitle{答案}
 
 Horner 方法的独立对比结果如下。表中``最大误差改善倍数''和``中位误差改善倍数''均定义为 \codeinline{expanded} 误差除以 \codeinline{horner} 误差；数值大于 \(1\) 表示 Horner 优于朴素展开。
 
@@ -581,8 +571,6 @@ quad & 1.8490E-31 & 1.2522E+4 & 9.3896E+3 & 1.3336E+0 & 1.6949E+0 \\
 }
 
 结果表明，Horner 方法在三种精度下都比朴素展开稳定；以 \codeinline{float} 为例，最大相对误差从 1.7450E+31 降到 4.9415E+30，改善约 3.5314 倍。但它仍显著劣于直接形式：同一精度下 \codeinline{direct} 的最大相对误差只有 7.5107E-5。结论是 Horner 改善了展开式的运算顺序，但没有恢复直接形式保留的关键小量结构 \((x-1)\)。
-
-\blocktitle{分析}
 
 本小问关注 Horner 方法的作用边界。Horner 写法减少了显式幂次计算和中间加减次数，所以相对朴素展开有稳定性收益；表中三种精度的最大误差改善倍数分别为 3.5314E+0、1.8240E+0 和 1.3336E+0。不过 Horner 仍是在计算展开后的同一个多项式，无法消除 \(x\approx 1\) 时多个 \(O(1)\) 项抵消成极小量的结构性问题。因此它优于朴素展开，但与直接形式相比仍不是同一稳定性等级。真正稳定的策略是保留因式分解形式 \((x-1)^{10}\)，或在必须使用展开式时再引入补偿求和、局部重参数化等额外手段。
 
@@ -622,7 +610,7 @@ end for
 
 通过比较 \codeinline{y\_dir} 与 \codeinline{y\_alt} 的误差变化，可直接观察 half precision 下的舍入误差放大现象。
 
-\blocktitle{问题答案}
+\blocktitle{答案}
 
 \codeinline{\_Float16} 的主要数值指标如表所示。
 
@@ -644,8 +632,6 @@ max finite & 65504 \\
 }
 
 上述结果与 binary16 的 \(1\) 位符号位、\(5\) 位指数位和 \(10\) 位尾数位结构一致，说明实验环境中的 half precision 实现符合常见 IEEE 754 binary16 格式。
-
-\blocktitle{分析}
 
 half precision 在 \(1\) 附近的间隔约为 \(2^{-10}\)。当 \(t\) 小于或接近这一阈值时，\(1+t\) 将首先被舍入回 \(1\)，进而使 \((1+t)^2-1\) 被舍入为 \(0\)。本题中的首个失真点正好出现在 \(t=0.00048828125\)，即 machine epsilon 的一半附近，这与 binary16 的舍入行为相一致。由此可见，在低精度格式中，算法结构往往比``理论等价''更重要；对含有相消项的表达式进行代数改写，是避免灾难性误差的关键手段。
 
@@ -681,7 +667,7 @@ end for
 
 通过比较 \codeinline{y\_dir} 与 \codeinline{y\_alt} 的误差变化，可直接观察 half precision 下的舍入误差放大现象。
 
-\blocktitle{问题答案}
+\blocktitle{答案}
 
 为说明舍入误差的严重程度，选取表达式
 
@@ -691,15 +677,15 @@ end for
 
 其精确值为 \(2+t\)。当 \(t=0.00048828125\) 时，半精度直接计算结果已退化为 \(0\)，而精确值仍为 \(2.00048828125\)；此时相对误差达到 1.0000E+0。若改写为 \(2+t\)，同一点的相对误差仅为 2.4408E-4。
 
+图中的跃变来自 half precision 的离散舍入阈值。\(2+t\) 在 \(t\le 2^{-10}\) 时会被舍入到 \(2\)；直接表达式更敏感，因为 \(1+t\) 在 \(t\le 2^{-11}\) 时会先被舍入到 \(1\)，随后 \((1+t)^2-1\) 直接变为 \(0\)。
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.88\linewidth,height=0.78\textheight,keepaspectratio,alt={Problem 3 roundoff comparison in half precision}]{../../../result/problem3_roundoff.png}
+\includegraphics[width=0.96\linewidth,height=0.84\textheight,keepaspectratio,alt={Problem 3 roundoff comparison in half precision}]{../../../result/problem3_roundoff.png}
 \caption{Problem 3 roundoff comparison in half precision}
 \end{figure}
 
-\blocktitle{分析}
-
-half precision 在 \(1\) 附近的间隔约为 \(2^{-10}\)。当 \(t\) 小于或接近这一阈值时，\(1+t\) 将首先被舍入回 \(1\)，进而使 \((1+t)^2-1\) 被舍入为 \(0\)。本题中的首个失真点正好出现在 \(t=0.00048828125\)，即 machine epsilon 的一半附近，这与 binary16 的舍入行为相一致。由此可见，在低精度格式中，算法结构往往比``理论等价''更重要；对含有相消项的表达式进行代数改写，是避免灾难性误差的关键手段。
+half precision 在 \(1\) 附近的相邻间隔为 \(2^{-10}\)，最近舍入的半间隔为 \(2^{-11}\)。因此当 \(t=2^{-11}=0.00048828125\) 时，\(1+t\) 处在舍入边界并被舍入回 \(1\)，进而使 \((1+t)^2-1\) 变为 \(0\)，直接表达式的相对误差跃升到 1.0000E+0。另一方面，\(2\) 附近的 half 间隔是 \(2^{-9}\)，其半间隔是 \(2^{-10}\)；所以 \(2+t\) 的改写形式在 \(t=2^{-10}\) 开始被量化为 \(2\)，相对误差也会出现台阶。由此可见，图中的跃变是浮点量化阈值造成的确定性现象，不是随机噪声或绘图错误。
 
 \subsection{Problem 3(3)：误差严重程度结论}\label{problem-33ux8befux5deeux4e25ux91cdux7a0bux5ea6ux7ed3ux8bba}
 
@@ -709,36 +695,16 @@ half precision 在 \(1\) 附近的间隔约为 \(2^{-10}\)。当 \(t\) 小于或
 
 总结 half precision 的 machine epsilon 与舍入误差算例，说明半精度环境下 roundoff error 可达到的严重程度。
 
-\blocktitle{解决方式}
+\blocktitle{答案}
 
-本题采用的实验步骤可归纳为如下伪代码：
+由前两问可直接得到结论：本机半精度的机器精度为 \(2^{-10}=0.0009765625\)。在算例
 
-\begin{CodeBlock}
-Input : half type h, parameter set T
-Output: metric table and roundoff plot
+\[
+\frac{(1+t)^2-1}{t}
+\]
 
-probe epsilon(h), min_normal(h)
-probe true_min(h), max_finite(h)
+中，当 \(t=2^{-11}=0.00048828125\) 时，半精度直接计算结果为 \(0\)，而精确值仍为 \(2.00048828125\)，相对误差达到 1.0000E+0。也就是说，half precision 下的 roundoff error 可以严重到把本应为 \(2\) 量级的结果直接压成 \(0\)。
 
-for each t in T do
-    y_dir <- ((1 + t)^2 - 1) / t
-    y_alt <- 2 + t
-    y_ref <- high_precision(2 + t)
-    if y_ref != 0 then
-        err_dir <- relerr(y_dir, y_ref)
-        err_alt <- relerr(y_alt, y_ref)
-    end if
-end for
-\end{CodeBlock}
-
-通过比较 \codeinline{y\_dir} 与 \codeinline{y\_alt} 的误差变化，可直接观察 half precision 下的舍入误差放大现象。
-
-\blocktitle{问题答案}
-
-因此，half precision 的 machine epsilon 约为 \(2^{-10}\)，有效数字极为有限；一旦表达式包含相消运算，舍入误差完全可能将本应处于 \(2\) 量级的结果直接压缩为 \(0\)。
-
-\blocktitle{分析}
-
-half precision 在 \(1\) 附近的间隔约为 \(2^{-10}\)。当 \(t\) 小于或接近这一阈值时，\(1+t\) 将首先被舍入回 \(1\)，进而使 \((1+t)^2-1\) 被舍入为 \(0\)。本题中的首个失真点正好出现在 \(t=0.00048828125\)，即 machine epsilon 的一半附近，这与 binary16 的舍入行为相一致。由此可见，在低精度格式中，算法结构往往比``理论等价''更重要；对含有相消项的表达式进行代数改写，是避免灾难性误差的关键手段。
+该结论直接由 Problem 3(1) 和 Problem 3(2) 的结果归纳得到。核心事实是 half precision 在 \(1\) 附近只有约 \(2^{-10}\) 的相邻分辨率，因此 \(1+t\) 对小扰动并不连续响应；当 \(t\) 落到半间隔 \(2^{-11}\) 附近时，直接表达式会先把 \(1+t\) 舍入回 \(1\)，再把整个分子压成 \(0\)。改写为 \(2+t\) 后仍有 half 量化误差，但不会把结果从 \(2\) 量级直接压到 \(0\)。
 
 \end{document}
