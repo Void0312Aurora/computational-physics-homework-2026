@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import os
 import shutil
 from collections import defaultdict
 from dataclasses import dataclass
@@ -18,11 +19,12 @@ from matplotlib.patches import FancyBboxPatch
 getcontext().prec = 80
 
 ROOT = Path(__file__).resolve().parent
-RESULT_DIR = ROOT / "result"
-ANSWER_DIR = ROOT / "docs" / "answer"
+RESULT_DIR = Path(os.environ.get("HW03_RESULT_DIR", ROOT / "result")).resolve()
+ANSWER_DIR = Path(os.environ.get("HW03_ANSWER_DIR", ROOT / "docs" / "answer")).resolve()
 ASSET_DIR = ANSWER_DIR / "assets"
 SHARED_REF_DIR = ROOT.parent / "docs" / "ref"
 PROFILE_SOURCE = SHARED_REF_DIR / "pic.jpg"
+SKIP_ANSWER = os.environ.get("HW03_SKIP_ANSWER", "").lower() in {"1", "true", "yes"}
 
 PRECISION_ORDER = ["float", "double", "quad"]
 PRECISION_TITLES = {"float": "Single Precision", "double": "Double Precision", "quad": "Quad Precision"}
@@ -305,19 +307,28 @@ def analyze_problem2(rows: list[dict[str, str]]) -> list[Problem2Stats]:
     fig.savefig(RESULT_DIR / "problem2_zoom.png", dpi=220)
     plt.close(fig)
 
-    fig, axes = plt.subplots(1, 2, figsize=(13, 5), sharex=True, sharey=True)
+    fig, axes = plt.subplots(2, 1, figsize=(9.2, 9.4), sharex=True, sharey=True)
     for axis, method in zip(axes, ["expanded", "horner"]):
         for precision in PRECISION_ORDER:
             x_values = [item[0] for item in error_cache[precision][method]]
             y_values = [item[1] for item in error_cache[precision][method]]
-            axis.semilogy(x_values, y_values, linewidth=1.8, label=PRECISION_TITLES[precision])
-        axis.set_title(f"{METHOD_LABELS[method]} Relative Error")
-        axis.set_xlabel("x")
+            axis.semilogy(
+                x_values,
+                y_values,
+                linestyle="None",
+                marker=".",
+                markersize=2.8,
+                alpha=0.72,
+                label=PRECISION_TITLES[precision],
+            )
+        axis.axvline(1.0, color="#111111", linestyle="--", linewidth=0.9, alpha=0.55)
+        axis.set_title(f"{METHOD_LABELS[method]} Relative Error (sample points)")
+        axis.set_ylabel("Relative error")
         axis.grid(True, which="both", alpha=0.3)
-        axis.legend()
-    axes[0].set_ylabel("Relative error")
+        axis.legend(loc="upper right")
+    axes[-1].set_xlabel("x")
     fig.suptitle("Problem 2: Relative-Error Distribution", fontsize=15)
-    fig.tight_layout(rect=(0, 0, 1, 0.96))
+    fig.tight_layout(rect=(0, 0, 1, 0.965))
     fig.savefig(RESULT_DIR / "problem2_relative_error.png", dpi=220)
     plt.close(fig)
 
@@ -398,6 +409,11 @@ def build_answer(
     problem1: list[Problem1Summary], problem2: list[Problem2Stats], metrics: dict[str, str], roundoff: list[dict[str, Decimal]]
 ) -> None:
     ANSWER_DIR.mkdir(parents=True, exist_ok=True)
+    answer_path = ANSWER_DIR / "answer.md"
+    if answer_path.exists():
+        existing = answer_path.read_text(encoding="utf-8")
+        if "\\tableofcontents" in existing and "## Problem 1(1)" in existing:
+            return
 
     p1_lookup = {(item.precision, item.b): item for item in problem1}
     p2_lookup = {(item.precision, item.method): item for item in problem2}
@@ -427,6 +443,10 @@ def build_answer(
         )
         for precision, b_value, item in problem1_rows
     )
+    problem1_standard_table = "\n".join(
+        f"| {precision} | {b_value} | {format_decimal(item.standard_error, 4)} |"
+        for precision, b_value, item in problem1_rows
+    )
 
     problem2_table = "\n".join(
         (
@@ -436,6 +456,16 @@ def build_answer(
         for precision in PRECISION_ORDER
         for method in METHOD_ORDER
         for item in [p2_lookup[(precision, method)]]
+    )
+    problem2_horner_table = "\n".join(
+        (
+            f"| {precision} | {format_decimal(p2_lookup[(precision, 'direct')].max_rel_error, 4)} | "
+            f"{format_decimal(p2_lookup[(precision, 'expanded')].max_rel_error, 4)} | "
+            f"{format_decimal(p2_lookup[(precision, 'horner')].max_rel_error, 4)} | "
+            f"{format_decimal(p2_lookup[(precision, 'expanded')].max_rel_error / p2_lookup[(precision, 'horner')].max_rel_error, 4)} | "
+            f"{format_decimal(p2_lookup[(precision, 'expanded')].median_rel_error / p2_lookup[(precision, 'horner')].median_rel_error, 4)} |"
+        )
+        for precision in PRECISION_ORDER
     )
 
     answer = dedent(
@@ -488,7 +518,139 @@ def build_answer(
         x_2 = \\frac{{b-r}}{{2}}
         $$
 
-        的计算将涉及两个接近量之间的相减。作业要求首先考察该表达式在 `b=100` 附近的相对误差，然后增大 $b$ 取值并列表比较，最后将小根公式改写为
+        的计算将涉及两个接近量之间的相减。
+
+        ## Problem 1(1)：$b=100$ 附近的误差考察
+
+        相关脚本：
+
+        - [本地 scripts/problem1.c](../../scripts/problem1.c)
+        - [GitHub scripts/problem1.c](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/03/scripts/problem1.c)
+
+        ### 待求问题
+
+        首先考察该表达式在 `b=100` 附近的相对误差。
+
+        ### 解决方式
+
+        为使实验步骤表达得更规范，本文以伪代码方式给出求解过程：
+
+        ```text
+        Input : precisions P, b = 100
+        Output: standard-form error at b = 100
+
+        for each p in P do
+            r <- sqrt(b^2 - 4)
+            x_std <- (b - r) / 2
+            x_ref <- ref_root(b)
+            err_std <- relerr(x_std, x_ref)
+        end for
+        ```
+
+        其中 `ref_root(b)` 表示高精度参考解，`relerr` 表示相对误差计算函数。
+
+        ### 问题答案
+
+        对于题目指定的 `b=100`，本机 IEEE `float` 运算给出
+
+        $$
+        x_2^{{\\text{{standard}}}} = 0.0100021362,
+        $$
+
+        高精度参考值约为 $0.010001000200050014$。标准公式相对误差为 {format_decimal(float_100.standard_error, 4)}。
+
+        题图第二页另给出 `b=97` 的三位有效数字教学示例：
+
+        $$
+        x_2^{{\\text{{exact}}}} = 0.01031, \\qquad
+        x_2^{{\\text{{standard}}}} = 0.01050,
+        $$
+
+        该示例的相对误差为 {format_decimal(slide_rel_error, 4)}，约为 `1.84%`，用于说明低精度三位有效数字运算中的相消误差；它不是 `b=100` 的主计算结果。
+
+        ### 分析
+
+        标准公式的不稳定性来源于相消误差。由近似关系
+
+        $$
+        \\sqrt{{b^2-4}} = b\\sqrt{{1-4/b^2}} \\approx b - \\frac{{2}}{{b}}
+        $$
+
+        可知，当 $b$ 很大时，表达式
+
+        $$
+        b - \\sqrt{{b^2 - 4}}
+        $$
+
+        仅保留数量级约为 $2/b$ 的小量，高位有效数字会在减法阶段被提前消耗。因此，本问只能说明标准公式已经出现相消误差；如何通过代数改写避开该相减过程，留到 Problem 1(3) 再处理。
+
+        ## Problem 1(2)：大参数区间的误差比较
+
+        相关脚本：
+
+        - [本地 scripts/problem1.c](../../scripts/problem1.c)
+        - [GitHub scripts/problem1.c](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/03/scripts/problem1.c)
+
+        ### 待求问题
+
+        随后增大 $b$ 取值并列表比较误差变化。
+
+        ### 解决方式
+
+        为使实验步骤表达得更规范，本文以伪代码方式给出求解过程：
+
+        ```text
+        Input : precisions P, test values B
+        Output: standard-form error table
+
+        for each p in P do
+            for each b in B do
+                r <- sqrt(b^2 - 4)
+                x_std <- (b - r) / 2
+                x_ref <- ref_root(b)
+                err_std <- relerr(x_std, x_ref)
+            end for
+        end for
+        ```
+
+        其中 `ref_root(b)` 表示高精度参考解，`relerr` 表示相对误差计算函数。
+
+        ### 问题答案
+
+        继续增大 $b$ 并仍然只使用标准公式 $x_2=(b-r)/2$ 时，代表性相对误差如下。
+
+        | 精度 | b | 标准公式相对误差 |
+        |:--|--:|--:|
+        {problem1_standard_table}
+
+        对于 `float`，当 `b=10000` 时，标准公式的相对误差已达到 {format_decimal(float_10000.standard_error, 4)}，说明小根信息几乎完全丢失。对于 `double`，在 `b=10^10` 时也出现同类退化，而 `__float128` 在同一测试点仍维持 {format_decimal(quad_1e10.standard_error, 4)} 的误差量级。
+
+        ### 分析
+
+        标准公式的不稳定性来源于相消误差。由近似关系
+
+        $$
+        \\sqrt{{b^2-4}} = b\\sqrt{{1-4/b^2}} \\approx b - \\frac{{2}}{{b}}
+        $$
+
+        可知，当 $b$ 很大时，表达式
+
+        $$
+        b - \\sqrt{{b^2 - 4}}
+        $$
+
+        仅保留数量级约为 $2/b$ 的小量，高位有效数字会在减法阶段被提前消耗。表中的退化正是这一相消过程随 $b$ 增大而加剧的结果。下一问再对这个表达式进行代数改写，并用同一组 $b$ 值复现实验。
+
+        ## Problem 1(3)：有理化改写与再实验
+
+        相关脚本：
+
+        - [本地 scripts/problem1.c](../../scripts/problem1.c)
+        - [GitHub scripts/problem1.c](https://github.com/Void0312Aurora/computational-physics-homework-2026/blob/main/03/scripts/problem1.c)
+
+        ### 待求问题
+
+        最后将小根公式改写为
 
         $$
         x_2 = \\frac{{(b-r)(b+r)}}{{2(b+r)}} = \\frac{{2}}{{b+r}},
@@ -496,7 +658,7 @@ def build_answer(
 
         并重新进行同样的实验，以比较两种实现的稳定性差异。
 
-        ## 解决方案
+        ### 解决方式
 
         为使实验步骤表达得更规范，本文以伪代码方式给出求解过程：
 
@@ -518,32 +680,19 @@ def build_answer(
 
         其中 `ref_root(b)` 表示高精度参考解，`relerr` 表示相对误差计算函数。
 
-        ## 问题答案
+        ### 问题答案
 
-        1. 依据题图第二页给出的三位有效数字示例，取 `b=97` 时有
+        对同一组 $b$ 值重新实验后，代表性结果如下。
 
-        $$
-        x_2^{{\\text{{exact}}}} = 0.01031, \\qquad
-        x_2^{{\\text{{standard}}}} = 0.01050,
-        $$
+        ![Problem 1 relative-error comparison after rationalization](../../result/problem1_relative_error.png){{ width=88% }}
 
-        相应相对误差为 {format_decimal(slide_rel_error, 4)}，约为 `1.84%`。然而，在本机 IEEE `float` 运算中，`b=100` 的标准公式相对误差仅为 {format_decimal(float_100.standard_error, 4)}。这表明题图中“about 2%”的表述对应的是低精度教学示例，而非标准单精度在 `b=100` 时的实际结果。
-
-        2. 当 $b$ 继续增大时，标准公式的误差迅速放大，而有理化公式保持稳定。误差变化趋势如图所示。
-
-        ![Problem 1 relative-error comparison](../../result/problem1_relative_error.png){{ width=88% }}
-
-        表 1 给出了代表性结果。
-
-        | 精度 | b | 标准误差 | 有理化误差 | 改进倍数 |
+        | 精度 | b | 标准公式相对误差 | 有理化公式相对误差 | 改进倍数 |
         |:--|--:|--:|--:|--:|
         {problem1_table}
 
-        对于 `float`，当 `b=10000` 时，标准公式的相对误差已达到 {format_decimal(float_10000.standard_error, 4)}，说明小根信息几乎完全丢失；对应的有理化误差仍只有 {format_decimal(float_10000.rationalized_error, 4)}。对于 `double`，在 `b=10^10` 时也出现同类退化，而 `__float128` 在同一测试点仍维持 {format_decimal(quad_1e10.standard_error, 4)} 的误差量级。
+        这些数据说明，有理化后未再出现与标准公式同量级的误差爆炸。实验范围内，有理化公式始终显著优于标准公式；例如在 `double` 且 $b=10^{{10}}$ 条件下，标准公式误差为 {format_decimal(double_1e10.standard_error, 4)}，而有理化公式误差为 {format_decimal(double_1e10.rationalized_error, 4)}。
 
-        3. 有理化后未再出现与标准公式同量级的误差爆炸。实验范围内，有理化公式始终显著优于标准公式；例如在 `double, b=10^10` 条件下，标准公式误差为 {format_decimal(double_1e10.standard_error, 4)}，而有理化公式误差为 {format_decimal(double_1e10.rationalized_error, 4)}。
-
-        ## 讨论和扩展
+        ### 分析
 
         标准公式的不稳定性来源于相消误差。由近似关系
 
@@ -608,9 +757,9 @@ def build_answer(
 
         造成该现象的直接原因在于：当 $x$ 接近 `1` 时，真值 $(x-1)^{{10}}$ 极小；若先将多项式展开为多个数量级接近的项再相加减，就会显著放大舍入误差。
 
-        2. 相对误差统计结果如下。
+        2. 相对误差统计结果如下。图中使用离散采样点而非折线连接；靠近 $x=1$ 的针状峰来自相对误差分母 $|(x-1)^{{10}}|$ 极小，少量绝对舍入误差被放大。相邻采样点误差可差多个数量级，若用折线连接会产生视觉上的竖直突变线，因此这里展示采样分布而不把它解释成连续曲线突变。
 
-        ![Problem 2 relative-error distribution](../../result/problem2_relative_error.png){{ width=88% }}
+        ![Problem 2 relative-error distribution](../../result/problem2_relative_error.png){{ width=96% }}
 
         | 精度 | 形式 | 最大相对误差 | 峰值位置 x | 中位相对误差 |
         |:--|:--|--:|--:|--:|
@@ -618,7 +767,13 @@ def build_answer(
 
         其中最显著的退化出现在 `float + expanded` 组合，其最大相对误差达到 {format_decimal(p2_float_expanded.max_rel_error, 4)}，峰值出现在 `x={format_compact_float(p2_float_expanded.x_at_max)}` 附近；相比之下，同为 `float` 的直接形式最大相对误差仅为 {format_decimal(p2_float_direct.max_rel_error, 4)}。即使在 `quad` 精度下，展开形式的最大相对误差仍达到 {format_decimal(p2_quad_expanded.max_rel_error, 4)}，说明表达式结构对稳定性的影响并不会因精度提升而完全消失。
 
-        3. Horner 方法明显优于朴素展开形式，但仍劣于直接形式。以 `float` 为例，Horner 形式的最大相对误差为 {format_decimal(p2_float_horner.max_rel_error, 4)}，相较朴素展开已有改善，但仍远大于直接形式。这说明 Horner 方法虽然减少了重复幂与大规模加减运算，却没有保留原问题中最关键的小量结构 $(x-1)$。
+        3. Horner 方法的独立对比结果如下。表中“最大误差改善倍数”和“中位误差改善倍数”均定义为 `expanded` 误差除以 `horner` 误差；数值大于 `1` 表示 Horner 优于朴素展开。
+
+        | 精度 | direct 最大相对误差 | expanded 最大相对误差 | horner 最大相对误差 | 最大误差改善倍数 | 中位误差改善倍数 |
+        |:--|--:|--:|--:|--:|--:|
+        {problem2_horner_table}
+
+        结果表明，Horner 方法在三种精度下都比朴素展开稳定；以 `float` 为例，最大相对误差从 {format_decimal(p2_float_expanded.max_rel_error, 4)} 降到 {format_decimal(p2_float_horner.max_rel_error, 4)}，改善约 {format_decimal(p2_float_expanded.max_rel_error / p2_float_horner.max_rel_error, 4)} 倍。但它仍显著劣于直接形式：同一精度下 `direct` 的最大相对误差只有 {format_decimal(p2_float_direct.max_rel_error, 4)}。结论是 Horner 改善了展开式的运算顺序，但没有恢复直接形式保留的关键小量结构 $(x-1)$。
 
         ## 讨论和扩展
 
@@ -687,7 +842,7 @@ def build_answer(
         """
     ).replace("\n        ", "\n").lstrip()
 
-    (ANSWER_DIR / "answer.md").write_text(answer, encoding="utf-8")
+    answer_path.write_text(answer, encoding="utf-8")
 
 
 def main() -> None:
@@ -699,8 +854,9 @@ def main() -> None:
     problem1_summary = analyze_problem1(problem1_rows)
     problem2_summary = analyze_problem2(problem2_rows)
     metrics, roundoff = analyze_problem3(problem3_metrics, problem3_roundoff)
-    create_hw_report_assets()
-    build_answer(problem1_summary, problem2_summary, metrics, roundoff)
+    if not SKIP_ANSWER:
+        create_hw_report_assets()
+        build_answer(problem1_summary, problem2_summary, metrics, roundoff)
 
 
 if __name__ == "__main__":

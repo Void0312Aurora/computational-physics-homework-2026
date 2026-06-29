@@ -18,4 +18,18 @@ make docs
 ```
 
 This command rebuilds the executable, refreshes `result/*`, regenerates the answer
-report, and exports the document files.
+figures/tables, preserves the formatted `docs/answer/answer.md` source, and exports
+the document files.
+
+To rebuild the normalized submission folder and tar archive:
+
+```bash
+make package
+```
+
+The LaTeX report version follows the `HW/00/docs/answer/latex` layout and can be
+rebuilt with:
+
+```bash
+make -C docs/answer/latex
+```
