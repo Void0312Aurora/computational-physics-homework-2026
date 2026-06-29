@@ -16,8 +16,8 @@ def main() -> None:
     shared_hw_ref = project_root.parent / "docs" / "ref"
     counter_filter = shared_hw_ref / "fix_unnumbered_group_counters.lua"
     resource_path = (
-        f"{answer_dir}:{project_root}:{project_root / 'result'}:{project_root / 'results'}:"
-        f"{project_root / 'outputs'}:{shared_hw_ref}"
+        f"{answer_dir}:{answer_dir / 'assets'}:{project_root}:{project_root / 'result'}:"
+        f"{project_root / 'results'}:{project_root / 'outputs'}:{shared_hw_ref}"
     )
 
     os.chdir(answer_dir)
@@ -38,7 +38,7 @@ def main() -> None:
         "-V",
         "monofont=DejaVu Sans Mono",
         "-V",
-        "linestretch=1.12",
+        "linestretch=1.22",
     ]
 
     pypandoc.convert_file(
