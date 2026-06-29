@@ -1,0 +1,4 @@
+curve,min_current,max_current,range_width
+global_degree_6,-17.7912657089676,11.17,28.961265708967602
+piecewise_linear,-14.58,11.17,25.75
+shape_preserving_cubic,-14.58,11.169999999999993,25.749999999999993

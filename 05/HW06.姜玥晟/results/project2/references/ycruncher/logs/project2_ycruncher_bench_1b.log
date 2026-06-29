@@ -1,0 +1,90 @@
+
+Insufficient permissions to set thread priority. Please retry as root.
+
+Further messages for this warning will be suppressed.
+
+Checking processor/OS features...
+
+Required Features:
+    x64, ABM, BMI1, BMI2, ADX,
+    SSE, SSE2, SSE3, SSSE3, SSE4.1, SSE4.2,
+    AVX, FMA3, AVX2
+
+
+
+Reading Hardware Topology...
+
+Logical Cores:
+    0-87
+
+Physical Cores:
+    0-43
+
+NUMA Node 0:
+    0-21 44-65
+NUMA Node 1:
+    22-43 66-87
+
+Scheduling Group 0:
+    0-87
+
+
+
+Constant:   Pi
+Algorithm:  Chudnovsky (1988)
+
+Decimal Digits:       1,000,000,000
+Hexadecimal Digits:   830,482,024 (Disabled)
+
+Computation Mode:     Ram Only
+Multi-Threading:      Push Pool  ->  88 / ? / 88  (all cores)
+
+Start Time: Wed Apr 15 18:03:04 2026
+
+Working Memory...  4.61 GiB  (locked, spread: ?)
+Twiddle Tables...  13.2 MiB  (locked, spread: ?)
+
+Begin Computation:
+
+Series CommonP2B3...  70,513,681 terms  (Expansion Factor = 2.699)
+Time:    20.860 seconds  ( 0.348 minutes )
+Large Division...
+Time:    1.306 seconds  ( 0.022 minutes )
+InvSqrt(10005)...
+Time:    0.815 seconds  ( 0.014 minutes )
+Large Multiply...
+Time:    0.524 seconds  ( 0.009 minutes )
+
+Pi:  23.506 seconds  ( 0.392 minutes )
+
+Processing Hexadecimal Digits:
+Time:    0.011 seconds  ( 0.000 minutes )
+Base Converting:
+Time:    1.584 seconds  ( 0.026 minutes )
+Processing Decimal Digits:
+Time:    0.015 seconds  ( 0.000 minutes )
+
+Start Time: Wed Apr 15 18:03:04 2026
+End Time:   Wed Apr 15 18:03:30 2026
+
+Total Computation Time:     25.090 seconds  ( 0.418 minutes )
+Start-to-End Wall Time:     26.042 seconds  ( 0.434 minutes )
+
+CPU Utilization:         6896.99 %  +  552.10 % kernel overhead
+Multi-core Efficiency:     78.37 %  +    6.27 % kernel overhead
+
+Last Decimal Digits:  Pi
+6434543524 2766553567 4357021939 6394581990 5483278746  :  999,999,950
+7139868209 3196353628 2046127557 1517139511 5275045519  :  1,000,000,000
+
+Spot Check: Good through 1,000,000,000
+
+Program:              y-cruncher v0.8.7 Build 9547-icx
+Tuning Profile:       Linux/14-BDW ~ Kurumi => Kurumi
+Processor(s):         Intel(R) Xeon(R) CPU E5-2696 v4 @ 2.20GHz
+Topology:             88 threads / 44 cores / 2 sockets / 2 NUMA nodes
+Usable Memory:        135,033,192,448 ( 126 GiB)
+Est. CPU Frequency:   3,565,787,370 Hz
+
+Validation File: Pi - 20260415-180331.txt
+
