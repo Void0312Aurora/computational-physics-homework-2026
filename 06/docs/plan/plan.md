@@ -13,7 +13,7 @@
   - Problem 3 给出 `f(x)=x exp(x^2)` 在同样节点上的表格值，要求用所有适用公式近似 `f''(2.0)`，与精确值比较，并继续测试不同 `h` 下的最佳公式与误差反弹现象。
   - Problem 4 从前向差分定义出发，要求实现通用导数程序；对 `f(x)=x(x-1)` 在 `x=1` 处测试一组 `delta`；复现 `f(x)=sin x` 在 `x=0.5` 的 `log10-log10` 误差图；再依据课堂误差模型估计最佳步长 `h_best`。
 - Required outputs:
-  - symbolic derivative formulas for Problem 1
+  - handwritten symbolic derivative formulas for Problem 1 in the report
   - numeric tables, error scans, and figures for Problems 2 to 4
   - `docs/answer/answer.md`, `answer.docx`, and `answer.pdf`
 - Numerical or implementation constraints:
@@ -24,14 +24,13 @@
 
 - Language/tool choice: `Python 3.13 + sympy + numpy + matplotlib + pypandoc`
 - Core algorithm or script plan:
-  - use Taylor expansion and finite-difference moment conditions to derive Problem 1 formulas symbolically
+  - derive Problem 1 formulas in the report with Taylor expansion and finite-difference moment conditions; no script is needed for the pure-theory derivation
   - evaluate lecture-applicable first- and second-derivative stencils on the given `h=0.1` tables
   - sweep `h` over logarithmic grids for Problems 2 and 3 to study truncation-versus-roundoff tradeoffs
   - generate the requested Problem 4 forward-difference tables and the `sin(x)` log-log error model
 - Output files to create:
   - `solution.py`
   - `scripts/hw06_analysis.py`
-  - `result/problem1_formulas.md`
   - `result/*.csv`
   - `result/*.png`
   - `result/hw06_summary.json`

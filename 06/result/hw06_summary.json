@@ -1,346 +1,4 @@
 {
-  "problem1": {
-    "report": "result/problem1_formulas.md",
-    "coefficient_table": "result/problem1_coefficients.csv",
-    "cases": [
-      {
-        "derivative_order": 2,
-        "family": "forward",
-        "offsets": [
-          0,
-          1,
-          2
-        ],
-        "weights": [
-          "1",
-          "-2",
-          "1"
-        ],
-        "formula_latex": "f^{(2)}(x) = \\frac{f(x) - 2\\,f(x+h) + f(x+2h)}{h^{2}} + O(h^{1})",
-        "truncation_order": 1,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} = 0",
-          "c_{1} + 2\\,c_{2} = 0",
-          "c_{1} + 4\\,c_{2} = 2"
-        ],
-        "leading_error_order": 1,
-        "leading_error_coefficient": "1"
-      },
-      {
-        "derivative_order": 2,
-        "family": "backward",
-        "offsets": [
-          -2,
-          -1,
-          0
-        ],
-        "weights": [
-          "1",
-          "-2",
-          "1"
-        ],
-        "formula_latex": "f^{(2)}(x) = \\frac{f(x-2h) - 2\\,f(x-h) + f(x)}{h^{2}} + O(h^{1})",
-        "truncation_order": 1,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} = 0",
-          "-2\\,c_{0} - c_{1} = 0",
-          "4\\,c_{0} + c_{1} = 2"
-        ],
-        "leading_error_order": 1,
-        "leading_error_coefficient": "-1"
-      },
-      {
-        "derivative_order": 2,
-        "family": "central",
-        "offsets": [
-          -1,
-          0,
-          1
-        ],
-        "weights": [
-          "1",
-          "-2",
-          "1"
-        ],
-        "formula_latex": "f^{(2)}(x) = \\frac{f(x-h) - 2\\,f(x) + f(x+h)}{h^{2}} + O(h^{2})",
-        "truncation_order": 2,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} = 0",
-          "-c_{0} + c_{2} = 0",
-          "c_{0} + c_{2} = 2"
-        ],
-        "leading_error_order": 2,
-        "leading_error_coefficient": "1/12"
-      },
-      {
-        "derivative_order": 3,
-        "family": "forward",
-        "offsets": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "weights": [
-          "-1",
-          "3",
-          "-3",
-          "1"
-        ],
-        "formula_latex": "f^{(3)}(x) = \\frac{-f(x) + 3\\,f(x+h) - 3\\,f(x+2h) + f(x+3h)}{h^{3}} + O(h^{1})",
-        "truncation_order": 1,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} = 0",
-          "c_{1} + 2\\,c_{2} + 3\\,c_{3} = 0",
-          "c_{1} + 4\\,c_{2} + 9\\,c_{3} = 0",
-          "c_{1} + 8\\,c_{2} + 27\\,c_{3} = 6"
-        ],
-        "leading_error_order": 1,
-        "leading_error_coefficient": "3/2"
-      },
-      {
-        "derivative_order": 3,
-        "family": "backward",
-        "offsets": [
-          -3,
-          -2,
-          -1,
-          0
-        ],
-        "weights": [
-          "-1",
-          "3",
-          "-3",
-          "1"
-        ],
-        "formula_latex": "f^{(3)}(x) = \\frac{-f(x-3h) + 3\\,f(x-2h) - 3\\,f(x-h) + f(x)}{h^{3}} + O(h^{1})",
-        "truncation_order": 1,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} = 0",
-          "-3\\,c_{0} - 2\\,c_{1} - c_{2} = 0",
-          "9\\,c_{0} + 4\\,c_{1} + c_{2} = 0",
-          "-27\\,c_{0} - 8\\,c_{1} - c_{2} = 6"
-        ],
-        "leading_error_order": 1,
-        "leading_error_coefficient": "-3/2"
-      },
-      {
-        "derivative_order": 3,
-        "family": "central",
-        "offsets": [
-          -2,
-          -1,
-          0,
-          1,
-          2
-        ],
-        "weights": [
-          "-1/2",
-          "1",
-          "0",
-          "-1",
-          "1/2"
-        ],
-        "formula_latex": "f^{(3)}(x) = \\frac{-\\frac{1}{2}\\,f(x-2h) + f(x-h) - f(x+h) + \\frac{1}{2}\\,f(x+2h)}{h^{3}} + O(h^{2})",
-        "truncation_order": 2,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} + c_{4} = 0",
-          "-2\\,c_{0} - c_{1} + c_{3} + 2\\,c_{4} = 0",
-          "4\\,c_{0} + c_{1} + c_{3} + 4\\,c_{4} = 0",
-          "-8\\,c_{0} - c_{1} + c_{3} + 8\\,c_{4} = 6",
-          "16\\,c_{0} + c_{1} + c_{3} + 16\\,c_{4} = 0"
-        ],
-        "leading_error_order": 2,
-        "leading_error_coefficient": "1/4"
-      },
-      {
-        "derivative_order": 4,
-        "family": "forward",
-        "offsets": [
-          0,
-          1,
-          2,
-          3,
-          4
-        ],
-        "weights": [
-          "1",
-          "-4",
-          "6",
-          "-4",
-          "1"
-        ],
-        "formula_latex": "f^{(4)}(x) = \\frac{f(x) - 4\\,f(x+h) + 6\\,f(x+2h) - 4\\,f(x+3h) + f(x+4h)}{h^{4}} + O(h^{1})",
-        "truncation_order": 1,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} + c_{4} = 0",
-          "c_{1} + 2\\,c_{2} + 3\\,c_{3} + 4\\,c_{4} = 0",
-          "c_{1} + 4\\,c_{2} + 9\\,c_{3} + 16\\,c_{4} = 0",
-          "c_{1} + 8\\,c_{2} + 27\\,c_{3} + 64\\,c_{4} = 0",
-          "c_{1} + 16\\,c_{2} + 81\\,c_{3} + 256\\,c_{4} = 24"
-        ],
-        "leading_error_order": 1,
-        "leading_error_coefficient": "2"
-      },
-      {
-        "derivative_order": 4,
-        "family": "backward",
-        "offsets": [
-          -4,
-          -3,
-          -2,
-          -1,
-          0
-        ],
-        "weights": [
-          "1",
-          "-4",
-          "6",
-          "-4",
-          "1"
-        ],
-        "formula_latex": "f^{(4)}(x) = \\frac{f(x-4h) - 4\\,f(x-3h) + 6\\,f(x-2h) - 4\\,f(x-h) + f(x)}{h^{4}} + O(h^{1})",
-        "truncation_order": 1,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} + c_{4} = 0",
-          "-4\\,c_{0} - 3\\,c_{1} - 2\\,c_{2} - c_{3} = 0",
-          "16\\,c_{0} + 9\\,c_{1} + 4\\,c_{2} + c_{3} = 0",
-          "-64\\,c_{0} - 27\\,c_{1} - 8\\,c_{2} - c_{3} = 0",
-          "256\\,c_{0} + 81\\,c_{1} + 16\\,c_{2} + c_{3} = 24"
-        ],
-        "leading_error_order": 1,
-        "leading_error_coefficient": "-2"
-      },
-      {
-        "derivative_order": 4,
-        "family": "central",
-        "offsets": [
-          -2,
-          -1,
-          0,
-          1,
-          2
-        ],
-        "weights": [
-          "1",
-          "-4",
-          "6",
-          "-4",
-          "1"
-        ],
-        "formula_latex": "f^{(4)}(x) = \\frac{f(x-2h) - 4\\,f(x-h) + 6\\,f(x) - 4\\,f(x+h) + f(x+2h)}{h^{4}} + O(h^{2})",
-        "truncation_order": 2,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} + c_{4} = 0",
-          "-2\\,c_{0} - c_{1} + c_{3} + 2\\,c_{4} = 0",
-          "4\\,c_{0} + c_{1} + c_{3} + 4\\,c_{4} = 0",
-          "-8\\,c_{0} - c_{1} + c_{3} + 8\\,c_{4} = 0",
-          "16\\,c_{0} + c_{1} + c_{3} + 16\\,c_{4} = 24"
-        ],
-        "leading_error_order": 2,
-        "leading_error_coefficient": "1/6"
-      },
-      {
-        "derivative_order": 5,
-        "family": "forward",
-        "offsets": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
-        "weights": [
-          "-1",
-          "5",
-          "-10",
-          "10",
-          "-5",
-          "1"
-        ],
-        "formula_latex": "f^{(5)}(x) = \\frac{-f(x) + 5\\,f(x+h) - 10\\,f(x+2h) + 10\\,f(x+3h) - 5\\,f(x+4h) + f(x+5h)}{h^{5}} + O(h^{1})",
-        "truncation_order": 1,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} + c_{4} + c_{5} = 0",
-          "c_{1} + 2\\,c_{2} + 3\\,c_{3} + 4\\,c_{4} + 5\\,c_{5} = 0",
-          "c_{1} + 4\\,c_{2} + 9\\,c_{3} + 16\\,c_{4} + 25\\,c_{5} = 0",
-          "c_{1} + 8\\,c_{2} + 27\\,c_{3} + 64\\,c_{4} + 125\\,c_{5} = 0",
-          "c_{1} + 16\\,c_{2} + 81\\,c_{3} + 256\\,c_{4} + 625\\,c_{5} = 0",
-          "c_{1} + 32\\,c_{2} + 243\\,c_{3} + 1024\\,c_{4} + 3125\\,c_{5} = 120"
-        ],
-        "leading_error_order": 1,
-        "leading_error_coefficient": "5/2"
-      },
-      {
-        "derivative_order": 5,
-        "family": "backward",
-        "offsets": [
-          -5,
-          -4,
-          -3,
-          -2,
-          -1,
-          0
-        ],
-        "weights": [
-          "-1",
-          "5",
-          "-10",
-          "10",
-          "-5",
-          "1"
-        ],
-        "formula_latex": "f^{(5)}(x) = \\frac{-f(x-5h) + 5\\,f(x-4h) - 10\\,f(x-3h) + 10\\,f(x-2h) - 5\\,f(x-h) + f(x)}{h^{5}} + O(h^{1})",
-        "truncation_order": 1,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} + c_{4} + c_{5} = 0",
-          "-5\\,c_{0} - 4\\,c_{1} - 3\\,c_{2} - 2\\,c_{3} - c_{4} = 0",
-          "25\\,c_{0} + 16\\,c_{1} + 9\\,c_{2} + 4\\,c_{3} + c_{4} = 0",
-          "-125\\,c_{0} - 64\\,c_{1} - 27\\,c_{2} - 8\\,c_{3} - c_{4} = 0",
-          "625\\,c_{0} + 256\\,c_{1} + 81\\,c_{2} + 16\\,c_{3} + c_{4} = 0",
-          "-3125\\,c_{0} - 1024\\,c_{1} - 243\\,c_{2} - 32\\,c_{3} - c_{4} = 120"
-        ],
-        "leading_error_order": 1,
-        "leading_error_coefficient": "-5/2"
-      },
-      {
-        "derivative_order": 5,
-        "family": "central",
-        "offsets": [
-          -3,
-          -2,
-          -1,
-          0,
-          1,
-          2,
-          3
-        ],
-        "weights": [
-          "-1/2",
-          "2",
-          "-5/2",
-          "0",
-          "5/2",
-          "-2",
-          "1/2"
-        ],
-        "formula_latex": "f^{(5)}(x) = \\frac{-\\frac{1}{2}\\,f(x-3h) + 2\\,f(x-2h) - \\frac{5}{2}\\,f(x-h) + \\frac{5}{2}\\,f(x+h) - 2\\,f(x+2h) + \\frac{1}{2}\\,f(x+3h)}{h^{5}} + O(h^{2})",
-        "truncation_order": 2,
-        "moment_equations": [
-          "c_{0} + c_{1} + c_{2} + c_{3} + c_{4} + c_{5} + c_{6} = 0",
-          "-3\\,c_{0} - 2\\,c_{1} - c_{2} + c_{4} + 2\\,c_{5} + 3\\,c_{6} = 0",
-          "9\\,c_{0} + 4\\,c_{1} + c_{2} + c_{4} + 4\\,c_{5} + 9\\,c_{6} = 0",
-          "-27\\,c_{0} - 8\\,c_{1} - c_{2} + c_{4} + 8\\,c_{5} + 27\\,c_{6} = 0",
-          "81\\,c_{0} + 16\\,c_{1} + c_{2} + c_{4} + 16\\,c_{5} + 81\\,c_{6} = 0",
-          "-243\\,c_{0} - 32\\,c_{1} - c_{2} + c_{4} + 32\\,c_{5} + 243\\,c_{6} = 120",
-          "729\\,c_{0} + 64\\,c_{1} + c_{2} + c_{4} + 64\\,c_{5} + 729\\,c_{6} = 0"
-        ],
-        "leading_error_order": 2,
-        "leading_error_coefficient": "1/3"
-      }
-    ]
-  },
   "problem2": {
     "exact_value": 22.16716829679195,
     "table_results": [
@@ -438,7 +96,77 @@
     ],
     "table_csv": "result/problem2_table_h0p1.csv",
     "sweep_csv": "result/problem2_error_sweep.csv",
-    "plot": "result/problem2_error_curves.png"
+    "plot": "result/problem2_error_curves.png",
+    "total_error_model_rows": [
+      {
+        "formula": "Forward O(h)",
+        "accuracy_order": 1,
+        "truncation_constant": 14.7781121978613,
+        "roundoff_constant_estimate": 29.5562243957226,
+        "model_best_h": 1.4901161193847656e-08,
+        "empirical_best_h": 1.7103410003378377e-08,
+        "best_h_ratio_empirical_over_model": 1.147790415852959,
+        "model_min_error": 4.40422064002195e-07,
+        "empirical_min_error": 2.2081330541823263e-08
+      },
+      {
+        "formula": "Backward O(h)",
+        "accuracy_order": 1,
+        "truncation_constant": 14.7781121978613,
+        "roundoff_constant_estimate": 29.5562243957226,
+        "model_best_h": 1.4901161193847656e-08,
+        "empirical_best_h": 1.1094628943275195e-08,
+        "best_h_ratio_empirical_over_model": 0.7445479448847188,
+        "model_min_error": 4.40422064002195e-07,
+        "empirical_min_error": 2.349801420109543e-08
+      },
+      {
+        "formula": "Forward O(h^2)",
+        "accuracy_order": 2,
+        "truncation_constant": 12.31509349821775,
+        "roundoff_constant_estimate": 59.1124487914452,
+        "model_best_h": 6.434880564130781e-06,
+        "empirical_best_h": 2.976351441631313e-07,
+        "best_h_ratio_empirical_over_model": 0.046253406135026785,
+        "model_min_error": 1.529818643163185e-09,
+        "empirical_min_error": 1.1503331620588142e-10
+      },
+      {
+        "formula": "Backward O(h^2)",
+        "accuracy_order": 2,
+        "truncation_constant": 12.31509349821775,
+        "roundoff_constant_estimate": 59.1124487914452,
+        "model_best_h": 6.434880564130781e-06,
+        "empirical_best_h": 6.158482110660255e-06,
+        "best_h_ratio_empirical_over_model": 0.957046840152524,
+        "model_min_error": 1.529818643163185e-09,
+        "empirical_min_error": 3.7612579717460903e-11
+      },
+      {
+        "formula": "Central O(h^2)",
+        "accuracy_order": 2,
+        "truncation_constant": 6.157546749108875,
+        "roundoff_constant_estimate": 14.7781121978613,
+        "model_best_h": 5.107368088395462e-06,
+        "empirical_best_h": 3.3598182862837743e-06,
+        "best_h_ratio_empirical_over_model": 0.6578375061546229,
+        "model_min_error": 4.818626777607276e-10,
+        "empirical_min_error": 1.1542766742422828e-11
+      },
+      {
+        "formula": "Central O(h^4)",
+        "accuracy_order": 4,
+        "truncation_constant": 1.724113089750485,
+        "roundoff_constant_estimate": 22.16716829679195,
+        "model_best_h": 0.0008137648775505535,
+        "empirical_best_h": 0.00030283286655749455,
+        "best_h_ratio_empirical_over_model": 0.37213804000613393,
+        "model_min_error": 3.780345728964929e-12,
+        "empirical_min_error": 6.750155989720952e-14
+      }
+    ],
+    "total_error_model_csv": "result/problem2_total_error_model.csv",
+    "unit_roundoff": 1.1102230246251565e-16
   },
   "problem3": {
     "exact_value": 2402.318601458346,

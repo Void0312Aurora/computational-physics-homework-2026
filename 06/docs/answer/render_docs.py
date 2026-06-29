@@ -46,13 +46,19 @@ def main() -> None:
     pdf_args = common_args + [
         "--pdf-engine=xelatex",
         "-V",
-        "mainfont=TeX Gyre Pagella",
+        "papersize=a4",
+        "-V",
+        "geometry=left=2.7cm,right=2.7cm,top=2.5cm,bottom=2.5cm",
+        "-V",
+        "fontsize=12pt",
+        "-V",
+        "mainfont=Noto Serif CJK SC",
         "-V",
         "CJKmainfont=Noto Serif CJK SC",
         "-V",
         "monofont=DejaVu Sans Mono",
         "-V",
-        "linestretch=1.12",
+        "linestretch=1.36",
     ]
 
     print(f"Writing {docx_out.relative_to(project_root)}")
