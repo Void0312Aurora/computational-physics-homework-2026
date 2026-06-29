@@ -38,7 +38,9 @@
   - `plot_results.py` 读取原始 CSV，生成所有图表、汇总 CSV 与 `docs/answer/answer.md`
   - `docs/answer/render_docs.py` 使用 `pypandoc` 导出 `docx/pdf`，并生成兼容性占位 `answer.doc`
 - Output files to create:
-  - `solution.c`
+  - `scripts/problem1.c`
+  - `scripts/problem2.c`
+  - `scripts/problem3.c`
   - `plot_results.py`
   - `Makefile`
   - `README.md`
@@ -61,7 +63,7 @@
 - Commands to run:
   - `make docs`
 - Expected checks:
-  - `solution.c` 成功编译，并把原始 CSV 与日志写入 `result/`
+  - `scripts/problem1.c`、`scripts/problem2.c`、`scripts/problem3.c` 均可独立编译运行，并把原始 CSV 与日志写入 `result/`
   - Problem 1 的标准公式相对误差随 `b` 增大明显恶化，而有理化公式保持稳定
   - Problem 2 的 naive expanded 在 `x=1` 附近误差显著放大，Horner 法有明显改善
   - Problem 3 的 `_Float16` 指标与 binary16 预期一致，roundoff 示例出现明显失真

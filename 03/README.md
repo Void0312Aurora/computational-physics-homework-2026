@@ -5,7 +5,9 @@ questions shown in `docs/problem/`.
 
 ## Files
 
-- `solution.c`: raw experiments in `float`, `double`, `__float128`, and `_Float16`
+- `scripts/problem1.c`: standalone root-cancellation experiment
+- `scripts/problem2.c`: standalone polynomial-evaluation experiment
+- `scripts/problem3.c`: standalone half-precision roundoff experiment
 - `plot_results.py`: reads CSV outputs, computes high-precision references, draws plots,
   and regenerates `docs/answer/answer.md`
 - `docs/answer/render_docs.py`: exports `answer.docx` / `answer.pdf`
@@ -17,7 +19,7 @@ questions shown in `docs/problem/`.
 make docs
 ```
 
-This command rebuilds the executable, refreshes `result/*`, regenerates the answer
+This command runs the three problem scripts, refreshes `result/*`, regenerates the answer
 figures/tables, preserves the formatted `docs/answer/answer.md` source, and exports
 the document files.
 
