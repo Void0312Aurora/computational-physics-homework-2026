@@ -216,7 +216,19 @@ make frontier-curves
 Generate the supplementary CPU worker/grid profile:
 
 ```bash
-make cpu-profile CPU_PROFILE_ARGS="--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --output-prefix problem1_cpu_profile"
+make cpu-profile CPU_PROFILE_ARGS="--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --repeats 3 --warmup-runs 1 --timing-scope full_compute_plus_resource_monitor --output-prefix problem1_cpu_profile"
+```
+
+`problem1_cpu_profile.py` writes timed samples to `result/analysis/<prefix>_raw.csv`, aggregate mean/std/median/IQR/best statistics to `result/analysis/<prefix>.csv`, and plots elapsed/throughput error bars from the aggregate table.
+
+By default the worker sweep appends `os.cpu_count()` to the supplied `--worker-counts`.
+Use `--no-include-cpu-count` for tiny smoke tests that should run only the
+explicit worker counts.
+
+Run only the five per-problem import smoke checks without starting the large Problem 1 fractal render:
+
+```bash
+for n in 1 2 3 4 5; do make problem$n PROBLEM_ARGS="--import-smoke"; done
 ```
 
 Run the specialized high-throughput CPU Newton path:
@@ -228,8 +240,34 @@ make cpu-ultra CPU_ULTRA_ARGS="--compute-grid 80000 --render-grid 5000 --tile-ro
 Sweep several large-grid CPU ultra runs and summarize them:
 
 ```bash
-make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS="--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 256 --threads 88 --output-prefix problem1_cpu_ultra_bench"
+make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS="--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench"
+make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS="--compute-grids 80000 --render-grid 5000 --tile-rows 256 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run_tile256 --output-prefix problem1_cpu_ultra_bench_tile256"
 ```
+
+For lightweight smoke validation, keep the same runner on small grids:
+
+```bash
+make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS="--compute-grids 64,128 --render-grid 32 --tile-rows 8 --threads 2 --repeats 2 --warmup-runs 0 --output-prefix problem1_cpu_ultra_bench_smoke"
+```
+
+The bench runner writes per-run samples to `result/analysis/<prefix>_samples.csv` and aggregate mean/std/median/IQR/best statistics to `result/analysis/<prefix>_summary.csv` while preserving each timed sample's `source_command` and `source_csv`. The `problem1_cpu_ultra_bench*` files are the repeat-aware benchmark sweeps; the `tune_t*_r*.csv` files are the older single-run tile-row sweep; `result/problem1_cpu_ultra_summary.csv` describes the final render path.
+
+Run the small-grid correctness gate for CPU ultra against the Python reference:
+
+```bash
+make correctness-gate CORRECTNESS_ARGS="--compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --reference-workers 2 --output-prefix problem1_correctness_gate"
+```
+
+The correctness gate writes `result/analysis/problem1_correctness_gate.csv` and `.json`, including root-map difference rate, iteration-map difference, root-fraction/convergence deltas, field sanity status, and the same timing-scope metadata fields used by the benchmark runners.
+
+Refresh the lightweight experiment manifest, report dependency manifest, and environment metadata from existing artifacts:
+
+```bash
+make experiment-manifest
+```
+
+This writes the full artifact inventory to `result/analysis/experiment_manifest.json`
+and the report-only dependency list to `result/analysis/report_manifest.json`.
 
 Or point the plotting script at specific analysis files:
 
@@ -244,6 +282,7 @@ make frontier-curves FRONTIER_ARGS="--extreme-summary result/analysis/problem1_g
   - `result/gpu_pytorch/` 存放 PyTorch CUDA 路线的实验结果，每次新测试自动创建一个独立 run 目录
   - `result/gpu_triton/` 存放 Triton 集成后端和独立 Triton benchmark 的结果，每次新测试自动创建一个独立 run 目录
   - `result/analysis/` 存放 CPU 补充剖面、`cpu-ultra` 大网格 benchmark、跨后端对照、调参结论，以及 `problem1_frontier_curves*` 这类汇总曲线目录
+  - `result/analysis/experiment_manifest.json` 和 `result/analysis/metadata.json` 记录扩展实验产物的 source path、source command、checksum、mtime、是否大规模，以及当前 Python/platform/CPU/OMP/GPU 可见环境
   - 详细说明见 `result/README.md`
 - `docs/answer/answer.docx`
 - `docs/answer/answer.pdf`

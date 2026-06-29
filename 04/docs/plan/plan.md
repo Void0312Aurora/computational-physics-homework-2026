@@ -42,12 +42,14 @@
   - 使用 `pypandoc` 导出 `docs/answer`
 - Core algorithm or script plan:
   - Problem 1: 生成 Newton fractal，并追加 secant fractal；采用并行高采样计算后降采样输出，兼顾高分辨率与可交付图像尺寸
-  - Problem 1 CPU 补充实验：增加单独的 worker sweep 与 grid sweep，说明 CPU 主流程在不同并行度和不同网格下的耗时、吞吐率与内存增长
-  - Problem 1 CPU ultra 实现：使用 `C + OpenMP`、Newton 直写公式、上半平面对称复用和流式降采样，目标是在 `80000 x 80000` 级别上显著压低时间与内存
+  - Problem 1 CPU 补充实验：增加单独的 worker sweep 与 grid sweep，说明 CPU 主流程在不同并行度和不同网格下的耗时、吞吐率与内存增长；benchmark runner 输出 timed raw samples 与 mean/std/median/IQR/best 聚合表，并记录 `warmup_runs`、`timed_repeats`、`timing_scope`
+  - Problem 1 CPU ultra 实现：使用 `C + OpenMP`、Newton 直写公式、上半平面对称复用和流式降采样，目标是在 `80000 x 80000` 级别上显著压低时间与内存；bench wrapper 同样保留 per-run samples、aggregate summary、source command/source CSV 和冷热启动口径字段
   - Problem 1 附加 GPU 路线：使用 `PyTorch CUDA` 做 tiled streaming 计算，在固定显存预算下支持更高 compute grid
   - Problem 1 附加高精度 GPU 路线：把 `double-float Triton` 后端接入主链路，复用 Newton 共轭对称、分块调度和 run 目录管理，并保留 `post-polish + t8 replay` 的精度修正
-  - Problem 1 精度验证：增加 sparse reference validation，只在边界敏感局部 patch 上对比 `fp32 / double-float / fp64`，并支持 tracked center 模式以检查名义全局网格继续增大时的相对精度变化
+  - Problem 1 精度验证：增加 sparse reference validation，只在边界敏感局部 patch 上对比 `fp32 / double-float / fp64`，并支持 tracked center 模式以检查名义全局网格继续增大时的相对精度变化；另外增加小网格 `problem1_correctness_gate.py`，用 CPU ultra 输出的 root/iteration map 与 Python reference 对照，形成可自动失败的 acceptance gate
   - Problem 1 后处理分析：增加 frontier plotting 脚本，从已有 extreme sweep 和 sparse validation CSV 自动生成规模扩展曲线与精度前沿曲线
+  - 复现实验索引：增加轻量 `experiment_manifest.py`，从已有扩展 CSV/PNG 生成 `result/analysis/experiment_manifest.json`，并配套生成 `metadata.json` 记录 Python、平台、CPU、线程环境和可见 GPU 信息；同时生成 `report_manifest.json`，只列报告正文直接引用的 CSV/PNG/PDF 依赖；该步骤只做文件索引和环境采样，不触发 80k/2m 或 GPU 大规模重跑
+  - 分题入口复现：`problem1.py` 到 `problem5.py` 显式导入 `scripts.solution`，避免误命中根目录 `solution.py` 包装器；提供 `--import-smoke` 用于验证 Makefile 分题入口导入链路
   - 文档增强：在 `docs/answer/answer.md` 中补充算法公式、推导链、结果表和大网格实验摘要，并说明哪些内容属于主提交流水线、哪些内容属于 `HW/04` 内的扩展研究进展
   - Problem 2: 在代表性区间 `[-10, 2]` 扫描变号区间，并用 safeguarded Newton-bisection 求所有根
   - Problem 3: 对若干 `h` 值扫描括区，使用 Brent 型算法求根，并记录某些 `h` 下 `g(x)` 无根的情况
@@ -59,6 +61,8 @@
   - `problem1_cpu_profile.py`
   - `problem1_cpu_ultra.c`
   - `problem1_cpu_ultra_bench.py`
+  - `problem1_correctness_gate.py`
+  - `experiment_manifest.py`
   - `triton_doublefloat_backend.py`
   - `sparse_reference_validation.py`
   - `Makefile`
@@ -76,13 +80,21 @@
 
 - Commands to run:
   - `make docs`
+  - `for n in 1 2 3 4 5; do make problem$n PROBLEM_ARGS="--import-smoke"; done`
+  - `make cpu-profile CPU_PROFILE_ARGS="--worker-grid 64 --worker-render-grid 32 --worker-counts 1,2 --no-include-cpu-count --grid-sizes 64,128 --grid-workers 2 --repeats 2 --output-prefix problem1_cpu_profile_smoke"`
+  - `make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS="--compute-grids 64,128 --render-grid 32 --tile-rows 8 --threads 2 --repeats 2 --output-prefix problem1_cpu_ultra_bench_smoke"`
+  - `make correctness-gate CORRECTNESS_ARGS="--compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --reference-workers 2 --output-prefix problem1_correctness_gate"`
+  - `make experiment-manifest`
 - Expected checks:
   - Problem 1 图像正常生成，并能区分 basins
   - `doublefloat-triton` 主链路在小尺寸渲染和 stats-only 模式下均可运行，并保持主链路对称优化
-  - CPU supplementary profile 能生成 worker/grid 两组剖面，并输出 `problem1_cpu_profile.csv` 与 `problem1_cpu_profile.png`
-  - CPU ultra 路线能输出 `80000 x 80000` 的真实 benchmark 结果，并验证是否满足 `180 s` 内完成的目标
+  - CPU supplementary profile 能生成 worker/grid 两组剖面，并输出 raw samples、aggregate CSV 与 `problem1_cpu_profile.png`
+  - CPU ultra 路线能输出 `80000 x 80000` 的真实 benchmark 结果，并验证是否满足 `180 s` 内完成的目标；小规模 smoke 只验证 repeats/summary 框架，不替代大规模重跑
+  - correctness gate 能在 `128/32` 小网格下通过 CPU ultra vs Python reference 的 root-map、iteration-map、root fraction、convergence 和 field sanity 检查
   - sparse validation 能生成局部 patch 对照结果，并记录不同 nominal global grid 下的 `root_diff_vs_fp64`、`iter_diff_vs_fp64` 与坐标唯一性
   - frontier plotting 脚本能自动发现最新的 extreme sweep 与 tracked sparse validation 数据，并输出图像与摘要 CSV
+  - experiment manifest 能生成 `result/analysis/experiment_manifest.json`、`report_manifest.json` 与 `metadata.json`，记录扩展图表/CSV 的 source path、source command、checksum、mtime 和是否大规模，不重跑重实验
+  - 分题入口 smoke 能确认 `make problem1` 到 `make problem5` 的 wrapper 导入链路不会再命中根目录 `solution.py`
   - Problem 2 混合法在选定区间内找到全部根，并与高精度核对
   - Problem 3 Brent 型算法对选定 `h` 值稳定收敛
   - Problem 4 得到三个实根并使残差接近零

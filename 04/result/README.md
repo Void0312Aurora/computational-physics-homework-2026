@@ -36,9 +36,13 @@
 - `analysis/`
   - 存放 CPU 补充剖面、跨后端对照和结论性摘要
   - 当前包括 Triton 集成对照表、block tuning 结论、大网格 extreme sweep 摘要
-  - 现在也包括 `problem1_cpu_profile.*` 这类 CPU worker/grid 剖面文件，用于说明作业主流程本身的 CPU 可复现性与资源尺度
+  - 现在也包括 `problem1_cpu_profile.*` 这类 CPU worker/grid 剖面文件，用于说明作业主流程本身的 CPU 可复现性与资源尺度；`problem1_cpu_profile_raw.csv` 是 timed samples，`problem1_cpu_profile.csv` 是 mean/std/median/IQR/best 聚合表
+  - `make review-smoke` 生成 `problem1_cpu_profile_review_smoke*`、`problem1_cpu_ultra_bench_review_smoke*` 和 `problem1_correctness_gate_review_smoke*`；前两类 benchmark 用小网格记录 `warmup_runs=1`、`timed_repeats=3`，correctness gate 则是单次 CPU ultra vs Python reference acceptance check，不触发大尺寸 CPU/GPU/Triton 重跑
   - 现在还包括 `problem1_cpu_ultra_*` 与 `tune_t*_r*.csv` 这类大网格 CPU ultra benchmark 和调参结果，用于记录 `C + OpenMP` 分块 Newton 路线在 `80000 x 80000` 级别上的实际吞吐与常量级 RSS
+  - `problem1_cpu_ultra_bench_samples.csv` 是 CPU ultra per-run samples；`problem1_cpu_ultra_bench_summary.csv` 是 `tile_rows=64` compute-grid bench sweep 聚合表；`problem1_cpu_ultra_bench_tile256_summary.csv` 是 `80000 -> 5000, tile_rows=256` 的 repeat-aware 聚合表；`tune_t*_r*.csv` 是较早的单次 tile-row sweep；`problem1_cpu_ultra_summary.csv` 是 final render 摘要，这几类口径不要混读
+  - `problem1_correctness_gate.csv` 和 `.json` 是小网格 CPU ultra vs Python reference acceptance gate，记录 root-map/iteration-map/root-fraction/convergence 差异与 `warmup_runs/timed_repeats/timing_scope`
   - 也包括双浮点 `iter replay` 总结、replay mask tradeoff，以及 sparse high-grid reference validation
+  - `experiment_manifest.json` 由 `make experiment-manifest` 从已有 CSV/PNG/JSON 轻量生成，记录 source path、source command、checksum、mtime、是否大规模、CSV 口径字段和 timing metadata；`report_manifest.json` 是报告正文实际引用产物的窄依赖清单；`metadata.json` 记录当前 Python/platform/CPU/OMP/GPU 可见环境
   - 这类目录通常按分析主题命名，而不是按时间戳命名
 
 ## Note

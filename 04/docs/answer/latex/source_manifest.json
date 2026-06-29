@@ -1,0 +1,8 @@
+{
+  "latex_path": "answer.tex",
+  "latex_sha256": "c699abba91a0c796fa37bb860ccc6557c543f102c3148cec19220e765520a6b1",
+  "note": "LaTeX is a frozen snapshot; refresh only after answer.tex is synchronized with answer.md.",
+  "source_path": "../answer.md",
+  "source_sha256": "d790ba3c16f673d5058458ac9c9f6c1f183975ddd379a855cd8c0537bef4617a",
+  "updated_at": "2026-06-29T12:17:23+00:00"
+}

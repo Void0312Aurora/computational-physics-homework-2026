@@ -1,0 +1,6031 @@
+{
+  "artifact_count": 158,
+  "artifacts": [
+    {
+      "columns": [
+        "accepted",
+        "compute_grid",
+        "render_grid",
+        "tile_rows",
+        "threads",
+        "reference_workers",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "root_diff_fraction",
+        "root_diff_pixels",
+        "render_pixels",
+        "iter_mean_abs_diff",
+        "iter_max_abs_diff",
+        "max_root_fraction_abs_diff",
+        "convergence_abs_diff",
+        "mean_iterations_abs_diff",
+        "cpu_convergence_fraction",
+        "reference_convergence_fraction",
+        "cpu_mean_iterations",
+        "reference_mean_iterations",
+        "field_sanity_ok",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:41:49+00:00",
+      "path": "result/analysis/problem1_correctness_gate.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "162e04a292b9b8d450fac65aa753ecf7940a0e9253b243ada907e06a18a2d5e7",
+      "size_bytes": 984,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_correctness_gate_cpu_ultra --write-root-map result/analysis/problem1_correctness_gate_cpu_ultra_roots.bin --write-iter-map result/analysis/problem1_correctness_gate_cpu_ultra_iters.bin"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_correctness_gate_cpu_ultra.csv"
+      ],
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ],
+      "timed_repeats_values": [
+        "1"
+      ],
+      "timing_scope_values": [
+        "small_grid_correctness_full_run"
+      ],
+      "warmup_runs_values": [
+        "0"
+      ]
+    },
+    {
+      "is_large_scale": false,
+      "kind": "json",
+      "mtime": "2026-06-15T15:41:49+00:00",
+      "path": "result/analysis/problem1_correctness_gate.json",
+      "sha256": "56b3a68469e88ed7eba7d41d6cf2c8155cc24351b0d024566139e4f2e1bf9bb4",
+      "size_bytes": 1792,
+      "source_command": "make correctness-gate CORRECTNESS_ARGS=\"--compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --reference-workers 2 --output-prefix problem1_correctness_gate\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:41:49+00:00",
+      "path": "result/analysis/problem1_correctness_gate_cpu_ultra.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "51f0485a5eafbce2f4f2c47495fdeb6507becd1bdb17673c3e9b7ca4f36f8663",
+      "size_bytes": 332,
+      "source_command": "make correctness-gate CORRECTNESS_ARGS=\"--compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --reference-workers 2 --output-prefix problem1_correctness_gate\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "accepted",
+        "compute_grid",
+        "render_grid",
+        "tile_rows",
+        "threads",
+        "reference_workers",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "root_diff_fraction",
+        "root_diff_pixels",
+        "render_pixels",
+        "iter_mean_abs_diff",
+        "iter_max_abs_diff",
+        "max_root_fraction_abs_diff",
+        "convergence_abs_diff",
+        "mean_iterations_abs_diff",
+        "cpu_convergence_fraction",
+        "reference_convergence_fraction",
+        "cpu_mean_iterations",
+        "reference_mean_iterations",
+        "field_sanity_ok",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:32+00:00",
+      "path": "result/analysis/problem1_correctness_gate_review_smoke.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "27dfa9660e91a22c576fe542c0cbd0df21dcd3f9f77e0dca82abaefed755ae7f",
+      "size_bytes": 1036,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_correctness_gate_review_smoke_cpu_ultra --write-root-map result/analysis/problem1_correctness_gate_review_smoke_cpu_ultra_roots.bin --write-iter-map result/analysis/problem1_correctness_gate_review_smoke_cpu_ultra_iters.bin"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_correctness_gate_review_smoke_cpu_ultra.csv"
+      ],
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ],
+      "timed_repeats_values": [
+        "1"
+      ],
+      "timing_scope_values": [
+        "small_grid_correctness_full_run"
+      ],
+      "warmup_runs_values": [
+        "0"
+      ]
+    },
+    {
+      "is_large_scale": false,
+      "kind": "json",
+      "mtime": "2026-06-29T05:26:32+00:00",
+      "path": "result/analysis/problem1_correctness_gate_review_smoke.json",
+      "sha256": "9bf18ac05edf4dbb38d6cbb0e8d8a61c0002583f7c7a33bfb8f5367f86d906e8",
+      "size_bytes": 1870,
+      "source_command": "make correctness-gate CORRECTNESS_ARGS=\"--compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --reference-workers 2 --output-prefix problem1_correctness_gate\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:32+00:00",
+      "path": "result/analysis/problem1_correctness_gate_review_smoke_cpu_ultra.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "8542cf331e912185c9d3380b624bf7af19e45132abd110b591ef3e8c6b11af82",
+      "size_bytes": 332,
+      "source_command": "make correctness-gate CORRECTNESS_ARGS=\"--compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --reference-workers 2 --output-prefix problem1_correctness_gate\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "profile_mode",
+        "grid_size",
+        "render_grid",
+        "workers",
+        "warmup_runs",
+        "timed_repeats",
+        "sample_count",
+        "timing_scope",
+        "elapsed_seconds",
+        "elapsed_seconds_mean",
+        "elapsed_seconds_std",
+        "elapsed_seconds_median",
+        "elapsed_seconds_iqr",
+        "elapsed_seconds_best",
+        "throughput_mpoints_per_s",
+        "throughput_mpoints_per_s_mean",
+        "throughput_mpoints_per_s_std",
+        "throughput_mpoints_per_s_median",
+        "throughput_mpoints_per_s_iqr",
+        "throughput_mpoints_per_s_best",
+        "avg_cpu_percent",
+        "peak_cpu_percent",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "1024.0",
+        "2048.0",
+        "4096.0",
+        "8192.0"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:15:34+00:00",
+      "path": "result/analysis/problem1_cpu_profile.csv",
+      "render_grid_values": [
+        "1024.0",
+        "2048.0",
+        "256.0",
+        "512.0"
+      ],
+      "row_count": 10,
+      "sha256": "ee1c146e204feaa25199a570da52a9daee46bbffa849c4a931f0dca0ad1d8998",
+      "size_bytes": 4953,
+      "source_command": "make cpu-profile CPU_PROFILE_ARGS=\"--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --repeats 3 --warmup-runs 1 --timing-scope full_compute_plus_resource_monitor --output-prefix problem1_cpu_profile\"",
+      "source_command_inferred": true,
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "full_compute_plus_resource_monitor"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "is_large_scale": false,
+      "kind": "figure",
+      "mtime": "2026-06-29T05:15:35+00:00",
+      "path": "result/analysis/problem1_cpu_profile.png",
+      "sha256": "8c6dd0745e5e9e1f8dcd60679a3890bf92795bb8ade846801d544db153c151bd",
+      "size_bytes": 291984,
+      "source_command": "make cpu-profile CPU_PROFILE_ARGS=\"--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --repeats 3 --warmup-runs 1 --timing-scope full_compute_plus_resource_monitor --output-prefix problem1_cpu_profile\"",
+      "source_command_inferred": true,
+      "source_csv": "result/analysis/problem1_cpu_profile.csv"
+    },
+    {
+      "columns": [
+        "profile_mode",
+        "run_index",
+        "sample_role",
+        "grid_size",
+        "render_grid",
+        "workers",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "elapsed_seconds",
+        "avg_cpu_percent",
+        "peak_cpu_percent",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "throughput_mpoints_per_s"
+      ],
+      "grid_size_values": [
+        "1024.0",
+        "2048.0",
+        "4096.0",
+        "8192.0"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:15:34+00:00",
+      "path": "result/analysis/problem1_cpu_profile_raw.csv",
+      "render_grid_values": [
+        "1024.0",
+        "2048.0",
+        "256.0",
+        "512.0"
+      ],
+      "row_count": 30,
+      "sha256": "72de7e4c3766ce088835102b13f2712285ea4e627d1566b76f0a003423557303",
+      "size_bytes": 7474,
+      "source_command": "make cpu-profile CPU_PROFILE_ARGS=\"--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --repeats 3 --warmup-runs 1 --timing-scope full_compute_plus_resource_monitor --output-prefix problem1_cpu_profile\"",
+      "source_command_inferred": true,
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "full_compute_plus_resource_monitor"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "profile_mode",
+        "grid_size",
+        "render_grid",
+        "workers",
+        "warmup_runs",
+        "timed_repeats",
+        "sample_count",
+        "timing_scope",
+        "elapsed_seconds",
+        "elapsed_seconds_mean",
+        "elapsed_seconds_std",
+        "elapsed_seconds_median",
+        "elapsed_seconds_iqr",
+        "elapsed_seconds_best",
+        "throughput_mpoints_per_s",
+        "throughput_mpoints_per_s_mean",
+        "throughput_mpoints_per_s_std",
+        "throughput_mpoints_per_s_median",
+        "throughput_mpoints_per_s_iqr",
+        "throughput_mpoints_per_s_best",
+        "avg_cpu_percent",
+        "peak_cpu_percent",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "128.0",
+        "64.0"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:30+00:00",
+      "path": "result/analysis/problem1_cpu_profile_review_smoke.csv",
+      "render_grid_values": [
+        "16.0",
+        "32.0"
+      ],
+      "row_count": 4,
+      "sha256": "5c073f7d709c10a02d9eb56ad37cf443449dcde6424efbf46aa87417b2ab1595",
+      "size_bytes": 2233,
+      "source_command": "make cpu-profile CPU_PROFILE_ARGS=\"--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --repeats 3 --warmup-runs 1 --timing-scope full_compute_plus_resource_monitor --output-prefix problem1_cpu_profile\"",
+      "source_command_inferred": true,
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "smoke_warm_then_timed_full_compute"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "profile_mode",
+        "run_index",
+        "sample_role",
+        "grid_size",
+        "render_grid",
+        "workers",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "elapsed_seconds",
+        "avg_cpu_percent",
+        "peak_cpu_percent",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "throughput_mpoints_per_s"
+      ],
+      "grid_size_values": [
+        "128.0",
+        "64.0"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:30+00:00",
+      "path": "result/analysis/problem1_cpu_profile_review_smoke_raw.csv",
+      "render_grid_values": [
+        "16.0",
+        "32.0"
+      ],
+      "row_count": 12,
+      "sha256": "3e6427813458a74f7a076b9c89d2d01f25c3aa2df31152c4daf9fa74fdcbd797",
+      "size_bytes": 2730,
+      "source_command": "make cpu-profile CPU_PROFILE_ARGS=\"--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --repeats 3 --warmup-runs 1 --timing-scope full_compute_plus_resource_monitor --output-prefix problem1_cpu_profile\"",
+      "source_command_inferred": true,
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "smoke_warm_then_timed_full_compute"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "profile_mode",
+        "grid_size",
+        "render_grid",
+        "workers",
+        "warmup_runs",
+        "timed_repeats",
+        "sample_count",
+        "timing_scope",
+        "elapsed_seconds",
+        "elapsed_seconds_mean",
+        "elapsed_seconds_std",
+        "elapsed_seconds_median",
+        "elapsed_seconds_iqr",
+        "elapsed_seconds_best",
+        "throughput_mpoints_per_s",
+        "throughput_mpoints_per_s_mean",
+        "throughput_mpoints_per_s_std",
+        "throughput_mpoints_per_s_median",
+        "throughput_mpoints_per_s_iqr",
+        "throughput_mpoints_per_s_best",
+        "avg_cpu_percent",
+        "peak_cpu_percent",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "128.0",
+        "64.0"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:40:49+00:00",
+      "path": "result/analysis/problem1_cpu_profile_smoke.csv",
+      "render_grid_values": [
+        "16.0",
+        "32.0"
+      ],
+      "row_count": 5,
+      "sha256": "966c5c65ad2dca71e0bfcbba56eb2ece332cc2421786dea99e368cd0fc453cc6",
+      "size_bytes": 2555,
+      "source_command": "make cpu-profile CPU_PROFILE_ARGS=\"--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --repeats 3 --warmup-runs 1 --timing-scope full_compute_plus_resource_monitor --output-prefix problem1_cpu_profile\"",
+      "source_command_inferred": true,
+      "timed_repeats_values": [
+        "2"
+      ],
+      "timing_scope_values": [
+        "full_compute_plus_resource_monitor"
+      ],
+      "warmup_runs_values": [
+        "0"
+      ]
+    },
+    {
+      "columns": [
+        "profile_mode",
+        "run_index",
+        "sample_role",
+        "grid_size",
+        "render_grid",
+        "workers",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "elapsed_seconds",
+        "avg_cpu_percent",
+        "peak_cpu_percent",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "throughput_mpoints_per_s"
+      ],
+      "grid_size_values": [
+        "128.0",
+        "64.0"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:40:49+00:00",
+      "path": "result/analysis/problem1_cpu_profile_smoke_raw.csv",
+      "render_grid_values": [
+        "16.0",
+        "32.0"
+      ],
+      "row_count": 10,
+      "sha256": "4a77a8097069860d6816604efa07a7bc58fd2e403abc8622406fe3767aaab796",
+      "size_bytes": 2316,
+      "source_command": "make cpu-profile CPU_PROFILE_ARGS=\"--worker-grid 4096 --worker-render-grid 1024 --worker-counts 1,8,16,32,64 --grid-sizes 1024,2048,4096,8192 --grid-workers 64 --repeats 3 --warmup-runs 1 --timing-scope full_compute_plus_resource_monitor --output-prefix problem1_cpu_profile\"",
+      "source_command_inferred": true,
+      "timed_repeats_values": [
+        "2"
+      ],
+      "timing_scope_values": [
+        "full_compute_plus_resource_monitor"
+      ],
+      "warmup_runs_values": [
+        "0"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "20000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-05-06T13:08:56+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_20000.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "f5c256e002209daae2fa23bcfd9d0e4b20f54661ee4482be7e357c4d53138b08",
+      "size_bytes": 338,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "20000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:16:15+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_20000_r01.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "22c03db062c691cf7e31635bc4a2986286de6cd4e4ff66e9043e8265a5612fac",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "20000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:16:29+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_20000_r02.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "0371a824d14b4c25079b1541305d2a14147ee1e4ea2825908f0ca3d4785d5e96",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "20000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:16:42+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_20000_r03.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "e922bf58292f12f830f3a93fde962bac07b8146998854823e0c4afa0418351d3",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "20000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:16:02+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_20000_warmup01.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "ba20d7a9563b7e87825ea8ba1fbec91615107d6f29b780fb419f07f8f16dfc3b",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-05-06T13:08:58+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_40000.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "6f35072a5d7f35fea700cf06c85e1e6a2ee835ad4bd68ff416a13822476bf5e1",
+      "size_bytes": 338,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:17:10+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_40000_r01.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "389d05d00e684656d1822b8f385f87176d1528e5ce17d00212797890a241e23f",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:17:24+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_40000_r02.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "1f1c26de07dd3961c7519f393e07b09f4dd2711723fceea5489adec06ada6025",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:17:38+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_40000_r03.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "239ff5878611f26a8f71e9e6055df96fe1252b515dcaeb55fbdf1fc708c42c53",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:16:56+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_40000_warmup01.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "cc1f2aebb34e3c9fc1952a283dc9aec67350797d95dfdf8cc61a3b36f0647c9c",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-05-06T13:09:04+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_80000.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "c1b73e823f9ad50bb35b9cab775a02d070988d5a5a9b83c1f7514acd096009eb",
+      "size_bytes": 339,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:18:11+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_80000_r01.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "f43547daa10405d7e4055508b70ef5c29a8f200e93a826b598cabf0c9df4a434",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:18:28+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_80000_r02.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "ac5ea1fefd907e9addd91d00903e25043050281d1cbbcc1b26a9a28d7a58acf5",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:18:44+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_80000_r03.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "0e06f3538b91f9c1a6ae4718cfcda1972df339662648a19dcdb8efa70b4ecb4a",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:17:55+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_80000_warmup01.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "1dadbbdc2d7f3d3d87e5d75e06c8dfc3685ddf80d4da097c20af7944a22375c1",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r01.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "d55ce4bed5b5d08f8c6721867c4c3b81b410e19f15d20e844931fb0cf14c9fd6",
+      "size_bytes": 332,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r02.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "1502f7cb7382b38bd9a82cf9ab208ee07afd0ec9f122b78868e9d64dcd848b75",
+      "size_bytes": 332,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r03.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "5a4541d82352776698e781baa78413ad61952ddb85d0f3b8211fe52402f2dbd3",
+      "size_bytes": 332,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_warmup01.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "e563125220568406414af12266dd8d73c4df339f63552ff4f339c00811d6f23f",
+      "size_bytes": 332,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r01.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "4055f39685ee534ee2b7e01d1df9e807e3eae71c34bbae718691b048a03ea9d4",
+      "size_bytes": 331,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r02.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "35cabec0ffcbd15ee3c8a7efc6878a0008ab6d356438f0409efb20ec6b1541e2",
+      "size_bytes": 331,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r03.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "327e4a00c56acf92cf6c7af51610a0ffba251be7262819bf02cf0706abe00067",
+      "size_bytes": 331,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_warmup01.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "712e6fe12b5fa1df566fe371ca8ff4545583ef2a28bfc62b80a66aadb3221baf",
+      "size_bytes": 331,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "run_prefix",
+        "sample_role",
+        "run_index",
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "128",
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_samples.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 8,
+      "sha256": "c30d815c7c3afcd0dfbcd2cd0f44f76ad476cb4581f4e11ee5873efc706b9a5a",
+      "size_bytes": 3973,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_128_r01",
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_128_r02",
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_128_r03",
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_128_warmup01",
+        "./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_64_r01",
+        "./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_64_r02",
+        "./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_64_r03",
+        "./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_64_warmup01"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r02.csv",
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_warmup01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r02.csv",
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_warmup01.csv"
+      ],
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ],
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "smoke_warm_then_timed_process"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "run_prefix",
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "sample_count",
+        "timing_scope",
+        "elapsed_seconds",
+        "elapsed_seconds_mean",
+        "elapsed_seconds_std",
+        "elapsed_seconds_median",
+        "elapsed_seconds_iqr",
+        "elapsed_seconds_best",
+        "throughput_gpoints_per_s",
+        "throughput_gpoints_per_s_mean",
+        "throughput_gpoints_per_s_std",
+        "throughput_gpoints_per_s_median",
+        "throughput_gpoints_per_s_iqr",
+        "throughput_gpoints_per_s_best",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "128",
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:26:31+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_review_smoke_summary.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 2,
+      "sha256": "91ad4a50c21fe3c23b0e4f97cb8164020f2cbb621e7f3daf32dd83121b31db90",
+      "size_bytes": 2732,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_128_r01 | ./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_128_r02 | ./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_128_r03",
+        "./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_64_r01 | ./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_64_r02 | ./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_review_smoke_64_r03"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r01.csv | result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r02.csv | result/analysis/problem1_cpu_ultra_bench_review_smoke_128_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r01.csv | result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r02.csv | result/analysis/problem1_cpu_ultra_bench_review_smoke_64_r03.csv"
+      ],
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ],
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "smoke_warm_then_timed_process"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "run_prefix",
+        "sample_role",
+        "run_index",
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "20000",
+        "40000",
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:18:44+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_samples.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 12,
+      "sha256": "c5a841bd12e340b929de8e030a54472caf9cf6428d08ceb0bae38765bf1d7a47",
+      "size_bytes": 5449,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 20000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_20000_r01",
+        "./problem1_cpu_ultra --compute-grid 20000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_20000_r02",
+        "./problem1_cpu_ultra --compute-grid 20000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_20000_r03",
+        "./problem1_cpu_ultra --compute-grid 20000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_20000_warmup01",
+        "./problem1_cpu_ultra --compute-grid 40000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_40000_r01",
+        "./problem1_cpu_ultra --compute-grid 40000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_40000_r02",
+        "./problem1_cpu_ultra --compute-grid 40000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_40000_r03",
+        "./problem1_cpu_ultra --compute-grid 40000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_40000_warmup01",
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_80000_r01",
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_80000_r02",
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_80000_r03",
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_80000_warmup01"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_cpu_ultra_bench_20000_r01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_20000_r02.csv",
+        "result/analysis/problem1_cpu_ultra_bench_20000_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_20000_warmup01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_40000_r01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_40000_r02.csv",
+        "result/analysis/problem1_cpu_ultra_bench_40000_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_40000_warmup01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_80000_r01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_80000_r02.csv",
+        "result/analysis/problem1_cpu_ultra_bench_80000_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_80000_warmup01.csv"
+      ],
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ],
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "process_full_run"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:22:22+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_smoke_128.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "cfeb13a261930b571b1cda1ece62bfe7792ffb6a620bb1ceb585ff3f3e7f8073",
+      "size_bytes": 332,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:40:43+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_smoke_128_r01.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "f3c81ccd6eb931dab167ba9f0878598f4186bfdb71dac2fc5580164b87acbc50",
+      "size_bytes": 332,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "128"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:40:43+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_smoke_128_r02.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "963e42d55ccb08a2541bc6958136a38a8f7b38e03dcd8094b4a8c389cda6e1a5",
+      "size_bytes": 332,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:22:22+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_smoke_64.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "df1fd4621dcb3d705ac49f424669860e8e810f6bd1c57fcc0732bd4edca9f0cc",
+      "size_bytes": 331,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:40:43+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_smoke_64_r01.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "fc21b1373b9e9c962a500b41e53991ad52757a77c4dd1dbbdf56ad19f797bf33",
+      "size_bytes": 331,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:40:43+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_smoke_64_r02.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 1,
+      "sha256": "e7e7ff35e03afd88b998ff86708f3eaf2c6a4d5e507e454103ca760e08ec44f2",
+      "size_bytes": 331,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ]
+    },
+    {
+      "columns": [
+        "run_prefix",
+        "sample_role",
+        "run_index",
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "128",
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:40:43+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_smoke_samples.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 4,
+      "sha256": "c65b68b8f48d7158170c91b06768dbb8ed6eab1df2f09f38a1edc6fa956c3f75",
+      "size_bytes": 1983,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_smoke_128_r01",
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_smoke_128_r02",
+        "./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_smoke_64_r01",
+        "./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_smoke_64_r02"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_cpu_ultra_bench_smoke_128_r01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_smoke_128_r02.csv",
+        "result/analysis/problem1_cpu_ultra_bench_smoke_64_r01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_smoke_64_r02.csv"
+      ],
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ],
+      "timed_repeats_values": [
+        "2"
+      ],
+      "timing_scope_values": [
+        "process_full_run"
+      ],
+      "warmup_runs_values": [
+        "0"
+      ]
+    },
+    {
+      "columns": [
+        "run_prefix",
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "sample_count",
+        "timing_scope",
+        "elapsed_seconds",
+        "elapsed_seconds_mean",
+        "elapsed_seconds_std",
+        "elapsed_seconds_median",
+        "elapsed_seconds_iqr",
+        "elapsed_seconds_best",
+        "throughput_gpoints_per_s",
+        "throughput_gpoints_per_s_mean",
+        "throughput_gpoints_per_s_std",
+        "throughput_gpoints_per_s_median",
+        "throughput_gpoints_per_s_iqr",
+        "throughput_gpoints_per_s_best",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "128",
+        "64"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-06-15T15:40:43+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_smoke_summary.csv",
+      "render_grid_values": [
+        "32"
+      ],
+      "row_count": 2,
+      "sha256": "d1733de3c739c399404012482f6cd11f3c1e888f7775fb57205ec2a8a0a38697",
+      "size_bytes": 2172,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_smoke_128_r01 | ./problem1_cpu_ultra --compute-grid 128 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_smoke_128_r02",
+        "./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_smoke_64_r01 | ./problem1_cpu_ultra --compute-grid 64 --render-grid 32 --tile-rows 8 --threads 2 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_smoke_64_r02"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_cpu_ultra_bench_smoke_128_r01.csv | result/analysis/problem1_cpu_ultra_bench_smoke_128_r02.csv",
+        "result/analysis/problem1_cpu_ultra_bench_smoke_64_r01.csv | result/analysis/problem1_cpu_ultra_bench_smoke_64_r02.csv"
+      ],
+      "threads_values": [
+        "2"
+      ],
+      "tile_rows_values": [
+        "8"
+      ],
+      "timed_repeats_values": [
+        "2"
+      ],
+      "timing_scope_values": [
+        "process_full_run"
+      ],
+      "warmup_runs_values": [
+        "0"
+      ]
+    },
+    {
+      "columns": [
+        "run_prefix",
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "sample_count",
+        "timing_scope",
+        "elapsed_seconds",
+        "elapsed_seconds_mean",
+        "elapsed_seconds_std",
+        "elapsed_seconds_median",
+        "elapsed_seconds_iqr",
+        "elapsed_seconds_best",
+        "throughput_gpoints_per_s",
+        "throughput_gpoints_per_s_mean",
+        "throughput_gpoints_per_s_std",
+        "throughput_gpoints_per_s_median",
+        "throughput_gpoints_per_s_iqr",
+        "throughput_gpoints_per_s_best",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "20000",
+        "40000",
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:18:44+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 3,
+      "sha256": "c6bafc9bf41df0b462196c3c2daad85792e348a75a4c9e666449e87ee2175ae6",
+      "size_bytes": 3687,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 20000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_20000_r01 | ./problem1_cpu_ultra --compute-grid 20000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_20000_r02 | ./problem1_cpu_ultra --compute-grid 20000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_20000_r03",
+        "./problem1_cpu_ultra --compute-grid 40000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_40000_r01 | ./problem1_cpu_ultra --compute-grid 40000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_40000_r02 | ./problem1_cpu_ultra --compute-grid 40000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_40000_r03",
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_80000_r01 | ./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_80000_r02 | ./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 64 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_80000_r03"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_cpu_ultra_bench_20000_r01.csv | result/analysis/problem1_cpu_ultra_bench_20000_r02.csv | result/analysis/problem1_cpu_ultra_bench_20000_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_40000_r01.csv | result/analysis/problem1_cpu_ultra_bench_40000_r02.csv | result/analysis/problem1_cpu_ultra_bench_40000_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_80000_r01.csv | result/analysis/problem1_cpu_ultra_bench_80000_r02.csv | result/analysis/problem1_cpu_ultra_bench_80000_r03.csv"
+      ],
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ],
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "process_full_run"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:19:06+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_tile256_80000_r01.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "0acb64a1cbd40e42df4d574b8b486a911372943e5231064795b466c3c7baaff1",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "256"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:19:11+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_tile256_80000_r02.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "222eacab1c03de616165cd6cea930ed4e03d645f9b37adf1ac9a2534ef019564",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "256"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:19:17+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_tile256_80000_r03.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "18bbed633703ffd6f46cc3d4af429ad43fbd77eff50cfc7ac913f7821f708d5f",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "256"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:19:00+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_tile256_80000_warmup01.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "602d3d4428a6586596e9fdc8c086d988c9d03333cb79bef325e7fcf5d198eeb2",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-bench CPU_ULTRA_BENCH_ARGS=\"--compute-grids 20000,40000,80000 --render-grid 5000 --tile-rows 64 --threads 88 --repeats 3 --warmup-runs 1 --timing-scope process_full_run --output-prefix problem1_cpu_ultra_bench\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "256"
+      ]
+    },
+    {
+      "columns": [
+        "run_prefix",
+        "sample_role",
+        "run_index",
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "timing_scope",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:19:17+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_tile256_samples.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 4,
+      "sha256": "4cfa7e5f17d94f7977dfcc110fe9ad61332951e1c4866d20113c7002a4c7fd29",
+      "size_bytes": 2149,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_tile256_80000_r01",
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_tile256_80000_r02",
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_tile256_80000_r03",
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_tile256_80000_warmup01"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_cpu_ultra_bench_tile256_80000_r01.csv",
+        "result/analysis/problem1_cpu_ultra_bench_tile256_80000_r02.csv",
+        "result/analysis/problem1_cpu_ultra_bench_tile256_80000_r03.csv",
+        "result/analysis/problem1_cpu_ultra_bench_tile256_80000_warmup01.csv"
+      ],
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "256"
+      ],
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "process_full_run_tile256"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "run_prefix",
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "warmup_runs",
+        "timed_repeats",
+        "sample_count",
+        "timing_scope",
+        "elapsed_seconds",
+        "elapsed_seconds_mean",
+        "elapsed_seconds_std",
+        "elapsed_seconds_median",
+        "elapsed_seconds_iqr",
+        "elapsed_seconds_best",
+        "throughput_gpoints_per_s",
+        "throughput_gpoints_per_s_mean",
+        "throughput_gpoints_per_s_std",
+        "throughput_gpoints_per_s_median",
+        "throughput_gpoints_per_s_iqr",
+        "throughput_gpoints_per_s_best",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "source_command",
+        "source_csv"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-06-29T05:19:17+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_bench_tile256_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "26ac7c0ec23468f7ba5863cf7b02ca7d9f490d604110aab14d153923f17e5b18",
+      "size_bytes": 1658,
+      "source_command": [
+        "./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_tile256_80000_r01 | ./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_tile256_80000_r02 | ./problem1_cpu_ultra --compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --max-iter 55 --tol 5e-07 --output-prefix problem1_cpu_ultra_bench_tile256_80000_r03"
+      ],
+      "source_command_inferred": false,
+      "source_csv": [
+        "result/analysis/problem1_cpu_ultra_bench_tile256_80000_r01.csv | result/analysis/problem1_cpu_ultra_bench_tile256_80000_r02.csv | result/analysis/problem1_cpu_ultra_bench_tile256_80000_r03.csv"
+      ],
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "256"
+      ],
+      "timed_repeats_values": [
+        "3"
+      ],
+      "timing_scope_values": [
+        "process_full_run_tile256"
+      ],
+      "warmup_runs_values": [
+        "1"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-05-06T13:19:50+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_render_80k.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "3e3a19a566774701167945188148a0816f0ce0014f7b98256a6fb9ee278073a3",
+      "size_bytes": 340,
+      "source_command": "make cpu-ultra-render CPU_ULTRA_RENDER_ARGS=\"--compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --output-prefix problem1_cpu_ultra_render_80k\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "256"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "4096"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-05-06T13:08:45+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_smoke.csv",
+      "render_grid_values": [
+        "1024"
+      ],
+      "row_count": 1,
+      "sha256": "eae1d50ff878e111f9faa85c7534410c671ec9eb76b75d3894835aacda729576",
+      "size_bytes": 337,
+      "source_command": null,
+      "source_command_inferred": false,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-05-06T13:10:05+00:00",
+      "path": "result/analysis/problem1_cpu_ultra_verify_80000.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "dc9f83ef95ca96001d1e26b833904eb9fa942327c6732c963ae8066a1283637b",
+      "size_bytes": 339,
+      "source_command": null,
+      "source_command_inferred": false,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "64"
+      ]
+    },
+    {
+      "columns": [
+        "global_grid",
+        "backend",
+        "dx_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "root_diff_vs_fp64",
+        "root_diff_percent_vs_fp64",
+        "iter_diff_percent_vs_fp64",
+        "unique_x_percent",
+        "unique_y_percent"
+      ],
+      "global_grid_values": [
+        "1048576",
+        "16777216",
+        "262144",
+        "33554432",
+        "4194304",
+        "8192"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-11T09:07:40+00:00",
+      "path": "result/analysis/problem1_frontier_curves__20260411-170737/problem1_precision_frontier.csv",
+      "row_count": 24,
+      "sha256": "44dd5dbf4c87cbd6f8c61a8948251eaac64e75903a1fc4260ebcc345ea601405",
+      "size_bytes": 2640,
+      "source_command": "make frontier-curves",
+      "source_command_inferred": true
+    },
+    {
+      "is_large_scale": false,
+      "kind": "figure",
+      "mtime": "2026-04-11T09:07:40+00:00",
+      "path": "result/analysis/problem1_frontier_curves__20260411-170737/problem1_precision_frontier.png",
+      "sha256": "433695e542236fa12e7502064f0fb598986a528e0f0731583604674e6e349ed1",
+      "size_bytes": 229653,
+      "source_command": "make frontier-curves",
+      "source_command_inferred": true,
+      "source_csv": "result/analysis/problem1_frontier_curves__20260411-170737/problem1_precision_frontier.csv"
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "compute_tile",
+        "elapsed_seconds",
+        "quadratic_reference_seconds",
+        "relative_to_quadratic",
+        "peak_gpu_mem_gib",
+        "throughput_gpoints_per_second",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations"
+      ],
+      "compute_grid_values": [
+        "100000",
+        "1000000",
+        "2000000",
+        "250000",
+        "500000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-11T09:07:40+00:00",
+      "path": "result/analysis/problem1_frontier_curves__20260411-170737/problem1_scaling_frontier.csv",
+      "row_count": 5,
+      "sha256": "3d9c8d8abe28fd2a1bf804e648cfc2a3073ba424402105eb13f44057b3e8fcd2",
+      "size_bytes": 970,
+      "source_command": "make frontier-curves",
+      "source_command_inferred": true
+    },
+    {
+      "is_large_scale": false,
+      "kind": "figure",
+      "mtime": "2026-04-11T09:07:39+00:00",
+      "path": "result/analysis/problem1_frontier_curves__20260411-170737/problem1_scaling_frontier.png",
+      "sha256": "b1f7131dea6d20735d6c287567133ff095134a700cfc82582a2353986c029b01",
+      "size_bytes": 310597,
+      "source_command": "make frontier-curves",
+      "source_command_inferred": true,
+      "source_csv": "result/analysis/problem1_frontier_curves__20260411-170737/problem1_scaling_frontier.csv"
+    },
+    {
+      "columns": [
+        "prefix",
+        "run_dir",
+        "compute_grid",
+        "compute_tile",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "effective_points_per_second",
+        "estimated_half_week_grid_same_throughput",
+        "relative_to_prev_time_ratio",
+        "relative_to_prev_quadratic_ratio",
+        "relative_to_prev_efficiency"
+      ],
+      "compute_grid_values": [
+        "100000",
+        "1000000",
+        "2000000",
+        "250000",
+        "500000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T12:11:28+00:00",
+      "path": "result/analysis/problem1_gpu_triton_extreme_stats__20260408-201128/extreme_stats_summary.csv",
+      "row_count": 5,
+      "sha256": "551dc304f9eb95b7490fbb7229e2ae7c8862bc1f83904d07829a699e97a2ce39",
+      "size_bytes": 2241,
+      "source_command": null,
+      "source_command_inferred": false
+    },
+    {
+      "columns": [
+        "global_grid",
+        "backend",
+        "dx_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "root_diff_vs_fp64",
+        "root_diff_percent_vs_fp64",
+        "iter_diff_percent_vs_fp64",
+        "unique_x_percent",
+        "unique_y_percent"
+      ],
+      "global_grid_values": [
+        "1048576",
+        "16777216",
+        "262144",
+        "33554432",
+        "4194304",
+        "8192"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-11T09:12:58+00:00",
+      "path": "result/analysis/problem1_precision_frontier.csv",
+      "row_count": 24,
+      "sha256": "44dd5dbf4c87cbd6f8c61a8948251eaac64e75903a1fc4260ebcc345ea601405",
+      "size_bytes": 2640,
+      "source_command": "make frontier-curves",
+      "source_command_inferred": true
+    },
+    {
+      "is_large_scale": false,
+      "kind": "figure",
+      "mtime": "2026-04-11T09:12:58+00:00",
+      "path": "result/analysis/problem1_precision_frontier.png",
+      "sha256": "433695e542236fa12e7502064f0fb598986a528e0f0731583604674e6e349ed1",
+      "size_bytes": 229653,
+      "source_command": "make frontier-curves",
+      "source_command_inferred": true,
+      "source_csv": "result/analysis/problem1_precision_frontier.csv"
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "compute_tile",
+        "elapsed_seconds",
+        "quadratic_reference_seconds",
+        "relative_to_quadratic",
+        "peak_gpu_mem_gib",
+        "throughput_gpoints_per_second",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations"
+      ],
+      "compute_grid_values": [
+        "100000",
+        "1000000",
+        "2000000",
+        "250000",
+        "500000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-11T09:12:58+00:00",
+      "path": "result/analysis/problem1_scaling_frontier.csv",
+      "row_count": 5,
+      "sha256": "3d9c8d8abe28fd2a1bf804e648cfc2a3073ba424402105eb13f44057b3e8fcd2",
+      "size_bytes": 970,
+      "source_command": "make frontier-curves",
+      "source_command_inferred": true
+    },
+    {
+      "is_large_scale": false,
+      "kind": "figure",
+      "mtime": "2026-04-11T09:12:58+00:00",
+      "path": "result/analysis/problem1_scaling_frontier.png",
+      "sha256": "b1f7131dea6d20735d6c287567133ff095134a700cfc82582a2353986c029b01",
+      "size_bytes": 310597,
+      "source_command": "make frontier-curves",
+      "source_command_inferred": true,
+      "source_csv": "result/analysis/problem1_scaling_frontier.csv"
+    },
+    {
+      "columns": [
+        "global_grid",
+        "patch_grid",
+        "backend",
+        "dx",
+        "patch_span",
+        "float32_ulp_ref",
+        "dx_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "root_diff_vs_fp64",
+        "iter_diff_vs_fp64",
+        "max_iter_diff_vs_fp64",
+        "root_diff_ratio_vs_fp64",
+        "iter_diff_ratio_vs_fp64",
+        "unique_x_count",
+        "unique_y_count",
+        "unique_x_ratio",
+        "unique_y_ratio"
+      ],
+      "global_grid_values": [
+        "1048576",
+        "16777216",
+        "262144",
+        "33554432",
+        "4194304",
+        "8192"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:30:09+00:00",
+      "path": "result/analysis/sparse_reference_validation_main__20260408-223005/sparse_reference_validation.csv",
+      "row_count": 24,
+      "sha256": "5b0d7a67c3b9b292b22b9c03cd8b639de22cd2f9d9f40c9d4ef5e1e2ca864ee6",
+      "size_bytes": 5625,
+      "source_command": "make sparse-validate SPARSE_VALIDATE_ARGS=\"...\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "global_grid",
+        "patch_grid",
+        "backend",
+        "center_x",
+        "center_y",
+        "dx",
+        "patch_span",
+        "float32_ulp_ref",
+        "dx_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction",
+        "root_diff_vs_fp64",
+        "iter_diff_vs_fp64",
+        "max_iter_diff_vs_fp64",
+        "root_diff_ratio_vs_fp64",
+        "iter_diff_ratio_vs_fp64",
+        "unique_x_count",
+        "unique_y_count",
+        "unique_x_ratio",
+        "unique_y_ratio"
+      ],
+      "global_grid_values": [
+        "1048576",
+        "16777216",
+        "262144",
+        "33554432",
+        "4194304",
+        "8192"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:31:14+00:00",
+      "path": "result/analysis/sparse_reference_validation_tracked__20260408-223101/sparse_reference_validation.csv",
+      "row_count": 24,
+      "sha256": "4a7d1ef7545d48ca59b774b15e7b734443f4260625dac8e28d028bb02f02329f",
+      "size_bytes": 8036,
+      "source_command": "make sparse-validate SPARSE_VALIDATE_ARGS=\"...\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "4000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:40:31+00:00",
+      "path": "result/gpu_pytorch/folder_layout_smoke__20260408-194027/folder_layout_smoke_resources.csv",
+      "render_grid_values": [
+        "1000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "6f94db83ac47046ebc2e77d9337dc52dae363c407cd8a02da7efe8e801075411",
+      "size_bytes": 294,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix folder_layout_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "4000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:40:31+00:00",
+      "path": "result/gpu_pytorch/folder_layout_smoke__20260408-194027/folder_layout_smoke_summary.csv",
+      "render_grid_values": [
+        "1000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "15727da8a2c65789f0248a708c0b089b7fac93b65deba57ca659c05fa4501578",
+      "size_bytes": 345,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix folder_layout_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T08:27:22+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_100k_newton/problem1_gpu_100k_newton_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "3fcfc50459f559a331bd4ef589955a25d27f2833d2d830bbeadc094b161aa9b5",
+      "size_bytes": 185,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_100k_newton\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T08:27:22+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_100k_newton/problem1_gpu_100k_newton_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "be944ac59f44cbcbdfab6621dea934c4a68527687ba1fac5d7cce24388e3046a",
+      "size_bytes": 240,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_100k_newton\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:24:30+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_100k_newton_direct/problem1_gpu_100k_newton_direct_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "85be239b632c4391da2a95f01fc89ce799acc2607313d5ad5b28dcfe31a922e2",
+      "size_bytes": 266,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_100k_newton_direct\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:24:30+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_100k_newton_direct/problem1_gpu_100k_newton_direct_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "37f66afbf903a1783b5850a3857e2c3d63e5c0675173071623434296bc5dd116",
+      "size_bytes": 321,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_100k_newton_direct\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:31:43+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_100k_newton_sym/problem1_gpu_100k_newton_sym_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "dfc29992c4db48aa50c601c3e69c0991fe12bd0dfda6f7a07c9f051bae244d58",
+      "size_bytes": 205,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_100k_newton_sym\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:31:43+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_100k_newton_sym/problem1_gpu_100k_newton_sym_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "dbcd115d28d5411e5fe9d535cd5fc29e19b8f91282573748a8261cd525bf05a7",
+      "size_bytes": 259,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_100k_newton_sym\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:38:28+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_100k_newton_sym_earlyexit/problem1_gpu_100k_newton_sym_earlyexit_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "bac8ea6b7c853e15c6a6226c7e6b197bafea11d80adf035a76328c063281c5ce",
+      "size_bytes": 204,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_100k_newton_sym_earlyexit\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:38:28+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_100k_newton_sym_earlyexit/problem1_gpu_100k_newton_sym_earlyexit_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "dbcd115d28d5411e5fe9d535cd5fc29e19b8f91282573748a8261cd525bf05a7",
+      "size_bytes": 259,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_100k_newton_sym_earlyexit\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T08:03:38+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_80k/problem1_gpu_80k_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "500"
+      ],
+      "row_count": 2,
+      "sha256": "15b95095e67fec37b406f13cc2c1559cc0a2ed65affda9092b7e879ebce2d57e",
+      "size_bytes": 272,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_80k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T08:03:38+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_80k/problem1_gpu_80k_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "500"
+      ],
+      "row_count": 2,
+      "sha256": "92a638b14f8f665a38a83fa2e4aaaed7532836ec0ce0deeff4e5575b995df8ad",
+      "size_bytes": 367,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_80k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:06:02+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_active_off_smoke/problem1_gpu_active_off_smoke_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 2,
+      "sha256": "d589ac33dcfec21bfcac852299a4a1bbfc1b0f4b5fc1cb3efd8cb52ded108fd4",
+      "size_bytes": 340,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_active_off_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:06:02+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_active_off_smoke/problem1_gpu_active_off_smoke_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 2,
+      "sha256": "10c9099e33f3eafc1a13c19eaa22f697f60a40d8a3c5415e258517e66c2ebcb6",
+      "size_bytes": 443,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_active_off_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:05:31+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_active_on_smoke/problem1_gpu_active_on_smoke_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 2,
+      "sha256": "5edb88a19c3597319141fc58f2c909e5dbbbc6037cdded2493cae9c63a125dda",
+      "size_bytes": 339,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_active_on_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:05:31+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_active_on_smoke/problem1_gpu_active_on_smoke_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 2,
+      "sha256": "fd87b5e26b7be8e1c7a1a9c3da5c07e8d2ade7937947decb6e18c505ed6fe05d",
+      "size_bytes": 441,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_active_on_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T07:46:16+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_bench40k_newton/problem1_gpu_bench40k_newton_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "06967f2f69bc122ddcb0a14b69236706b3dab4cdce33af65e931705bb258ce1b",
+      "size_bytes": 185,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_bench40k_newton\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T07:46:16+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_bench40k_newton/problem1_gpu_bench40k_newton_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "95eca9a619c8d14f3d2d9fbdfa1bfcd3be86ff48460fa6d5cfef384341ff7fca",
+      "size_bytes": 244,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_bench40k_newton\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:19:57+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_baseline_40k_postpatch/problem1_gpu_newton_baseline_40k_postpatch_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "64f7bb5df38a55e1850bb6399244ab5f43ca52d34a6e8b80c5d47b1409c55bb4",
+      "size_bytes": 268,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_baseline_40k_postpatch\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:19:57+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_baseline_40k_postpatch/problem1_gpu_newton_baseline_40k_postpatch_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "78bd397e32df56b6e27600731017a3def0a81e0d473cd54dc8fabf51d03fcef6",
+      "size_bytes": 326,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_baseline_40k_postpatch\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:20:31+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_direct_40k/problem1_gpu_newton_direct_40k_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "db21f837d38459824aa485d316f160beaf315c24ffd43a3b2e89e98771c1607f",
+      "size_bytes": 267,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_direct_40k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:20:31+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_direct_40k/problem1_gpu_newton_direct_40k_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "8ce47acaac96a3a906445e9333c8f5cfca3edd31d22878e4d9948923b82bf575",
+      "size_bytes": 316,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_direct_40k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:22:50+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_pytorch_smoke_direct/problem1_gpu_newton_pytorch_smoke_direct_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "d89827ff391807002140b54e75c556ad697c1775fac70979bf47fe12292c4c68",
+      "size_bytes": 295,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_pytorch_smoke_direct\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:22:50+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_pytorch_smoke_direct/problem1_gpu_newton_pytorch_smoke_direct_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "7d08a93649111fab4ceb1806f9746d605ba94e8ca94415f4e2a1d5f5f4edc2da",
+      "size_bytes": 373,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_pytorch_smoke_direct\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:26:21+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_sym_off_smoke/problem1_gpu_newton_sym_off_smoke_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "dcd24af4577a77ffa50fc1bd772466db2e4b3b0ffd77b687f28a12a2332e2cf6",
+      "size_bytes": 206,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_sym_off_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:26:21+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_sym_off_smoke/problem1_gpu_newton_sym_off_smoke_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "8de0ec6c0306cf6b553addfd2c02237d3a063c23045ba2e710f100268000f691",
+      "size_bytes": 275,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_sym_off_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:27:26+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_sym_on_40k/problem1_gpu_newton_sym_on_40k_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "960df36ea0c6678b1daeab21662ae07c8a55316a048fc7b6a06ccb9ddaa9cac6",
+      "size_bytes": 204,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_sym_on_40k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:27:26+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_sym_on_40k/problem1_gpu_newton_sym_on_40k_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "6d02d7a004d3a24b8ee2dd985ccf7fa6a64cf9b5c45a4fb16f8ed5cdbfdb4cae",
+      "size_bytes": 263,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_sym_on_40k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:36:17+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_sym_on_40k_earlyexit/problem1_gpu_newton_sym_on_40k_earlyexit_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "223485b487dc969509d5fc06736625134d4a39b7d811c2bd7a50168bec1ee2fb",
+      "size_bytes": 205,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_sym_on_40k_earlyexit\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:36:17+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_sym_on_40k_earlyexit/problem1_gpu_newton_sym_on_40k_earlyexit_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "6d02d7a004d3a24b8ee2dd985ccf7fa6a64cf9b5c45a4fb16f8ed5cdbfdb4cae",
+      "size_bytes": 263,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_sym_on_40k_earlyexit\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:25:54+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_sym_on_smoke/problem1_gpu_newton_sym_on_smoke_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "33ecd8611cb09ad2d7f4bff3fa9fc7799e86ae719d8aa14cda8d9d16cf0df5e9",
+      "size_bytes": 204,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_sym_on_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T09:25:54+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_newton_sym_on_smoke/problem1_gpu_newton_sym_on_smoke_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "ca9dde8591fda857a6db2588dd324551361f167f17e2da4d4cae6b7998fead98",
+      "size_bytes": 274,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_sym_on_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:08:01+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_secant_active_off_40k/problem1_gpu_secant_active_off_40k_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "5ff9549c3d000f05fdb583a166fb23afec61a6731637ca07b72b3531ef28afdf",
+      "size_bytes": 236,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_secant_active_off_40k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:08:01+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_secant_active_off_40k/problem1_gpu_secant_active_off_40k_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "d8d8be3578cbe8e454ba13e95a2cb84c6b41ffd366c3abdc9f0eeab33253da43",
+      "size_bytes": 294,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_secant_active_off_40k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:08:11+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_secant_active_on_40k/problem1_gpu_secant_active_on_40k_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "7cf20cd3680123c8a179fdcbeff89fa3741541238463415d368dde27dd886763",
+      "size_bytes": 235,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_secant_active_on_40k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:08:11+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_secant_active_on_40k/problem1_gpu_secant_active_on_40k_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "d8bee4cf5a4188ae4bba2e2891993c607f428cbc49ace46cb6843c3ad028839b",
+      "size_bytes": 293,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_secant_active_on_40k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T08:29:43+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_secant_ready_smoke/problem1_gpu_secant_ready_smoke_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "1064c54e929269509bca652b32e4cd79ba385261f331816e59340353cdd0b3a6",
+      "size_bytes": 184,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_secant_ready_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T08:29:43+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_secant_ready_smoke/problem1_gpu_secant_ready_smoke_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "51ac097c5d3c272244c86dddad9e88e820bfb0e5de3e7453a28fa2c589cffeeb",
+      "size_bytes": 264,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_secant_ready_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T07:44:03+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_smoke/problem1_gpu_smoke_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 2,
+      "sha256": "b74c7c427d1d0f759466e2654e8690d5385047664707ef2081e78b2880d0309c",
+      "size_bytes": 281,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T07:44:03+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_smoke/problem1_gpu_smoke_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 2,
+      "sha256": "9e9f22f5264224b9ad001b55d9fa57fe98ebce66c92ac952b4e8b2c9f7d066cf",
+      "size_bytes": 382,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T07:50:19+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_smoke128/problem1_gpu_smoke128_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 2,
+      "sha256": "b4437be545d0eee5da6219b4d7c5a63d54b33ff62791ac82131b91abc87874a2",
+      "size_bytes": 282,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_smoke128\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T07:50:19+00:00",
+      "path": "result/gpu_pytorch/problem1_gpu_smoke128/problem1_gpu_smoke128_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 2,
+      "sha256": "0d5b2c281bd407c7128bd11d2281fb53cb38951316f548e313b3e6a9d01c86bb",
+      "size_bytes": 390,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_smoke128\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "1024"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:02:03+00:00",
+      "path": "result/gpu_triton/main_chain_doublefloat_triton_smoke__20260408-220200/main_chain_doublefloat_triton_smoke_resources.csv",
+      "render_grid_values": [
+        "256"
+      ],
+      "render_tile_values": [
+        "128"
+      ],
+      "row_count": 1,
+      "sha256": "37f86f1ab6d4b885b9114e24d1581bff022aac70af248d3ef7c58baa16a2b4ac",
+      "size_bytes": 401,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_doublefloat_triton_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "1024"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:02:03+00:00",
+      "path": "result/gpu_triton/main_chain_doublefloat_triton_smoke__20260408-220200/main_chain_doublefloat_triton_smoke_summary.csv",
+      "render_grid_values": [
+        "256"
+      ],
+      "render_tile_values": [
+        "128"
+      ],
+      "row_count": 1,
+      "sha256": "a4ead66d67f602e867939de48a6bc5b8d1fd04e86fe26ddf02f82313f40e92fd",
+      "size_bytes": 475,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_doublefloat_triton_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "8192"
+      ],
+      "compute_tile_values": [
+        "2048"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:03:02+00:00",
+      "path": "result/gpu_triton/main_chain_doublefloat_triton_stats_8k__20260408-220259/main_chain_doublefloat_triton_stats_8k_resources.csv",
+      "row_count": 1,
+      "sha256": "2858d42d08f0724692d29fea62c1a3d847b3db0f7740ea78b3229771abd9a8a0",
+      "size_bytes": 458,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_doublefloat_triton_stats_8k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "2048"
+      ],
+      "grid_size_values": [
+        "8192"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:03:02+00:00",
+      "path": "result/gpu_triton/main_chain_doublefloat_triton_stats_8k__20260408-220259/main_chain_doublefloat_triton_stats_8k_summary.csv",
+      "row_count": 1,
+      "sha256": "9456086a08f401eccd6e7304dbc18ccdfd3b490bac958c087cb20bd1de696c65",
+      "size_bytes": 535,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_doublefloat_triton_stats_8k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "2048"
+      ],
+      "compute_tile_values": [
+        "1024"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T13:59:55+00:00",
+      "path": "result/gpu_triton/main_chain_doublefloat_triton_stats__20260408-215952/main_chain_doublefloat_triton_stats_resources.csv",
+      "row_count": 1,
+      "sha256": "0bf1f47f54974c71d892e2c6dbca6731734e6068525601a6fb64e67e0902f88e",
+      "size_bytes": 460,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_doublefloat_triton_stats\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "1024"
+      ],
+      "grid_size_values": [
+        "2048"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T13:59:55+00:00",
+      "path": "result/gpu_triton/main_chain_doublefloat_triton_stats__20260408-215952/main_chain_doublefloat_triton_stats_summary.csv",
+      "row_count": 1,
+      "sha256": "545deebbefb76ef8ccb613e22997630d69ef7b32ae148e7ba0077372c67baabe",
+      "size_bytes": 523,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_doublefloat_triton_stats\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "8192"
+      ],
+      "compute_tile_values": [
+        "2048"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:03:08+00:00",
+      "path": "result/gpu_triton/main_chain_fp32_triton_stats_8k__20260408-220259/main_chain_fp32_triton_stats_8k_resources.csv",
+      "row_count": 1,
+      "sha256": "45349f82296282e4027df69bc511806bdb5a9aad611e3b55f8f6353f2e36afff",
+      "size_bytes": 445,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_fp32_triton_stats_8k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "2048"
+      ],
+      "grid_size_values": [
+        "8192"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:03:08+00:00",
+      "path": "result/gpu_triton/main_chain_fp32_triton_stats_8k__20260408-220259/main_chain_fp32_triton_stats_8k_summary.csv",
+      "row_count": 1,
+      "sha256": "61a613869bc792e71f12b716b44d523a3a9f9af901180b893ec8016868e17c5d",
+      "size_bytes": 525,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_fp32_triton_stats_8k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "2048"
+      ],
+      "compute_tile_values": [
+        "1024"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:03:09+00:00",
+      "path": "result/gpu_triton/main_chain_fp32_triton_stats__20260408-220259/main_chain_fp32_triton_stats_resources.csv",
+      "row_count": 1,
+      "sha256": "dae9885c64bf79e5652c56bab09ae313dd879c4f6e59b67f504d7361364c1e94",
+      "size_bytes": 446,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_fp32_triton_stats\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "1024"
+      ],
+      "grid_size_values": [
+        "2048"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T14:03:09+00:00",
+      "path": "result/gpu_triton/main_chain_fp32_triton_stats__20260408-220259/main_chain_fp32_triton_stats_summary.csv",
+      "row_count": 1,
+      "sha256": "3c79ab2b3c8d1dc6043425c8b79afde93644b5c6a69e2f750a9beedf57b890f5",
+      "size_bytes": 526,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix main_chain_fp32_triton_stats\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:30:07+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_100k_rt1000/problem1_gpu_newton_triton_100k_rt1000_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "1000"
+      ],
+      "row_count": 1,
+      "sha256": "3d7773d99e18b82ee816c25fda3ace06bc15de2e05a8e05ac006d9841a4c5842",
+      "size_bytes": 294,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_100k_rt1000\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:30:07+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_100k_rt1000/problem1_gpu_newton_triton_100k_rt1000_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "1000"
+      ],
+      "row_count": 1,
+      "sha256": "e874268744bf0749f22b31c63bfff79565f8694e9e423862c80291c1e5c5f136",
+      "size_bytes": 350,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_100k_rt1000\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:25:07+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_100k_rt1250/problem1_gpu_newton_triton_100k_rt1250_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "a5d132eb5e922edfe14ec714ed999b4ce0daaa9025182418b3e88e7f6a5b1698",
+      "size_bytes": 293,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_100k_rt1250\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:25:07+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_100k_rt1250/problem1_gpu_newton_triton_100k_rt1250_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "67df7d0c9f39a4306b75c4ceedf9ddc344d7fa8763018ab88404e3ded8596ebc",
+      "size_bytes": 349,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_100k_rt1250\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:30:32+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_100k_rt625/problem1_gpu_newton_triton_100k_rt625_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "b2f63989963efe731eaf82c82c42f1cb3af8644334dd0df2f6d2537e09c8c176",
+      "size_bytes": 293,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_100k_rt625\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:30:32+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_100k_rt625/problem1_gpu_newton_triton_100k_rt625_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "67df7d0c9f39a4306b75c4ceedf9ddc344d7fa8763018ab88404e3ded8596ebc",
+      "size_bytes": 349,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_100k_rt625\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:26:53+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_100k_rt625_warm/problem1_gpu_newton_triton_100k_rt625_warm_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "569050c5d9190594d488c7c5af9a7e2d31d3045ca427a3ecc2bac923d56f66a7",
+      "size_bytes": 293,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_100k_rt625_warm\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:26:53+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_100k_rt625_warm/problem1_gpu_newton_triton_100k_rt625_warm_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "625"
+      ],
+      "row_count": 1,
+      "sha256": "67df7d0c9f39a4306b75c4ceedf9ddc344d7fa8763018ab88404e3ded8596ebc",
+      "size_bytes": 349,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_100k_rt625_warm\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:29:44+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_40k_rt1000/problem1_gpu_newton_triton_40k_rt1000_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "1000"
+      ],
+      "row_count": 1,
+      "sha256": "b232114ab8a257571c6fce638050c0971ae665decfa83ff092be8e6d8910d727",
+      "size_bytes": 294,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_40k_rt1000\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:29:44+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_40k_rt1000/problem1_gpu_newton_triton_40k_rt1000_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "1000"
+      ],
+      "row_count": 1,
+      "sha256": "f6583e223bc8912c175b1a02bd9b3863d0e542bc5d60cdbe6796dddfa2109f46",
+      "size_bytes": 352,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_40k_rt1000\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:27:31+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_40k_rt1000_b512w8/problem1_gpu_newton_triton_40k_rt1000_b512w8_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "1000"
+      ],
+      "row_count": 1,
+      "sha256": "148008ad8fec356f72d39c884eaed1c84c76b0c7a7b1a8aeecdd224037c280a9",
+      "size_bytes": 294,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_40k_rt1000_b512w8\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:27:31+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_40k_rt1000_b512w8/problem1_gpu_newton_triton_40k_rt1000_b512w8_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "1000"
+      ],
+      "row_count": 1,
+      "sha256": "f6583e223bc8912c175b1a02bd9b3863d0e542bc5d60cdbe6796dddfa2109f46",
+      "size_bytes": 352,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_40k_rt1000_b512w8\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:23:49+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_40k_rt250/problem1_gpu_newton_triton_40k_rt250_resources.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "275cddc3ca5f80293dd3111b8d4660e005bfde4e397d25c82623f084fe062538",
+      "size_bytes": 295,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_40k_rt250\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "40000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:23:49+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_40k_rt250/problem1_gpu_newton_triton_40k_rt250_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "38338719e4483bb17a744106df31c7b2f4a6e419f3af4f7464f3a94fb265bd8e",
+      "size_bytes": 351,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_40k_rt250\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:22:29+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_smoke/problem1_gpu_newton_triton_smoke_resources.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "6ea70a35c93cf811420f597fe67b9498295a930d4a883f6d6b539cde2ac4df0a",
+      "size_bytes": 294,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "grid_size_values": [
+        "12000"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:22:29+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_smoke/problem1_gpu_newton_triton_smoke_summary.csv",
+      "render_grid_values": [
+        "3000"
+      ],
+      "render_tile_values": [
+        "250"
+      ],
+      "row_count": 1,
+      "sha256": "6117d2207b53a90eda6e99896a9cc2424bed748dcbf3fc443e461b0c77cad5a5",
+      "size_bytes": 372,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T12:21:15+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_100k_fp64__20260408-202025/problem1_gpu_newton_triton_stats_100k_fp64_resources.csv",
+      "row_count": 1,
+      "sha256": "8a19fb69c79e075b17a76ac25559577bf4ab3a392efe08f3a458f1257e4956ab",
+      "size_bytes": 449,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_100k_fp64\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T12:21:15+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_100k_fp64__20260408-202025/problem1_gpu_newton_triton_stats_100k_fp64_summary.csv",
+      "row_count": 1,
+      "sha256": "61af123285e22546ae44256a41d2ed6bdc5cdd478fcbab1eba60ec79e7f51402",
+      "size_bytes": 500,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_100k_fp64\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "compute_tile_values": [
+        "20000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:52:36+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_100k_smoke__20260408-195225/problem1_gpu_newton_triton_stats_100k_smoke_resources.csv",
+      "row_count": 1,
+      "sha256": "f11a0442285b7c915bdc02f95b310fdfb28370adbff39e20e04b3a258275697d",
+      "size_bytes": 449,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_100k_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "20000"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:52:36+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_100k_smoke__20260408-195225/problem1_gpu_newton_triton_stats_100k_smoke_summary.csv",
+      "row_count": 1,
+      "sha256": "6a5f3df23a7c16bb3d3272939f037625efec9dd2488863a885a7313525fcd29d",
+      "size_bytes": 500,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_100k_smoke\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "compute_tile_values": [
+        "10000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:53:19+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_100k_t10000__20260408-195315/problem1_gpu_newton_triton_stats_100k_t10000_resources.csv",
+      "row_count": 1,
+      "sha256": "f46212dc9c06de83abd83fea37de4c9cf76e182b20e2a706c06b87290e2c8439",
+      "size_bytes": 448,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_100k_t10000\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "10000"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:53:19+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_100k_t10000__20260408-195315/problem1_gpu_newton_triton_stats_100k_t10000_summary.csv",
+      "row_count": 1,
+      "sha256": "bca141afd7b2fa8c476787d7006b6281ef1307542c3c8430514536bcbe8fdee6",
+      "size_bytes": 500,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_100k_t10000\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "100000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:53:08+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_100k_t12500__20260408-195305/problem1_gpu_newton_triton_stats_100k_t12500_resources.csv",
+      "row_count": 1,
+      "sha256": "52884b000ebc30f8bcd330f0637a811cf9e3157da912dcead342fd47b0f29333",
+      "size_bytes": 447,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_100k_t12500\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "grid_size_values": [
+        "100000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:53:08+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_100k_t12500__20260408-195305/problem1_gpu_newton_triton_stats_100k_t12500_summary.csv",
+      "row_count": 1,
+      "sha256": "4aff53f1afff3a66651f5f5e3215c0823cfae6160e7312399805eaf124f3dbf4",
+      "size_bytes": 500,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_100k_t12500\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "1000000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:57:57+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_1m__20260408-195452/problem1_gpu_newton_triton_stats_1m_resources.csv",
+      "row_count": 1,
+      "sha256": "dd9fe72da733bb393346b6e3aa5ca72e3f3983d8269d141146cb4ec950eb8615",
+      "size_bytes": 445,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_1m\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "grid_size_values": [
+        "1000000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:57:57+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_1m__20260408-195452/problem1_gpu_newton_triton_stats_1m_summary.csv",
+      "row_count": 1,
+      "sha256": "32ba13afd4775f876af11a8e9cd00195897753ed03e2783f739fa0ab6e2679c9",
+      "size_bytes": 507,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_1m\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "250000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:53:47+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_250k__20260408-195334/problem1_gpu_newton_triton_stats_250k_resources.csv",
+      "row_count": 1,
+      "sha256": "f474edae8bbfb5e66fb2b37fadcdfedc8b5bb75974613ac817581000ab5d51ec",
+      "size_bytes": 450,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_250k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "grid_size_values": [
+        "250000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:53:47+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_250k__20260408-195334/problem1_gpu_newton_triton_stats_250k_summary.csv",
+      "row_count": 1,
+      "sha256": "cd2e43837fad798dce7e5db98eb9e5e4ddc682b826da2db045205de35a832e83",
+      "size_bytes": 511,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_250k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "250000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T12:25:39+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_250k_fp64__20260408-202129/problem1_gpu_newton_triton_stats_250k_fp64_resources.csv",
+      "row_count": 1,
+      "sha256": "39cf36f49d648d4c816db82450390fc6781d07ed29a84f978f6d8a3897e4e65a",
+      "size_bytes": 450,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_250k_fp64\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "grid_size_values": [
+        "250000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T12:25:39+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_250k_fp64__20260408-202129/problem1_gpu_newton_triton_stats_250k_fp64_summary.csv",
+      "row_count": 1,
+      "sha256": "c6b57c66eb276817a578a847c0a51c759c61e119c9cc6d384326a26ddd8c772f",
+      "size_bytes": 511,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_250k_fp64\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "2000000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T12:10:38+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_2m__20260408-195815/problem1_gpu_newton_triton_stats_2m_resources.csv",
+      "row_count": 1,
+      "sha256": "a14c4fb5bf0e037399a34ed5e6bc8f4c9b13d67be456fd7575e929027dcd25b5",
+      "size_bytes": 448,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_2m\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "grid_size_values": [
+        "2000000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T12:10:38+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_2m__20260408-195815/problem1_gpu_newton_triton_stats_2m_summary.csv",
+      "row_count": 1,
+      "sha256": "d92d83f35dd6f162fbee49be0890fc0cfee1801f368a32939b3c4cd020d54c82",
+      "size_bytes": 515,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_2m\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "device",
+        "dtype",
+        "compute_grid",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "elapsed_seconds",
+        "peak_gpu_mem_gib"
+      ],
+      "compute_grid_values": [
+        "500000"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:54:45+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_500k__20260408-195358/problem1_gpu_newton_triton_stats_500k_resources.csv",
+      "row_count": 1,
+      "sha256": "6dc5c5db4ec8ca5bf8f62266456037ec3027cee9b7a116868950b282c3d508d1",
+      "size_bytes": 446,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_500k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "method",
+        "tol",
+        "max_iter",
+        "grid_size",
+        "render_grid",
+        "render_tile",
+        "compute_tile",
+        "stats_only",
+        "symmetry_used",
+        "active_compression_used",
+        "newton_backend_used",
+        "newton_direct_formula_used",
+        "grid_spacing",
+        "float32_ulp_at_axis_max",
+        "grid_to_float32_ulp_ratio",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_tile_values": [
+        "12500"
+      ],
+      "grid_size_values": [
+        "500000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-04-08T11:54:45+00:00",
+      "path": "result/gpu_triton/problem1_gpu_newton_triton_stats_500k__20260408-195358/problem1_gpu_newton_triton_stats_500k_summary.csv",
+      "row_count": 1,
+      "sha256": "47b7ff8cf3af9883323cafb6ad6a871df8d71eb9c12d71b57570b3dc00ef4057",
+      "size_bytes": 510,
+      "source_command": "make gpu-ultra GPU_ARGS=\"... --output-prefix problem1_gpu_newton_triton_stats_500k\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "size",
+        "block_size",
+        "reps",
+        "root_diff_pixels",
+        "iter_diff_pixels",
+        "max_iter_diff",
+        "convergence_fraction_delta",
+        "mean_iterations_delta",
+        "root0_fraction_delta",
+        "root1_fraction_delta",
+        "root2_fraction_delta",
+        "reference_seconds",
+        "triton_seconds",
+        "speedup"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:53:39+00:00",
+      "path": "result/gpu_triton/triton_newton_bench_v1/triton_newton_bench_v1.csv",
+      "row_count": 2,
+      "sha256": "7af9ba81551dc16a3c5fc84da94ce5ae3a2166af79d00a09202cd24e30d023ed",
+      "size_bytes": 588,
+      "source_command": "make triton-bench TRITON_ARGS=\"--output-prefix triton_newton_bench_v1\"",
+      "source_command_inferred": true
+    },
+    {
+      "columns": [
+        "size",
+        "block_size",
+        "reps",
+        "root_diff_pixels",
+        "iter_diff_pixels",
+        "max_iter_diff",
+        "convergence_fraction_delta",
+        "mean_iterations_delta",
+        "root0_fraction_delta",
+        "root1_fraction_delta",
+        "root2_fraction_delta",
+        "reference_seconds",
+        "triton_seconds",
+        "speedup"
+      ],
+      "is_large_scale": false,
+      "kind": "csv",
+      "mtime": "2026-04-08T10:54:18+00:00",
+      "path": "result/gpu_triton/triton_newton_bench_v2/triton_newton_bench_v2.csv",
+      "row_count": 2,
+      "sha256": "e4a692f8a13d3248212cc060e5d3f8ce970bc14335dcdd0f7818c693c0884a2f",
+      "size_bytes": 619,
+      "source_command": "make triton-bench TRITON_ARGS=\"--output-prefix triton_newton_bench_v2\"",
+      "source_command_inferred": true
+    },
+    {
+      "is_large_scale": false,
+      "kind": "figure",
+      "mtime": "2026-05-06T13:19:59+00:00",
+      "path": "result/problem1_cpu_ultra_fractals.png",
+      "sha256": "46082757ac7515e5a184ce75ea03f43ff903abc466c3d052a789e72d5f516488",
+      "size_bytes": 1645523,
+      "source_command": null,
+      "source_command_inferred": false
+    },
+    {
+      "columns": [
+        "compute_grid",
+        "render_grid",
+        "factor",
+        "tile_rows",
+        "threads",
+        "max_iter",
+        "tol",
+        "elapsed_seconds",
+        "throughput_gpoints_per_s",
+        "peak_rss_gib",
+        "convergence_fraction",
+        "mean_iterations",
+        "root0_fraction",
+        "root1_fraction",
+        "root2_fraction"
+      ],
+      "compute_grid_values": [
+        "80000"
+      ],
+      "is_large_scale": true,
+      "kind": "csv",
+      "mtime": "2026-05-06T13:19:59+00:00",
+      "path": "result/problem1_cpu_ultra_summary.csv",
+      "render_grid_values": [
+        "5000"
+      ],
+      "row_count": 1,
+      "sha256": "a2e0ba1c2dd12e8d7303d3c621bbe115c7869fa08ca792928af8e1967e12b784",
+      "size_bytes": 342,
+      "source_command": "make cpu-ultra-render CPU_ULTRA_RENDER_ARGS=\"--compute-grid 80000 --render-grid 5000 --tile-rows 256 --threads 88 --output-prefix problem1_cpu_ultra_render_80k\"",
+      "source_command_inferred": true,
+      "threads_values": [
+        "88"
+      ],
+      "tile_rows_values": [
+        "256"
+      ]
+    }
+  ],
+  "generated_at": "2026-06-29T08:25:42+00:00",
+  "large_scale_artifact_count": 84,
+  "large_scale_rerun_performed": false,
+  "metadata_digest": "3a87ae5c543a2721175a6cb8f084b4ef60a701b57b92b372496abf9f7415c8e4",
+  "metadata_path": "result/analysis/metadata.json",
+  "report_manifest_path": "result/analysis/report_manifest.json",
+  "root": "/home/void0312/Cpy/HW/04"
+}

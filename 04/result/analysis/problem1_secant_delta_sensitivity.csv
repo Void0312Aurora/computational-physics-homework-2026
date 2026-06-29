@@ -1,0 +1,6 @@
+case,delta_real,delta_imag,baseline_case,baseline_delta_real,baseline_delta_imag,grid,both_converged_fraction,root_disagreement_fraction,convergence_fraction_delta,mean_iterations_delta,p95_iterations_delta,p99_iterations_delta
+secant_delta_0p2_0p2i,0.2,0.2,secant_delta_0p2_0p2i,0.2,0.2,1024,0.9453277587890625,0.0,0.0,0.0,0.0,0.0
+secant_delta_0p1_0p1i,0.1,0.1,secant_delta_0p2_0p2i,0.2,0.2,1024,0.9151430130004883,0.08698755831875256,-0.0015439987182617188,-0.01084882071368476,0.0,-1.0
+secant_delta_0p3_0p3i,0.3,0.3,secant_delta_0p2_0p2i,0.2,0.2,1024,0.9174108505249023,0.08634839782738636,0.00252532958984375,-0.007219869024888581,0.0,0.0
+secant_delta_0p2_0p0i,0.2,0.0,secant_delta_0p2_0p2i,0.2,0.2,1024,0.9110383987426758,0.10098053686146553,-8.0108642578125e-05,-0.03924673463388295,0.0,-1.0
+secant_delta_0p0_0p2i,0.0,0.2,secant_delta_0p2_0p2i,0.2,0.2,1024,0.9076681137084961,0.10076395390009446,-0.0022115707397460938,0.027820438424237537,0.0,0.0

@@ -1,0 +1,56 @@
+{
+  "build_notes": {
+    "cpu_ultra_compile_command": "gcc -O3 -march=native -ffast-math -fopenmp -o problem1_cpu_ultra scripts/problem1_cpu_ultra.c -lm",
+    "large_scale_rerun_performed": false
+  },
+  "cpu": {
+    "affinity_count": 88,
+    "logical_count": 88,
+    "model": "Intel(R) Xeon(R) CPU E5-2696 v4 @ 2.20GHz"
+  },
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": null,
+    "MKL_NUM_THREADS": null,
+    "NUMEXPR_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null,
+    "PYTHONPATH": null
+  },
+  "generated_at": "2026-06-29T08:25:42+00:00",
+  "gpu": {
+    "devices": [
+      {
+        "driver_version": "580.159.04",
+        "memory_total": "24576 MiB",
+        "name": "NVIDIA GeForce RTX 3090"
+      }
+    ]
+  },
+  "memory": {
+    "mem_total_kib": 127411884
+  },
+  "packages": {
+    "matplotlib": "3.10.7",
+    "mpmath": "1.3.0",
+    "numpy": "2.3.3",
+    "psutil": "7.2.1",
+    "torch": "2.9.1",
+    "triton": "3.5.1"
+  },
+  "platform": {
+    "machine": "x86_64",
+    "processor": "x86_64",
+    "release": "6.17.0-35-generic",
+    "system": "Linux",
+    "version": "#35~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 19:30:42 UTC 2"
+  },
+  "python": {
+    "executable": "/home/void0312/miniconda3/bin/python3",
+    "version": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:09:02) [GCC 11.2.0]"
+  },
+  "tools": {
+    "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "make": "GNU Make 4.3"
+  }
+}

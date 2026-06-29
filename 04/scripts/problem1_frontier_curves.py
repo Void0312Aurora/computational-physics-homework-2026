@@ -235,7 +235,7 @@ def plot_scaling(rows: list[dict[str, float | int | str]], out_path: Path) -> No
 def plot_precision(rows: list[dict[str, float | int | str]], out_path: Path) -> None:
     palette = style_palette()
     backends = ["fp32_triton", "doublefloat_triton_base", "doublefloat_triton_t8"]
-    fig, axes = plt.subplots(1, 3, figsize=(15.5, 4.8), constrained_layout=True)
+    fig, axes = plt.subplots(3, 1, figsize=(8.0, 10.5), sharex=True, constrained_layout=True)
 
     for backend in backends:
         backend_rows = [row for row in rows if row["backend"] == backend]
@@ -265,10 +265,10 @@ def plot_precision(rows: list[dict[str, float | int | str]], out_path: Path) -> 
         ax.invert_xaxis()
         ax.axvline(1.0, linestyle="--", linewidth=1.2, color="#444444")
         ax.set_title(title)
-        ax.set_xlabel("dx / ULP32")
         ax.set_ylabel(ylabel)
         ax.grid(True, which="both", alpha=0.25)
 
+    axes[-1].set_xlabel("dx / ULP32")
     axes[0].legend(loc="upper left")
     fig.suptitle("Problem 1 precision frontier near the fp32 coordinate limit", fontsize=15)
     fig.savefig(out_path, dpi=220)

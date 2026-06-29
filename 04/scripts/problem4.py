@@ -6,10 +6,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from solution import ensure_result_dir, problem4
+from scripts.solution import ensure_result_dir, problem4
 
 
 def main() -> None:
+    if "--import-smoke" in sys.argv:
+        print("Problem 4 import smoke: ok")
+        return
     ensure_result_dir()
     rows = problem4()
     print(f"Problem 4 rows: {len(rows)}")
