@@ -1,3 +1,0 @@
-model,metric,min_node_count,sample_count,prefactor,slope_per_node,per_node_factor,r_squared
-error = prefactor * exp(slope_per_node * node_count),max_abs_error,7,5,1941.0777082172417,-1.0067989615665116,0.3653867265276572,0.9864469144544212
-error = prefactor * exp(slope_per_node * node_count),rmse,7,5,751.9886505278805,-1.0478614372804185,0.3506869137178058,0.9888009075868313
