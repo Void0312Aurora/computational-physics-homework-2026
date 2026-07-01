@@ -2,8 +2,7 @@
 
 all: docs
 
-run:
-	python3 scripts/hw07_integrals.py
+run: problem1 problem2 problem3 problem4 problem5
 
 docs: run
 	python3 docs/answer/render_docs.py
