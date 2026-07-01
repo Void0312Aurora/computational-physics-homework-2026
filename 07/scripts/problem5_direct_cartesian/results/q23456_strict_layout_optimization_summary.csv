@@ -1,0 +1,3 @@
+proxy_label,baseline_case_label,baseline_count_points_per_s,best_case_label,best_count_points_per_s,best_count_runtime_s,best_speedup_vs_proxy_baseline
+n24_proxy_31_cheapest,asc_tail8_c128_b16,2.878555609e+12,desc_tail12_c128_b16,2.927578245e+12,5.710415553,1.017030
+n24_proxy_31_below_2pct,confirm_asc_tail9_c128_b16,2.775200395e+12,confirm_asc_tail10_c128_b16,2.796374123e+12,4.483758505,1.007630

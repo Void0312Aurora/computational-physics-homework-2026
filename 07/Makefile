@@ -7,6 +7,9 @@ run:
 
 docs: run
 	python3 docs/answer/render_docs.py
+	python3 scripts/problem5_direct_cartesian/run_problem5_volume_trend_plot.py
+	$(MAKE) -C docs/answer/latex
+	cp docs/answer/latex/answer.pdf docs/answer/answer.pdf
 
 problem1:
 	python3 scripts/problem1.py

@@ -1,0 +1,11 @@
+group_label,disabled_case,enabled_case,disabled_median_points_per_s,enabled_median_points_per_s,disabled_median_runtime_s,enabled_median_runtime_s,speedup_vs_disabled,point_reduction_vs_disabled,inside_consistent,note
+sign_symmetry,signed_full,first_orthant,3.591556431e+08,2.528891498e+08,0.443407985,0.000614973,1024.000000,1024.000000,true,point-count reduction by sign symmetry; small proxy uses n=10
+integer_radius_update,float_fullsum,integer_incremental,6.351913431e+06,3.451596740e+08,15.865606654,0.291971999,54.339480,1.000000,true,integer/incremental radius update against floating full-coordinate summation
+tail_table_reuse,tail_recompute,tail_table_u16_scalar,4.291744689e+08,3.799087860e+09,0.234815832,0.026526620,8.852083,1.000000,true,precomputed tail sums against recomputing the tail for every prefix
+prefix_batching_scalar,rank8_scalar_batch1,rank8_scalar_batch16,7.757010288e+08,1.886326972e+09,0.129917270,0.053424969,2.431771,1.000000,true,"same scalar rank8 comparator, one prefix threshold versus sixteen per tail scan"
+rank8_storage,u16_avx2_batch16,rank8_avx2_batch16,8.210256047e+11,2.412370476e+12,1.272622334,0.433123988,2.938240,1.000000,true,AVX2 path with u16 tail table versus lossless rank8 tail table
+prefix_batching_avx2,rank8_avx2_batch1,rank8_avx2_batch16,8.095811331e+11,2.277289016e+12,1.290612489,0.458815510,2.812923,1.000000,true,AVX2 rank8 path with one versus sixteen prefix thresholds per tail scan
+avx2_unroll_single_thread,rank8_scalar_batch16,rank8_avx2_batch16_1thread,1.635713425e+09,5.928921397e+10,0.061610401,0.001699752,36.246700,1.000000,true,single-thread scalar rank8 batch16 against AVX2 unrolled rank8 batch16
+openmp_scaling,rank8_avx2_thread1,rank8_avx2_thread88,6.761688746e+10,2.314736222e+12,15.452582343,0.451392911,34.233108,1.000000,true,same AVX2 rank8 kernel with 1 thread versus 88 threads
+layout_tuning,cheap_baseline_asc_tail8_c128_b16,cheap_asc_tail10_c512_b16,2.496038182e+12,2.887880562e+12,6.697689347,5.788912658,1.156986,1.000000,true,layout repeat check on n24 proxy; this replaces one-off layout-pair noise
+batch32_guardrail,rank8_avx2_batch16,rank8_avx2_batch32,2.317254800e+12,1.619172317e+12,0.450902301,0.645302239,0.698746,1.000000,true,guardrail check: larger batch is not automatically better

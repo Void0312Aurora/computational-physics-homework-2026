@@ -1,0 +1,3 @@
+target_label,q_pattern,total_points,rate_source,rate_points_per_s,estimated_runtime_s,estimated_runtime_h,speedup_vs_n30_measured_rate
+n31_cheapest_predicted_pass,2^1 3^15 4^12 5^1 6^2,86664496357048320,matching_proxy_best_layout_rate,2.927578245e+12,29602.794223,8.222998,1.077059
+n31_predicted_below_2pct,2^1 3^16 4^10 5^1 6^3,97497558401679360,matching_proxy_best_layout_rate,2.796374123e+12,34865.706130,9.684918,1.028789
